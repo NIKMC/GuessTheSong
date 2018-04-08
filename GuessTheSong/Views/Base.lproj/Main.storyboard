@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_9" orientation="portrait">
+    <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,16 +15,16 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Main View Controller-->
+        <!--GuessTheSong-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qcU-C2-uNH">
-                                <rect key="frame" x="60" y="486" width="255" height="80"/>
+                                <rect key="frame" x="60" y="320" width="200" height="80"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                 <color key="tintColor" red="0.92117289619999998" green="0.65499546819999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Registration" backgroundImage="button">
@@ -35,10 +35,10 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_name" translatesAutoresizingMaskIntoConstraints="NO" id="5ne-Qw-GF3">
-                                <rect key="frame" x="60" y="64" width="255" height="242"/>
+                                <rect key="frame" x="60" y="40" width="200" height="100"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mlv-Ss-ZqG">
-                                <rect key="frame" x="60" y="366" width="255" height="80"/>
+                                <rect key="frame" x="60" y="200" width="200" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="oRR-HJ-AVH"/>
                                 </constraints>
@@ -68,30 +68,31 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="GuessTheSong" id="gxm-A4-T9C"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1082.4000000000001" y="311.69415292353824"/>
+            <point key="canvasLocation" x="-740" y="311.08374384236453"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="HGN-KF-eCf">
             <objects>
                 <viewController id="AU5-gc-Hby" customClass="LoginViewController" customModule="GuessTheSong" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QvQ-4V-1cg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_name" translatesAutoresizingMaskIntoConstraints="NO" id="oy7-dn-drQ">
-                                <rect key="frame" x="60" y="64" width="255" height="272"/>
+                                <rect key="frame" x="60" y="40" width="200" height="135"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please, enter your login" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T1o-gh-rfV" userLabel="Login">
-                                <rect key="frame" x="60" y="396" width="255" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please, enter your email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T1o-gh-rfV" userLabel="Email">
+                                <rect key="frame" x="60" y="235" width="200" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please, enter your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JtB-7J-Ywr" userLabel="Password">
-                                <rect key="frame" x="60" y="466" width="255" height="30"/>
+                                <rect key="frame" x="60" y="305" width="200" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="PMN-Zg-lXr"/>
                                 </constraints>
@@ -100,7 +101,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kds-E5-BtC">
-                                <rect key="frame" x="100" y="521" width="175" height="60"/>
+                                <rect key="frame" x="100" y="360" width="120" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="eYt-b9-nTK"/>
                                 </constraints>
@@ -113,14 +114,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ue-ZM-s3k">
-                                <rect key="frame" x="50" y="726" width="275" height="32"/>
+                                <rect key="frame" x="50" y="428" width="220" height="32"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <state key="normal" title="Do not have an account yet?">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="goToregistration:" destination="AU5-gc-Hby" eventType="touchUpInside" id="n06-qV-pZw"/>
-                                    <segue destination="6Qc-Y4-YaQ" kind="show" id="64D-ya-SEh"/>
+                                    <segue destination="6Qc-Y4-YaQ" kind="show" identifier="hasNotAccount" id="64D-ya-SEh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -142,30 +143,32 @@
                             <constraint firstItem="oy7-dn-drQ" firstAttribute="centerX" secondItem="QvQ-4V-1cg" secondAttribute="centerX" id="gER-mH-wWd"/>
                             <constraint firstItem="JtB-7J-Ywr" firstAttribute="top" secondItem="T1o-gh-rfV" secondAttribute="bottom" constant="40" id="gkC-hp-LDa"/>
                             <constraint firstItem="oy7-dn-drQ" firstAttribute="leading" secondItem="CMW-f5-9xo" secondAttribute="leading" constant="60" id="naM-Ks-FSg"/>
+                            <constraint firstItem="5Ue-ZM-s3k" firstAttribute="top" relation="greaterThanOrEqual" secondItem="kds-E5-BtC" secondAttribute="bottom" constant="8" id="pYg-NT-yf9"/>
                             <constraint firstItem="kds-E5-BtC" firstAttribute="leading" secondItem="QvQ-4V-1cg" secondAttribute="leading" constant="100" id="qgs-sV-jnR"/>
                             <constraint firstItem="JtB-7J-Ywr" firstAttribute="height" secondItem="T1o-gh-rfV" secondAttribute="height" id="wBS-hO-LL2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CMW-f5-9xo"/>
                     </view>
                     <connections>
-                        <outlet property="loginView" destination="T1o-gh-rfV" id="b69-0n-9ct"/>
+                        <outlet property="emailView" destination="T1o-gh-rfV" id="qZC-1U-k8S"/>
                         <outlet property="passwordView" destination="JtB-7J-Ywr" id="vc6-cc-J96"/>
+                        <segue destination="Yt7-y9-Ut3" kind="show" id="sdB-On-H8X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rSw-89-f09" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-31" y="-99"/>
+            <point key="canvasLocation" x="311.19999999999999" y="-99.01477832512316"/>
         </scene>
         <!--Registration View Controller-->
         <scene sceneID="rmL-sd-RmS">
             <objects>
                 <viewController id="6Qc-Y4-YaQ" customClass="RegistrationViewController" customModule="GuessTheSong" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GUX-Gl-V6a">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please, enter your login" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lBs-uF-loB" userLabel="Login">
-                                <rect key="frame" x="60" y="391" width="255" height="30"/>
+                                <rect key="frame" x="60" y="225" width="200" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="xde-Lr-usR"/>
                                 </constraints>
@@ -174,28 +177,28 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please, enter your e-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Me-nM-fH5" userLabel="email">
-                                <rect key="frame" x="60" y="436" width="255" height="30"/>
+                                <rect key="frame" x="60" y="263" width="200" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please, enter your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pbr-VB-pe8" userLabel="password">
-                                <rect key="frame" x="60" y="481" width="255" height="30"/>
+                                <rect key="frame" x="60" y="301" width="200" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please, repeat your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iZx-WK-gli" userLabel="repassword">
-                                <rect key="frame" x="60" y="526" width="255" height="30"/>
+                                <rect key="frame" x="60" y="339" width="200" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_name" translatesAutoresizingMaskIntoConstraints="NO" id="29F-4N-JgM">
-                                <rect key="frame" x="60" y="64" width="255" height="267"/>
+                                <rect key="frame" x="60" y="40" width="200" height="125"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TOw-0f-KBh">
-                                <rect key="frame" x="100" y="576" width="175" height="60"/>
+                                <rect key="frame" x="100" y="385" width="120" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="km2-tM-FRn"/>
                                 </constraints>
@@ -207,30 +210,44 @@
                                     <action selector="registerTapped:" destination="6Qc-Y4-YaQ" eventType="touchUpInside" id="B2C-b4-SH7"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lyD-bP-eDQ">
+                                <rect key="frame" x="50" y="453" width="220" height="7"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="I have an account.">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="goToLoginTapped:" destination="6Qc-Y4-YaQ" eventType="touchUpInside" id="MF2-Ig-Mkx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.098039215686274508" green="0.098039215686274508" blue="0.098039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wIL-i1-5Db" firstAttribute="trailing" secondItem="Pbr-VB-pe8" secondAttribute="trailing" constant="60" id="0s4-fH-Zej"/>
-                            <constraint firstItem="lBs-uF-loB" firstAttribute="centerY" secondItem="GUX-Gl-V6a" secondAttribute="centerY" id="5vA-oK-ZO6"/>
+                            <constraint firstItem="wIL-i1-5Db" firstAttribute="bottom" secondItem="lyD-bP-eDQ" secondAttribute="bottom" constant="20" id="26A-te-twX"/>
+                            <constraint firstItem="lyD-bP-eDQ" firstAttribute="centerX" secondItem="GUX-Gl-V6a" secondAttribute="centerX" id="5fm-3A-uH5"/>
                             <constraint firstItem="lBs-uF-loB" firstAttribute="centerX" secondItem="GUX-Gl-V6a" secondAttribute="centerX" id="8WM-wq-7TU"/>
+                            <constraint firstItem="lBs-uF-loB" firstAttribute="top" secondItem="29F-4N-JgM" secondAttribute="bottom" constant="60" id="LRU-LU-SUK"/>
                             <constraint firstItem="TOw-0f-KBh" firstAttribute="leading" secondItem="wIL-i1-5Db" secondAttribute="leading" constant="100" id="PMc-5T-9fZ"/>
-                            <constraint firstItem="iZx-WK-gli" firstAttribute="top" secondItem="Pbr-VB-pe8" secondAttribute="bottom" constant="15" id="PeP-IA-M5l"/>
+                            <constraint firstItem="iZx-WK-gli" firstAttribute="top" secondItem="Pbr-VB-pe8" secondAttribute="bottom" constant="8" id="PeP-IA-M5l"/>
                             <constraint firstItem="Pbr-VB-pe8" firstAttribute="width" secondItem="lBs-uF-loB" secondAttribute="width" id="Ryp-X1-t27"/>
-                            <constraint firstItem="lBs-uF-loB" firstAttribute="top" secondItem="29F-4N-JgM" secondAttribute="bottom" constant="60" id="Ss0-0S-lJI"/>
                             <constraint firstItem="iZx-WK-gli" firstAttribute="leading" secondItem="wIL-i1-5Db" secondAttribute="leading" constant="60" id="UAj-o4-4ja"/>
                             <constraint firstItem="Pbr-VB-pe8" firstAttribute="leading" secondItem="wIL-i1-5Db" secondAttribute="leading" constant="60" id="Uah-wr-ftN"/>
-                            <constraint firstItem="TOw-0f-KBh" firstAttribute="top" secondItem="iZx-WK-gli" secondAttribute="bottom" constant="20" id="Uer-Tn-uDO"/>
-                            <constraint firstItem="Pbr-VB-pe8" firstAttribute="top" secondItem="3Me-nM-fH5" secondAttribute="bottom" constant="15" id="Umh-Us-YMS"/>
+                            <constraint firstItem="TOw-0f-KBh" firstAttribute="top" secondItem="iZx-WK-gli" secondAttribute="bottom" constant="16" id="Uer-Tn-uDO"/>
+                            <constraint firstItem="Pbr-VB-pe8" firstAttribute="top" secondItem="3Me-nM-fH5" secondAttribute="bottom" constant="8" id="Umh-Us-YMS"/>
                             <constraint firstItem="wIL-i1-5Db" firstAttribute="trailing" secondItem="3Me-nM-fH5" secondAttribute="trailing" constant="60" id="Z5P-Xi-rIo"/>
                             <constraint firstItem="Pbr-VB-pe8" firstAttribute="height" secondItem="lBs-uF-loB" secondAttribute="height" id="ZIw-ow-aN5"/>
+                            <constraint firstItem="lyD-bP-eDQ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="TOw-0f-KBh" secondAttribute="bottom" constant="8" id="caq-bI-YfO"/>
                             <constraint firstItem="wIL-i1-5Db" firstAttribute="trailing" secondItem="lBs-uF-loB" secondAttribute="trailing" constant="60" id="dce-yt-glT"/>
                             <constraint firstItem="29F-4N-JgM" firstAttribute="top" secondItem="wIL-i1-5Db" secondAttribute="top" constant="20" id="eCz-Rf-SfC"/>
                             <constraint firstItem="29F-4N-JgM" firstAttribute="leading" secondItem="wIL-i1-5Db" secondAttribute="leading" constant="60" id="eIf-fd-zzy"/>
                             <constraint firstItem="iZx-WK-gli" firstAttribute="width" secondItem="lBs-uF-loB" secondAttribute="width" id="eQd-pn-Pbn"/>
                             <constraint firstAttribute="trailing" secondItem="29F-4N-JgM" secondAttribute="trailing" constant="60" id="huH-x5-mCv"/>
+                            <constraint firstItem="lBs-uF-loB" firstAttribute="centerY" secondItem="GUX-Gl-V6a" secondAttribute="centerY" id="kty-EL-gDY"/>
+                            <constraint firstItem="lyD-bP-eDQ" firstAttribute="leading" secondItem="wIL-i1-5Db" secondAttribute="leading" constant="50" id="lDB-To-QGH"/>
                             <constraint firstItem="3Me-nM-fH5" firstAttribute="height" secondItem="lBs-uF-loB" secondAttribute="height" id="lvX-k4-mBd"/>
                             <constraint firstItem="iZx-WK-gli" firstAttribute="height" secondItem="lBs-uF-loB" secondAttribute="height" id="oHt-Nh-wdb"/>
-                            <constraint firstItem="3Me-nM-fH5" firstAttribute="top" secondItem="lBs-uF-loB" secondAttribute="bottom" constant="15" id="oPU-ts-DTB"/>
+                            <constraint firstItem="3Me-nM-fH5" firstAttribute="top" secondItem="lBs-uF-loB" secondAttribute="bottom" constant="8" id="oPU-ts-DTB"/>
                             <constraint firstItem="3Me-nM-fH5" firstAttribute="width" secondItem="lBs-uF-loB" secondAttribute="width" id="pod-OF-ZxC"/>
                             <constraint firstItem="3Me-nM-fH5" firstAttribute="leading" secondItem="wIL-i1-5Db" secondAttribute="leading" constant="60" id="rCL-Gd-Z1k"/>
                             <constraint firstItem="lBs-uF-loB" firstAttribute="leading" secondItem="wIL-i1-5Db" secondAttribute="leading" constant="60" id="s5P-M7-gSK"/>
@@ -244,11 +261,20 @@
                         <outlet property="loginView" destination="lBs-uF-loB" id="eWz-W8-EAo"/>
                         <outlet property="passwordView" destination="Pbr-VB-pe8" id="WeO-qF-c4d"/>
                         <outlet property="repasswordView" destination="iZx-WK-gli" id="HpZ-ah-MOi"/>
+                        <segue destination="AU5-gc-Hby" kind="show" identifier="registrationSucceed" id="npI-2F-HCp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EJV-P3-A5h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-31.875" y="781.25"/>
+            <point key="canvasLocation" x="309.375" y="780"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="Y1b-r9-7Lw">
+            <objects>
+                <viewControllerPlaceholder id="Yt7-y9-Ut3" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xo1-rG-iPr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1325" y="354"/>
         </scene>
     </scenes>
     <resources>
@@ -257,5 +283,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="64D-ya-SEh"/>
+        <segue reference="npI-2F-HCp"/>
     </inferredMetricsTieBreakers>
 </document>

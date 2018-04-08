@@ -9,50 +9,31 @@
 import UIKit
 import SocketIO
 import SwiftyJSON
+import ProgressHUD
 
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var passwordView: UITextField!
-    @IBOutlet weak var loginView: UITextField!
+    @IBOutlet weak var emailView: UITextField!
    
+    var user: UserProfile?
     let defaults = UserDefaults.standard
-    
-    let manager = SocketManager(socketURL: URL(string: "http://85.143.211.98:50340")!, config: [.log(true), .compress])
-    lazy var socket = manager.defaultSocket
-    
+     var socket : Socket_API?
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.statusBarStyle = .lightContent
         // Do any additional setup after loading the view.
-        socket.disconnect()
-        socket.connect()
-        socket.on("login-response") { response, ack in
-            print("The value is \(response)")
-            
-            let swiftyJson = JSON((response[0] as! [String : AnyObject]))
-            
-            do {
-                let data = try swiftyJson.rawData()
-                let event = try JSONDecoder().decode(ResponseMessage.self, from: data)
-                if let message = event.msg {
-                    print("converted message is \(message)")
-                }
-                print("converted error is \(event.err)")
-            } catch let myJSONError {
-                print(myJSONError)
-            }
-            
+        socket = Socket_API(connection: .Guest)
+        socket?.delegate = self
+        socket?.connect()
+        socket?.loginResponseEvent()
+        if let email = defaults.value(forKey: "user_email") as? String {
+            emailView.text = email
         }
-        socket.on(clientEvent: .connect) {data, ack in
-            print("socket connected")
-            print("data is \(data)")
+        if let password = defaults.value(forKey: "user_password") as? String {
+            passwordView.text = password
         }
-
-        socket.on(clientEvent: .error) {data,error  in
-            print("data in socket error \(data[0])")
-            print("socket error")
-            print("data is \(error)")
-        }
+        
         
     }
 
@@ -62,17 +43,52 @@ class LoginViewController: UIViewController {
 //    }
     
     @IBAction func okPressed(_ sender: UIButton) {
-        socket.emit("login", LoginRequest(username: loginView.text!, password: passwordView.text!))
-        
+        ProgressHUD.show()
+        socket?.loginEvent(email: emailView.text!, password: passwordView.text!)
+        user = UserProfile(email: emailView.text!, password: passwordView.text!)
     }
     
     @IBAction func goToregistration(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        socket?.disconnect()
+//        self.dismiss(animated: true, completion: nil)
+        self.performSegue(withIdentifier: "hasNotAccount", sender: self)
         
     }
     
     
-    
-    
-
 }
+extension LoginViewController: ResponseLoginDelegate {
+
+    func informErrorMessage(error: String) {
+        print("the error is \(error)")
+        ProgressHUD.showError(error)
+    }
+    
+    func informDisconnectedMessage() {
+        print("the socket was disconnected")
+        ProgressHUD.showError("Check your Internet connection ")
+        
+    }
+    
+    func loginSuccess(token: String?) {
+        print("Login success in delegate")
+        ProgressHUD.dismiss()
+        socket?.disconnect()
+        if let currentToken = token {
+            defaults.setValue(currentToken, forKey: "token")
+            defaults.setValue(user?.email, forKey: "user_email")
+            defaults.setValue(user?.password, forKey: "user_password")
+        }
+//        self.dismiss(animated: true, completion: nil)
+//        self.performSegue(withIdentifier: "", sender: self)
+    }
+    
+    func printErrorMessage(error: String?) {
+        print("Login error in delegate")
+        ProgressHUD.showError()
+        if let errorMessage = error {
+            print("Error message \(errorMessage)")
+        }
+    }
+}
+

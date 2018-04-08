@@ -10,10 +10,10 @@ import Foundation
 import SocketIO
 
 struct LoginRequest: SocketData {
-    let username: String
+    let email: String
     let password: String
     
     func socketRepresentation() -> SocketData {
-        return ["username": username, "password": password]
+        return ["email": email, "password": password]
     }
 }

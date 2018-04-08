@@ -13,4 +13,5 @@ import UIKit
 struct ResponseMessage: Codable {
     var err: Bool
     var msg: String?
+    var token: String?
 }
