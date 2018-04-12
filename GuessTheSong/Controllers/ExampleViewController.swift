@@ -16,10 +16,10 @@ class ExampleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let login = defaults.value(forKey: "loginKey") as? String {
-            labelLogin.text = "The login is \(login)"
+        if let login = defaults.value(forKey: "token") as? String {
+            print( "The token is \(login)")
         } else {
-            labelLogin.text = "Not the Login"
+            print("Not the Login")
         }
         // Do any additional setup after loading the view.
     }

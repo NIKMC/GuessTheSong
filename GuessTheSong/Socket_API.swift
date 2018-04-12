@@ -28,20 +28,43 @@ enum TypeConnection: String {
     case User = "users"
 }
 
+enum EventName: String {
+    case LOGIN = "login-response"
+    case REGISTER = "register-response"
+}
 
 class Socket_API {
     
+    open static let sharedInstance = Socket_API()
     private var socket: SocketIOClient?
     private let api = Bundle.main.object(forInfoDictionaryKey: "BASE_URL") as? String
     var delegate: ResponseDelegate?
-    private lazy var manager = SocketManager(socketURL: URL(string: api!)!, config: [.log(true), .compress])
+    private let manager: SocketManager
     
-    init(connection: TypeConnection) {
-        socket = manager.socket(forNamespace: "/\(connection.rawValue)")
-        
+//    private lazy var manager = SocketManager(socketURL: URL(string: api!)!, config: [.log(true), .reconnects(true), .reconnectWait(5), .reconnectAttempts(50), .compress])
+
+    init() {
+        manager = SocketManager(socketURL: URL(string: api!)!, config: [.log(true), .reconnects(true), .reconnectWait(5), .reconnectAttempts(50), .compress])
+
     }
+//    init(connection: TypeConnection) {
+////        manager = SocketManager(socketURL: URL(string: api!)!, config: [.log(true), .reconnects(true), .reconnectWait(5), .reconnectAttempts(50), .compress])
+//       socket = manager.socket(forNamespace: "/\(connection.rawValue)")
+//    }
     
-    func connect(){
+    func connect(connection: TypeConnection){
+        
+        switch connection {
+        case .User:
+            print("connection for User")
+            if let token = UserDefaults.standard.value(forKey: "token") as? String {
+                manager.engine?.connectParams = ["token" : token]
+            }
+        case .Guest:
+            print("connection for Guest")
+        }
+        
+        socket = manager.socket(forNamespace: "/\(connection.rawValue)")
         socket?.connect()
         
         socket?.on(clientEvent: .error) { data,error  in
@@ -71,6 +94,10 @@ class Socket_API {
     func registerEvent(login loginText: String, email emailText: String, password passwordText: String, password2 password2Text: String) {
         socket?.emit("register", RegisterRequest(username: loginText, email: emailText, password: passwordText, password2: password2Text))
         
+    }
+    
+    func resetResponseEvent(eventName: EventName) {
+        socket?.off(eventName.rawValue)
     }
     
     func registerResponseEvent() {

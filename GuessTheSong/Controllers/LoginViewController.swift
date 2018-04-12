@@ -18,15 +18,21 @@ class LoginViewController: UIViewController {
    
     var user: UserProfile?
     let defaults = UserDefaults.standard
-     var socket : Socket_API?
+//    var socket : Socket_API?
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.statusBarStyle = .lightContent
         // Do any additional setup after loading the view.
-        socket = Socket_API(connection: .Guest)
-        socket?.delegate = self
-        socket?.connect()
-        socket?.loginResponseEvent()
+    self.navigationItem.hidesBackButton = true
+    self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.back(sender:)))
+//        socket = Socket_API(connection: .Guest)
+//        socket?.delegate = self
+//        socket?.connect()
+//        socket?.loginResponseEvent()
+        Socket_API.sharedInstance.delegate = self
+//        Socket_API.SocketAPI.disconnect()
+//        Socket_API.SocketAPI.connect(connection: .Guest)
+        Socket_API.sharedInstance.loginResponseEvent()
         if let email = defaults.value(forKey: "user_email") as? String {
             emailView.text = email
         }
@@ -37,6 +43,15 @@ class LoginViewController: UIViewController {
         
     }
 
+    @objc func back(sender: AnyObject) {
+        Socket_API.sharedInstance.resetResponseEvent(eventName: EventName.LOGIN)
+        guard(navigationController?.popToRootViewController(animated: true)) != nil
+            else {
+                print("No view controllers to pop off")
+                return
+        }
+    }
+
 //    @IBAction func LoginPressed(_ sender: UIButton) {
 //        defaults.setValue("QwertyLogin", forKey: "loginKey")
 //
@@ -44,14 +59,17 @@ class LoginViewController: UIViewController {
     
     @IBAction func okPressed(_ sender: UIButton) {
         ProgressHUD.show()
-        socket?.loginEvent(email: emailView.text!, password: passwordView.text!)
+//        socket?.loginEvent(email: emailView.text!, password: passwordView.text!)
+        Socket_API.sharedInstance.loginEvent(email: emailView.text!, password: passwordView.text!)
         user = UserProfile(email: emailView.text!, password: passwordView.text!)
     }
     
     @IBAction func goToregistration(_ sender: UIButton) {
-        socket?.disconnect()
+//        socket?.disconnect()
+//        Socket_API.SocketAPI.disconnect()
+        Socket_API.sharedInstance.resetResponseEvent(eventName: EventName.LOGIN)
 //        self.dismiss(animated: true, completion: nil)
-        self.performSegue(withIdentifier: "hasNotAccount", sender: self)
+//        self.performSegue(withIdentifier: "hasNotAccount", sender: self)
         
     }
     
@@ -72,15 +90,20 @@ extension LoginViewController: ResponseLoginDelegate {
     
     func loginSuccess(token: String?) {
         print("Login success in delegate")
-        ProgressHUD.dismiss()
-        socket?.disconnect()
+//        ProgressHUD.dismiss()
+//        socket?.disconnect()
+        Socket_API.sharedInstance.resetResponseEvent(eventName: EventName.LOGIN)
+        Socket_API.sharedInstance.disconnect()
+        
         if let currentToken = token {
             defaults.setValue(currentToken, forKey: "token")
             defaults.setValue(user?.email, forKey: "user_email")
             defaults.setValue(user?.password, forKey: "user_password")
         }
+        Socket_API.sharedInstance.connect(connection: .User)
+        ProgressHUD.showSuccess()
 //        self.dismiss(animated: true, completion: nil)
-//        self.performSegue(withIdentifier: "", sender: self)
+        self.performSegue(withIdentifier: "goToMainMenuGame", sender: self)
     }
     
     func printErrorMessage(error: String?) {
