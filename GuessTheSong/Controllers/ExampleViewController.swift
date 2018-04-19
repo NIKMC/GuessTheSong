@@ -7,37 +7,70 @@
 //
 
 import UIKit
+import ProgressHUD
+import SocketIO
+import SwiftyJSON
 
 class ExampleViewController: UIViewController {
 
-    @IBOutlet weak var labelLogin: UILabel!
     
     let defaults = UserDefaults.standard
     
+    var delegate: ResponseDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        Socket_API.sharedInstance.delegate = self
+        Socket_API.sharedInstance.connect(connection: .User)
+        Socket_API.sharedInstance.profileResponseEvent()
+//        ProgressHUD.showSuccess()
+        
+        
         if let login = defaults.value(forKey: "token") as? String {
             print( "The token is \(login)")
         } else {
             print("Not the Login")
         }
-        // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @IBAction func singleTapped(_ sender: UIButton) {
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func multiTapped(_ sender: UIButton) {
     }
-    */
-
+    
+    
+    @IBAction func profileInfo(_ sender: UIButton) {
+//       getProfileEvent(userId: "5ac7c93aa426d060217d8caf")
+        Socket_API.sharedInstance.getProfileEvent(userId: "5ac7c93aa426d060217d8caf")
+    }
+    
 }
+
+extension ExampleViewController: ResponseProfileDelegate {
+    func success() {
+        print("success")
+    }
+    
+    func informErrorMessage(error: String) {
+        print("the error is \(error)")
+        ProgressHUD.showError(error)
+    }
+    
+    func informDisconnectedMessage() {
+        print("the socket was disconnected")
+        ProgressHUD.showError("Check your Internet connection ")
+    }
+   
+    func printErrorMessage(error: String?) {
+        print("Login error in delegate")
+        if let errorMessage = error {
+            print("Error message \(errorMessage)")
+        }
+    }
+    
+    
+}
+

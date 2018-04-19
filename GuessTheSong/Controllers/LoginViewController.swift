@@ -64,15 +64,15 @@ class LoginViewController: UIViewController {
         user = UserProfile(email: emailView.text!, password: passwordView.text!)
     }
     
-    @IBAction func goToregistration(_ sender: UIButton) {
-//        socket?.disconnect()
-//        Socket_API.SocketAPI.disconnect()
-        Socket_API.sharedInstance.resetResponseEvent(eventName: EventName.LOGIN)
-//        self.dismiss(animated: true, completion: nil)
-//        self.performSegue(withIdentifier: "hasNotAccount", sender: self)
-        
-    }
-    
+//    @IBAction func goToregistration(_ sender: UIButton) {
+////        socket?.disconnect()
+////        Socket_API.SocketAPI.disconnect()
+//        Socket_API.sharedInstance.resetResponseEvent(eventName: EventName.LOGIN)
+////        self.dismiss(animated: true, completion: nil)
+////        self.performSegue(withIdentifier: "hasNotAccount", sender: self)
+//
+//    }
+//
     
 }
 extension LoginViewController: ResponseLoginDelegate {
@@ -84,15 +84,19 @@ extension LoginViewController: ResponseLoginDelegate {
     
     func informDisconnectedMessage() {
         print("the socket was disconnected")
-        ProgressHUD.showError("Check your Internet connection ")
-        
+//        ProgressHUD.showError("Check your Internet connection ")
+        ProgressHUD.dismiss()
+        self.performSegue(withIdentifier: "goToMainMenuGame", sender: self)
     }
     
     func loginSuccess(token: String?) {
         print("Login success in delegate")
 //        ProgressHUD.dismiss()
 //        socket?.disconnect()
+        
         Socket_API.sharedInstance.resetResponseEvent(eventName: EventName.LOGIN)
+        
+        
         Socket_API.sharedInstance.disconnect()
         
         if let currentToken = token {
@@ -100,10 +104,10 @@ extension LoginViewController: ResponseLoginDelegate {
             defaults.setValue(user?.email, forKey: "user_email")
             defaults.setValue(user?.password, forKey: "user_password")
         }
-        Socket_API.sharedInstance.connect(connection: .User)
-        ProgressHUD.showSuccess()
+       
 //        self.dismiss(animated: true, completion: nil)
-        self.performSegue(withIdentifier: "goToMainMenuGame", sender: self)
+        
+        
     }
     
     func printErrorMessage(error: String?) {

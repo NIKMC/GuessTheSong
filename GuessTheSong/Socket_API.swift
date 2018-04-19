@@ -17,6 +17,9 @@ protocol ResponseLoginDelegate: ResponseDelegate {
     func loginSuccess(token: String?)
 }
 
+protocol ResponseProfileDelegate: ResponseDelegate {
+    func success()
+}
 protocol ResponseDelegate {
     func printErrorMessage(error: String?)
     func informDisconnectedMessage()
@@ -39,34 +42,51 @@ class Socket_API {
     private var socket: SocketIOClient?
     private let api = Bundle.main.object(forInfoDictionaryKey: "BASE_URL") as? String
     var delegate: ResponseDelegate?
-    private let manager: SocketManager
+    private var manager: SocketManager?
+     init() {    }
+   
     
-//    private lazy var manager = SocketManager(socketURL: URL(string: api!)!, config: [.log(true), .reconnects(true), .reconnectWait(5), .reconnectAttempts(50), .compress])
+    //    private lazy var manager = SocketManager(socketURL: URL(string: api!)!, config: [.log(true), .reconnects(true), .reconnectWait(5), .reconnectAttempts(50), .compress])
+    
+    
+    //        manager = SocketManager(socketURL: URL(string: api!)!, config: [.log(true), .reconnects(true), .reconnectWait(5), .reconnectAttempts(50), .compress])
+    //
+    
+    
 
-    init() {
-        manager = SocketManager(socketURL: URL(string: api!)!, config: [.log(true), .reconnects(true), .reconnectWait(5), .reconnectAttempts(50), .compress])
-
-    }
 //    init(connection: TypeConnection) {
 ////        manager = SocketManager(socketURL: URL(string: api!)!, config: [.log(true), .reconnects(true), .reconnectWait(5), .reconnectAttempts(50), .compress])
 //       socket = manager.socket(forNamespace: "/\(connection.rawValue)")
 //    }
     
     func connect(connection: TypeConnection){
-        
         switch connection {
         case .User:
-            print("connection for User")
             if let token = UserDefaults.standard.value(forKey: "token") as? String {
-                manager.engine?.connectParams = ["token" : token]
-            }
+                print("connection for User")
+                manager = SocketManager(socketURL: URL(string: api!)!)
+                manager?.setConfigs([.connectParams(["token" : token]),
+                                    .log(true),
+                                    .forcePolling(true),
+                                    .reconnects(true),
+                                    .reconnectWait(3),
+                                    .reconnectAttempts(50),
+                                    .compress])
+                
+                socket = manager?.socket(forNamespace: "/\(connection.rawValue)")
+                }
         case .Guest:
             print("connection for Guest")
+            manager = SocketManager(socketURL: URL(string: api!)!)
+            manager?.setConfigs([.log(true),
+                                .forcePolling(true),
+                                .reconnects(true),
+                                .reconnectWait(5),
+                                .reconnectAttempts(50),
+                                .compress])
+            socket = manager?.socket(forNamespace: "/\(connection.rawValue)")
         }
-        
-        socket = manager.socket(forNamespace: "/\(connection.rawValue)")
         socket?.connect()
-        
         socket?.on(clientEvent: .error) { data,error  in
             print("data in socket error \(data[0])")
             print("socket error")
@@ -88,7 +108,9 @@ class Socket_API {
     }
     
     func disconnect() {
+//        manager.disconnect()
         socket?.disconnect()
+        
     }
     
     func registerEvent(login loginText: String, email emailText: String, password passwordText: String, password2 password2Text: String) {
@@ -124,9 +146,34 @@ class Socket_API {
         socket?.emit("login", LoginRequest(email: emailText, password: passwordText))
     }
     
+    func getProfileEvent(userId: String) {
+        socket?.emit("profile", ProfileRequest(id: userId))
+    }
+    
+    func profileResponseEvent() {
+        socket?.on("profile-response") { response, ack in
+            print("The profile-response is \(response)")
+            let swiftyJson = JSON((response[0] as! [String : AnyObject]))
+            do {
+                let data = try swiftyJson.rawData()
+                let event = try JSONDecoder().decode(ResponseMessage.self, from: data)
+                if !event.err {
+                    print("converted error is \(event.err)")
+                    (self.delegate as? ResponseProfileDelegate)?.success()
+                } else {
+                    print("converted error is \(event.err)")
+                    (self.delegate as? ResponseProfileDelegate)?.printErrorMessage(error: event.msg)
+                }
+            } catch let myJSONError {
+                print(myJSONError)
+            }
+            
+        }
+    }
+    
     func loginResponseEvent() {
         socket?.on("login-response") { response, ack in
-            print("The value is \(response)")
+            print("The login-response is \(response)")
             let swiftyJson = JSON((response[0] as! [String : AnyObject]))
             do {
                 let data = try swiftyJson.rawData()
