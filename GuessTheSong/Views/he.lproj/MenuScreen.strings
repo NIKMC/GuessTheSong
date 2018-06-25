@@ -1,0 +1,33 @@
+
+/* Class = "UIButton"; normalTitle = "win"; ObjectID = "9X8-5v-bQO"; */
+"9X8-5v-bQO.normalTitle" = "win";
+
+/* Class = "UIBarButtonItem"; title = "LogOut"; ObjectID = "DCd-Uw-LCa"; */
+"DCd-Uw-LCa.title" = "LogOut";
+
+/* Class = "UIButton"; normalTitle = "Multiplayer"; ObjectID = "JyG-JQ-iPR"; */
+"JyG-JQ-iPR.normalTitle" = "Multiplayer";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ONe-0E-jlz"; */
+"ONe-0E-jlz.text" = "Label";
+
+/* Class = "UILabel"; text = "Searching for players"; ObjectID = "T1c-cy-dFE"; */
+"T1c-cy-dFE.text" = "Searching for players";
+
+/* Class = "UIButton"; normalTitle = "lose"; ObjectID = "dBC-2Q-fmB"; */
+"dBC-2Q-fmB.normalTitle" = "lose";
+
+/* Class = "UIButton"; normalTitle = "Single Player"; ObjectID = "dyr-zv-dx7"; */
+"dyr-zv-dx7.normalTitle" = "Single Player";
+
+/* Class = "UIButton"; normalTitle = "Stop"; ObjectID = "ptw-0V-m0h"; */
+"ptw-0V-m0h.normalTitle" = "Stop";
+
+/* Class = "UIButton"; normalTitle = "Next Level"; ObjectID = "qs7-cH-jdf"; */
+"qs7-cH-jdf.normalTitle" = "Next Level";
+
+/* Class = "UIButton"; normalTitle = "Try again"; ObjectID = "rAo-7q-n2W"; */
+"rAo-7q-n2W.normalTitle" = "Try again";
+
+/* Class = "UIButton"; normalTitle = "Start"; ObjectID = "rgk-cg-WUH"; */
+"rgk-cg-WUH.normalTitle" = "Start";

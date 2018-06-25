@@ -11,7 +11,7 @@ import ProgressHUD
 import SocketIO
 import SwiftyJSON
 
-class ExampleViewController: UIViewController {
+class MenuViewController: UIViewController {
 
     
     let defaults = UserDefaults.standard
@@ -22,7 +22,7 @@ class ExampleViewController: UIViewController {
         super.viewDidLoad()
 
         Socket_API.sharedInstance.delegate = self
-        Socket_API.sharedInstance.connect(connection: .User)
+//        Socket_API.sharedInstance.connect(connection: .User)
         Socket_API.sharedInstance.profileResponseEvent()
 //        ProgressHUD.showSuccess()
         
@@ -42,6 +42,10 @@ class ExampleViewController: UIViewController {
     }
     
     
+    @IBAction func logOutTapped(_ sender: UIBarButtonItem) {
+        Socket_API.sharedInstance.disconnect()
+    }
+    
     @IBAction func profileInfo(_ sender: UIButton) {
 //       getProfileEvent(userId: "5ac7c93aa426d060217d8caf")
         Socket_API.sharedInstance.getProfileEvent(userId: "5ac7c93aa426d060217d8caf")
@@ -49,7 +53,7 @@ class ExampleViewController: UIViewController {
     
 }
 
-extension ExampleViewController: ResponseProfileDelegate {
+extension MenuViewController: ResponseProfileDelegate {
     func success() {
         print("success")
     }
@@ -61,7 +65,13 @@ extension ExampleViewController: ResponseProfileDelegate {
     
     func informDisconnectedMessage() {
         print("the socket was disconnected")
-        ProgressHUD.showError("Check your Internet connection ")
+//        ProgressHUD.showError("Check your Internet connection ")
+//
+        guard(navigationController?.popToRootViewController(animated: true)) != nil
+            else {
+                print("No view controllers to pop off")
+                return
+        }
     }
    
     func printErrorMessage(error: String?) {

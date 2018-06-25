@@ -1,0 +1,75 @@
+
+/* Class = "UIButton"; normalTitle = "Sign in with Gmail"; ObjectID = "0OC-cU-X8C"; */
+"0OC-cU-X8C.normalTitle" = "Sign in with Gmail";
+
+/* Class = "UITextField"; placeholder = "Please, enter your e-mail"; ObjectID = "3Me-nM-fH5"; */
+"3Me-nM-fH5.placeholder" = "Please, enter your e-mail";
+
+/* Class = "UIButton"; normalTitle = "Do not have an account yet?"; ObjectID = "5Ue-ZM-s3k"; */
+"5Ue-ZM-s3k.normalTitle" = "Do not have an account yet?";
+
+/* Class = "UIButton"; normalTitle = "I have an account."; ObjectID = "5pD-JU-tdV"; */
+"5pD-JU-tdV.normalTitle" = "I have an account.";
+
+/* Class = "UITextField"; placeholder = "Please, enter your password"; ObjectID = "9gb-h1-ELt"; */
+"9gb-h1-ELt.placeholder" = "Please, enter your password";
+
+/* Class = "UIButton"; normalTitle = "Ok"; ObjectID = "BEN-xl-Hwr"; */
+"BEN-xl-Hwr.normalTitle" = "Ok";
+
+/* Class = "UIButton"; normalTitle = "Do not have an account yet?"; ObjectID = "HAd-GS-G39"; */
+"HAd-GS-G39.normalTitle" = "Do not have an account yet?";
+
+/* Class = "UITextField"; placeholder = "Please, enter your password"; ObjectID = "JtB-7J-Ywr"; */
+"JtB-7J-Ywr.placeholder" = "Please, enter your password";
+
+/* Class = "UIButton"; normalTitle = "Sign in with Facebook"; ObjectID = "Lhn-td-rEs"; */
+"Lhn-td-rEs.normalTitle" = "Sign in with Facebook";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "Mlv-Ss-ZqG"; */
+"Mlv-Ss-ZqG.normalTitle" = "Login";
+
+/* Class = "UITextField"; placeholder = "Please, enter your password"; ObjectID = "Pbr-VB-pe8"; */
+"Pbr-VB-pe8.placeholder" = "Please, enter your password";
+
+/* Class = "UITextField"; placeholder = "Please, enter your email"; ObjectID = "SZV-3N-VUw"; */
+"SZV-3N-VUw.placeholder" = "Please, enter your email";
+
+/* Class = "UITextField"; placeholder = "Please, enter your email"; ObjectID = "T1o-gh-rfV"; */
+"T1o-gh-rfV.placeholder" = "Please, enter your email";
+
+/* Class = "UIButton"; normalTitle = "Ok"; ObjectID = "TOw-0f-KBh"; */
+"TOw-0f-KBh.normalTitle" = "Ok";
+
+/* Class = "UINavigationItem"; title = "Menu"; ObjectID = "gxm-A4-T9C"; */
+"gxm-A4-T9C.title" = "Menu";
+
+/* Class = "UITextField"; placeholder = "Please, repeat your password"; ObjectID = "iZx-WK-gli"; */
+"iZx-WK-gli.placeholder" = "Please, repeat your password";
+
+/* Class = "UITextField"; placeholder = "Please, repeat your password"; ObjectID = "jhx-i0-aPp"; */
+"jhx-i0-aPp.placeholder" = "Please, repeat your password";
+
+/* Class = "UIButton"; normalTitle = "Ok"; ObjectID = "kds-E5-BtC"; */
+"kds-E5-BtC.normalTitle" = "Ok";
+
+/* Class = "UITextField"; placeholder = "Please, enter your login"; ObjectID = "lBs-uF-loB"; */
+"lBs-uF-loB.placeholder" = "Please, enter your login";
+
+/* Class = "UIButton"; normalTitle = "I have an account."; ObjectID = "lyD-bP-eDQ"; */
+"lyD-bP-eDQ.normalTitle" = "I have an account.";
+
+/* Class = "UITextField"; placeholder = "Please, enter your e-mail"; ObjectID = "m4z-6s-HMP"; */
+"m4z-6s-HMP.placeholder" = "Please, enter your e-mail";
+
+/* Class = "UIButton"; normalTitle = "Ok"; ObjectID = "oeZ-CC-WJm"; */
+"oeZ-CC-WJm.normalTitle" = "Ok";
+
+/* Class = "UIButton"; normalTitle = "Registration"; ObjectID = "qcU-C2-uNH"; */
+"qcU-C2-uNH.normalTitle" = "Registration";
+
+/* Class = "UITextField"; placeholder = "Please, enter your password"; ObjectID = "tFQ-Co-t1x"; */
+"tFQ-Co-t1x.placeholder" = "Please, enter your password";
+
+/* Class = "UITextField"; placeholder = "Please, enter your login"; ObjectID = "tMW-YJ-tPK"; */
+"tMW-YJ-tPK.placeholder" = "Please, enter your login";

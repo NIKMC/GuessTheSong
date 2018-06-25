@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0220380620CAABCA00AF0B0D /* MultiPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0220380520CAABCA00AF0B0D /* MultiPlayerViewController.swift */; };
+		023E7F4420B15A7900DDFC39 /* LevelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023E7F4320B15A7900DDFC39 /* LevelViewCell.swift */; };
+		023E7F4620B15B9000DDFC39 /* SinglePlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023E7F4520B15B9000DDFC39 /* SinglePlayViewController.swift */; };
 		0241AA3C206E7BEB00AD078D /* Socket_API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241AA3B206E7BEA00AD078D /* Socket_API.swift */; };
 		0241AA3E206E7FE100AD078D /* ResponseMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241AA3D206E7FE100AD078D /* ResponseMessage.swift */; };
 		02464FF42080B08600BA8AC9 /* ProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02464FF32080B08600BA8AC9 /* ProfileRequest.swift */; };
@@ -15,17 +18,31 @@
 		0246B7602062C0240043506F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0246B75E2062C0240043506F /* Main.storyboard */; };
 		0246B7622062C0240043506F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0246B7612062C0240043506F /* Assets.xcassets */; };
 		0246B7652062C0240043506F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0246B7632062C0240043506F /* LaunchScreen.storyboard */; };
-		02574006207FEF2E001FB32C /* MenuScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02574005207FEF2E001FB32C /* MenuScreen.storyboard */; };
+		025B046120E0F7630006B7A4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 025B045F20E0F7630006B7A4 /* Localizable.strings */; };
+		025B046320E0FB1A0006B7A4 /* MenuScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 025B046520E0FB1A0006B7A4 /* MenuScreen.storyboard */; };
+		025CAD8520945B4B00177A6C /* SinglePlayerLevelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025CAD8320945B4B00177A6C /* SinglePlayerLevelsViewController.swift */; };
+		025CAD8820945CDF00177A6C /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025CAD8720945CDF00177A6C /* Level.swift */; };
+		0263AD1520BF239500BBC32B /* LevelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0263AD1420BF239500BBC32B /* LevelData.swift */; };
 		0266E55C2062C3A200326EF0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0266E55B2062C3A200326EF0 /* LoginViewController.swift */; };
 		0266E55E2062C3B700326EF0 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0266E55D2062C3B700326EF0 /* RegistrationViewController.swift */; };
-		0266E5622062D89200326EF0 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0266E5612062D89200326EF0 /* ExampleViewController.swift */; };
+		0266E5622062D89200326EF0 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0266E5612062D89200326EF0 /* MenuViewController.swift */; };
 		02B465AD2075635D0009667E /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B465AC2075635D0009667E /* LoginRequest.swift */; };
 		02B465AF207563750009667E /* RegisterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B465AE207563750009667E /* RegisterRequest.swift */; };
+		02BDC2FC20CB09630072D868 /* AppDelegateEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BDC2FB20CB09630072D868 /* AppDelegateEx.swift */; };
+		02D0B87F20C97ED8007CE013 /* MultiPlayerScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02D0B87E20C97ED8007CE013 /* MultiPlayerScreen.storyboard */; };
+		02D553EC20CE73DE009F1FE6 /* GameRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D553EB20CE73DE009F1FE6 /* GameRequest.swift */; };
 		02E5BCE2207A3F5000272CFD /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E5BCE1207A3F5000272CFD /* UserProfile.swift */; };
+		02F03E7120C012FC00A20C99 /* StorageContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F03E7020C012FC00A20C99 /* StorageContext.swift */; };
+		02F03E7320C014B100A20C99 /* Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F03E7220C014B100A20C99 /* Storable.swift */; };
+		02F03E7520C0169600A20C99 /* RealmStorageContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F03E7420C0169600A20C99 /* RealmStorageContext.swift */; };
+		02F03E7720C0181A00A20C99 /* RealmStorageContextOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F03E7620C0181A00A20C99 /* RealmStorageContextOperations.swift */; };
 		C8971F5C313E5782F276FFE8 /* Pods_GuessTheSong.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E95A2EF5B7252B0A3BCFC5 /* Pods_GuessTheSong.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0220380520CAABCA00AF0B0D /* MultiPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPlayerViewController.swift; sourceTree = "<group>"; };
+		023E7F4320B15A7900DDFC39 /* LevelViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LevelViewCell.swift; path = Controllers/LevelViewCell.swift; sourceTree = "<group>"; };
+		023E7F4520B15B9000DDFC39 /* SinglePlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePlayViewController.swift; sourceTree = "<group>"; };
 		0241AA3B206E7BEA00AD078D /* Socket_API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Socket_API.swift; sourceTree = "<group>"; };
 		0241AA3D206E7FE100AD078D /* ResponseMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMessage.swift; sourceTree = "<group>"; };
 		02464FF32080B08600BA8AC9 /* ProfileRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRequest.swift; sourceTree = "<group>"; };
@@ -36,13 +53,28 @@
 		0246B7612062C0240043506F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0246B7642062C0240043506F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0246B7662062C0240043506F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		02574005207FEF2E001FB32C /* MenuScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MenuScreen.storyboard; sourceTree = "<group>"; };
+		025B045D20E0F68C0006B7A4 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Main.strings; sourceTree = "<group>"; };
+		025B045E20E0F68C0006B7A4 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		025B046020E0F7630006B7A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		025B046220E0F7810006B7A4 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Localizable.strings; sourceTree = "<group>"; };
+		025B046420E0FB1A0006B7A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MenuScreen.storyboard; sourceTree = "<group>"; };
+		025B046720E0FB1F0006B7A4 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/MenuScreen.strings; sourceTree = "<group>"; };
+		025CAD8320945B4B00177A6C /* SinglePlayerLevelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePlayerLevelsViewController.swift; sourceTree = "<group>"; };
+		025CAD8720945CDF00177A6C /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		0263AD1420BF239500BBC32B /* LevelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelData.swift; sourceTree = "<group>"; };
 		0266E55B2062C3A200326EF0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0266E55D2062C3B700326EF0 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
-		0266E5612062D89200326EF0 /* ExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
+		0266E5612062D89200326EF0 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		02B465AC2075635D0009667E /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		02B465AE207563750009667E /* RegisterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRequest.swift; sourceTree = "<group>"; };
+		02BDC2FB20CB09630072D868 /* AppDelegateEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateEx.swift; sourceTree = "<group>"; };
+		02D0B87E20C97ED8007CE013 /* MultiPlayerScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MultiPlayerScreen.storyboard; sourceTree = "<group>"; };
+		02D553EB20CE73DE009F1FE6 /* GameRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRequest.swift; sourceTree = "<group>"; };
 		02E5BCE1207A3F5000272CFD /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		02F03E7020C012FC00A20C99 /* StorageContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageContext.swift; sourceTree = "<group>"; };
+		02F03E7220C014B100A20C99 /* Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storable.swift; sourceTree = "<group>"; };
+		02F03E7420C0169600A20C99 /* RealmStorageContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmStorageContext.swift; sourceTree = "<group>"; };
+		02F03E7620C0181A00A20C99 /* RealmStorageContextOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmStorageContextOperations.swift; sourceTree = "<group>"; };
 		10E95A2EF5B7252B0A3BCFC5 /* Pods_GuessTheSong.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GuessTheSong.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1674BA00180422A438958E2E /* Pods-GuessTheSong.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuessTheSong.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GuessTheSong/Pods-GuessTheSong.debug.xcconfig"; sourceTree = "<group>"; };
 		22E91150352D8D5C12F4BC7C /* Pods-GuessTheSong.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuessTheSong.release.xcconfig"; path = "Pods/Target Support Files/Pods-GuessTheSong/Pods-GuessTheSong.release.xcconfig"; sourceTree = "<group>"; };
@@ -81,22 +113,35 @@
 		0246B7592062C0240043506F /* GuessTheSong */ = {
 			isa = PBXGroup;
 			children = (
+				02F03E6E20C0124D00A20C99 /* DBLayer */,
 				0246B7662062C0240043506F /* Info.plist */,
 				0246B75A2062C0240043506F /* AppDelegate.swift */,
 				0266E55A2062C36E00326EF0 /* Models */,
 				0266E5592062C35500326EF0 /* Controllers */,
 				0266E5572062C33B00326EF0 /* Views */,
 				0266E5582062C34A00326EF0 /* Supporting Files */,
+				02BDC2FB20CB09630072D868 /* AppDelegateEx.swift */,
+				025B045F20E0F7630006B7A4 /* Localizable.strings */,
 			);
 			path = GuessTheSong;
+			sourceTree = "<group>";
+		};
+		0263AD1320BF212600BBC32B /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				0263AD1420BF239500BBC32B /* LevelData.swift */,
+			);
+			name = Entities;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		0266E5572062C33B00326EF0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				0246B75E2062C0240043506F /* Main.storyboard */,
-				02574005207FEF2E001FB32C /* MenuScreen.storyboard */,
+				025B046520E0FB1A0006B7A4 /* MenuScreen.storyboard */,
 				0246B7632062C0240043506F /* LaunchScreen.storyboard */,
+				02D0B87E20C97ED8007CE013 /* MultiPlayerScreen.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -115,7 +160,10 @@
 				0246B75C2062C0240043506F /* MainViewController.swift */,
 				0266E55B2062C3A200326EF0 /* LoginViewController.swift */,
 				0266E55D2062C3B700326EF0 /* RegistrationViewController.swift */,
-				0266E5612062D89200326EF0 /* ExampleViewController.swift */,
+				0266E5612062D89200326EF0 /* MenuViewController.swift */,
+				025CAD8320945B4B00177A6C /* SinglePlayerLevelsViewController.swift */,
+				023E7F4520B15B9000DDFC39 /* SinglePlayViewController.swift */,
+				0220380520CAABCA00AF0B0D /* MultiPlayerViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -127,10 +175,33 @@
 				0241AA3D206E7FE100AD078D /* ResponseMessage.swift */,
 				02B465AC2075635D0009667E /* LoginRequest.swift */,
 				02B465AE207563750009667E /* RegisterRequest.swift */,
+				025CAD8720945CDF00177A6C /* Level.swift */,
 				02E5BCE1207A3F5000272CFD /* UserProfile.swift */,
 				02464FF32080B08600BA8AC9 /* ProfileRequest.swift */,
+				023E7F4320B15A7900DDFC39 /* LevelViewCell.swift */,
+				02D553EB20CE73DE009F1FE6 /* GameRequest.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		02F03E6E20C0124D00A20C99 /* DBLayer */ = {
+			isa = PBXGroup;
+			children = (
+				02F03E7220C014B100A20C99 /* Storable.swift */,
+				02F03E7020C012FC00A20C99 /* StorageContext.swift */,
+				0263AD1320BF212600BBC32B /* Entities */,
+				02F03E6F20C0127900A20C99 /* Realm */,
+			);
+			path = DBLayer;
+			sourceTree = "<group>";
+		};
+		02F03E6F20C0127900A20C99 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				02F03E7420C0169600A20C99 /* RealmStorageContext.swift */,
+				02F03E7620C0181A00A20C99 /* RealmStorageContextOperations.swift */,
+			);
+			path = Realm;
 			sourceTree = "<group>";
 		};
 		8417ACF4DC06F2577B691E58 /* Pods */ = {
@@ -180,7 +251,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Иван Никитин";
 				TargetAttributes = {
 					0246B7562062C0240043506F = {
@@ -196,6 +267,7 @@
 			knownRegions = (
 				en,
 				Base,
+				he,
 			);
 			mainGroup = 0246B74E2062C0240043506F;
 			productRefGroup = 0246B7582062C0240043506F /* Products */;
@@ -213,8 +285,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0246B7652062C0240043506F /* LaunchScreen.storyboard in Resources */,
-				02574006207FEF2E001FB32C /* MenuScreen.storyboard in Resources */,
+				025B046120E0F7630006B7A4 /* Localizable.strings in Resources */,
+				025B046320E0FB1A0006B7A4 /* MenuScreen.storyboard in Resources */,
 				0246B7622062C0240043506F /* Assets.xcassets in Resources */,
+				02D0B87F20C97ED8007CE013 /* MultiPlayerScreen.storyboard in Resources */,
 				0246B7602062C0240043506F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,16 +366,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				025CAD8820945CDF00177A6C /* Level.swift in Sources */,
+				02F03E7720C0181A00A20C99 /* RealmStorageContextOperations.swift in Sources */,
 				0266E55C2062C3A200326EF0 /* LoginViewController.swift in Sources */,
+				02BDC2FC20CB09630072D868 /* AppDelegateEx.swift in Sources */,
 				0246B75D2062C0240043506F /* MainViewController.swift in Sources */,
 				02E5BCE2207A3F5000272CFD /* UserProfile.swift in Sources */,
 				02B465AF207563750009667E /* RegisterRequest.swift in Sources */,
 				0266E55E2062C3B700326EF0 /* RegistrationViewController.swift in Sources */,
+				02D553EC20CE73DE009F1FE6 /* GameRequest.swift in Sources */,
 				0246B75B2062C0240043506F /* AppDelegate.swift in Sources */,
+				025CAD8520945B4B00177A6C /* SinglePlayerLevelsViewController.swift in Sources */,
+				02F03E7120C012FC00A20C99 /* StorageContext.swift in Sources */,
+				02F03E7320C014B100A20C99 /* Storable.swift in Sources */,
 				0241AA3E206E7FE100AD078D /* ResponseMessage.swift in Sources */,
+				023E7F4420B15A7900DDFC39 /* LevelViewCell.swift in Sources */,
 				02464FF42080B08600BA8AC9 /* ProfileRequest.swift in Sources */,
 				0241AA3C206E7BEB00AD078D /* Socket_API.swift in Sources */,
-				0266E5622062D89200326EF0 /* ExampleViewController.swift in Sources */,
+				0220380620CAABCA00AF0B0D /* MultiPlayerViewController.swift in Sources */,
+				0263AD1520BF239500BBC32B /* LevelData.swift in Sources */,
+				023E7F4620B15B9000DDFC39 /* SinglePlayViewController.swift in Sources */,
+				0266E5622062D89200326EF0 /* MenuViewController.swift in Sources */,
+				02F03E7520C0169600A20C99 /* RealmStorageContext.swift in Sources */,
 				02B465AD2075635D0009667E /* LoginRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,6 +399,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				0246B75F2062C0240043506F /* Base */,
+				025B045D20E0F68C0006B7A4 /* he */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -321,8 +408,27 @@
 			isa = PBXVariantGroup;
 			children = (
 				0246B7642062C0240043506F /* Base */,
+				025B045E20E0F68C0006B7A4 /* he */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		025B045F20E0F7630006B7A4 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				025B046020E0F7630006B7A4 /* Base */,
+				025B046220E0F7810006B7A4 /* he */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		025B046520E0FB1A0006B7A4 /* MenuScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				025B046420E0FB1A0006B7A4 /* Base */,
+				025B046720E0FB1F0006B7A4 /* he */,
+			);
+			name = MenuScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -332,6 +438,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -342,6 +449,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -349,6 +457,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -391,6 +500,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -401,6 +511,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -408,6 +519,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -475,6 +587,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -485,6 +598,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -492,6 +606,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -550,6 +665,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -560,6 +676,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -567,6 +684,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

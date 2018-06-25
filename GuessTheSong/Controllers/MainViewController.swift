@@ -16,7 +16,7 @@ class MainViewController: UIViewController {
         UIApplication.shared.statusBarStyle = .lightContent
         
         Socket_API.sharedInstance.delegate = self
-        Socket_API.sharedInstance.connect(connection: .Guest)
+//        Socket_API.sharedInstance.connect(connection: .Guest)
         
         // Do any additional setup after loading the view, typically from a nib.
     }

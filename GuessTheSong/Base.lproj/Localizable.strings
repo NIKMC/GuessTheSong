@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  GuessTheSong
+
+  Created by Ivan Nikitin on 25/06/2018.
+  Copyright © 2018 Иван Никитин. All rights reserved.
+*/
+"Menu" = "Menu";
+"Login" = "Login";
+"Registration" = "Registration";
+"Sign in with Facebook" = "Sign in with Facebook";
+"Sign in with Gmail" = "Sign in with Gmail";
+"Please, enter your email" = "Please, enter your email";
+"Please, enter your login" = "Please, enter your login";
+"Please, repeat your password" = "Please, repeat your password";
+"Please, enter your password" = "Please, enter your password";
+"Ok" = "Ok";
+"Do not have an account yet?" = "Do not have an account yet?";
+"I have an account." = "I have an account.";
+"Cancel" = "Cancel";
+"Single Player" = "Single Player";
+"Multiplayer" = "Multiplayer";
+"LogOut" = "LogOut";
+"Back" = "Back";
+"Next Level" = "Next Level";
+"You Won" = "You Won"'
+"Level Failed" = "Level Failed";
+"Try again" = "Try again";
+"You loose" = "You loose";
+"Play again" = "Play again";
+
