@@ -40,7 +40,7 @@ class SinglePlayViewController: UIViewController {
             circle.frame.size.width = size
             circle.frame.size.height = size
         } else {
-            circle
+//            circle
         }
         circle.center = self.view.center
         circle.layer.cornerRadius = circleView.frame.width / 2

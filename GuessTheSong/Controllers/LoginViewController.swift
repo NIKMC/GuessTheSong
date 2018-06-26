@@ -25,7 +25,7 @@ class LoginViewController: UIViewController {
     
     var user: UserProfile?
     let defaults = UserDefaults.standard
-//    var socket : Socket_API?
+
     
     override func awakeFromNib() {
         Socket_API.sharedInstance.changeTypeConnection(toConnection: .Guest)
@@ -41,13 +41,8 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.navigationItem.hidesBackButton = true
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.back(sender:)))
-//        socket = Socket_API(connection: .Guest)
-//        socket?.delegate = self
-//        socket?.connect()
-//        socket?.loginResponseEvent()
+
         Socket_API.sharedInstance.delegate = self
-//        Socket_API.SocketAPI.disconnect()
-//        Socket_API.SocketAPI.connect(connection: .Guest)
         Socket_API.sharedInstance.loginResponseEvent()
         if let email = defaults.value(forKey: "user_email") as? String {
             emailView.text = email
@@ -93,10 +88,8 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func goToregistration(_ sender: UIButton) {
-//        socket?.disconnect()
-//        Socket_API.SocketAPI.disconnect()
+
         Socket_API.sharedInstance.resetResponseEvent(eventName: EventName.LOGIN)
-//        self.dismiss(animated: true, completion: nil)
         self.performSegue(withIdentifier: "hasNotAccount", sender: self)
 
     }
@@ -193,10 +186,8 @@ extension LoginViewController: ResponseLoginDelegate {
     func loginSuccess(token: String?) {
         print("Login success in delegate")
 //        ProgressHUD.dismiss()
-//        socket?.disconnect()
         
         Socket_API.sharedInstance.resetResponseEvent(eventName: EventName.LOGIN)
-        
         
         Socket_API.sharedInstance.changeTypeConnection(toConnection: .User)
         
@@ -205,10 +196,6 @@ extension LoginViewController: ResponseLoginDelegate {
             defaults.setValue(user?.email, forKey: "user_email")
             defaults.setValue(user?.password, forKey: "user_password")
         }
-       
-//        self.dismiss(animated: true, completion: nil)
-        
-        
     }
     
     func printErrorMessage(error: String?) {

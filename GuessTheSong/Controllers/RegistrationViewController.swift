@@ -27,9 +27,6 @@ class RegistrationViewController: UIViewController {
     var keyboardHeight: CGFloat!
     var lastOffset: CGPoint!
     
-    
-//    var socket : Socket_API?
-    
     override func awakeFromNib() {
         Socket_API.sharedInstance.changeTypeConnection(toConnection: .Guest)
     }
@@ -40,14 +37,9 @@ class RegistrationViewController: UIViewController {
         emailView.delegate = self
         passwordView.delegate = self
         repasswordView.delegate = self
-//        socket = Socket_API(connection: .Guest)
-//        socket?.delegate = self
-//        socket?.connect()
-//        socket?.registerResponseEvent()
         self.navigationItem.hidesBackButton = true
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.back(sender:)))
         Socket_API.sharedInstance.delegate = self
-//        Socket_API.SocketAPI.connect(connection: .Guest)
         Socket_API.sharedInstance.registerResponseEvent()
         
         // Observe keyboard change
@@ -81,16 +73,13 @@ class RegistrationViewController: UIViewController {
     
     @IBAction func registerTapped(_ sender: UIButton) {
         ProgressHUD.show()
-//        socket?.registerEvent(login: loginView.text!, email: emailView.text!, password: passwordView.text!, password2: repasswordView.text!)
+
         Socket_API.sharedInstance.registerEvent(login: loginView.text!, email: emailView.text!, password: passwordView.text!, password2: repasswordView.text!)
     }
     
     
     @IBAction func goToLoginTapped(_ sender: UIButton) {
-//        socket?.disconnect()
-//        Socket_API.sharedInstance.disconnect()
         Socket_API.sharedInstance.resetResponseEvent(eventName: EventName.REGISTER)
-//        self.dismiss(animated: true, completion: nil)
         self.performSegue(withIdentifier: "registrationSucceed", sender: self)
     }
 }
@@ -177,8 +166,6 @@ extension RegistrationViewController: ResponseRegisterDelegate {
         print("register success in delegate")
         ProgressHUD.dismiss()
         Socket_API.sharedInstance.resetResponseEvent(eventName: EventName.REGISTER)
-//        socket?.disconnect()
-//        Socket_API.SocketAPI.disconnect()
         self.performSegue(withIdentifier: "registrationSucceed", sender: self)
     }
     
