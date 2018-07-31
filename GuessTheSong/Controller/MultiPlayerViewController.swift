@@ -7,11 +7,29 @@
 //
 
 import UIKit
-
+import Alamofire
 class MultiPlayerViewController: UIViewController {
 
     @IBAction func button1Tapped(_ sender: UIButton) {
-        Socket_API.sharedInstance.createGameEvent(id: "5a252ef224c6b30979198ca3")
+//        Socket_API.sharedInstance.createGameEvent(id: "5a252ef224c6b30979198ca3")
+        
+//        let destination: DownloadRequest.DownloadFileDestination = { _, _ in
+//            let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+//            let fileURL = documentsURL.appendingPathComponent("pig.png")
+//
+//            return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
+//        }
+        
+//        Alamofire.download(urlString, to: destination).response { response in
+//            print(response)
+//            
+//            if response.error == nil, let imagePath = response.destinationURL?.path {
+//                let image = UIImage(contentsOfFile: imagePath)
+//            }
+//        }
+        
+        
+        
     }
     
     @IBAction func button2Tapped(_ sender: UIButton) {
@@ -57,9 +75,9 @@ class MultiPlayerViewController: UIViewController {
     }
     
     @IBAction func button3Tapped(_ sender: UIButton) {
-        if let room = roomID {
-            Socket_API.sharedInstance.readyToGameEvent(roomId: room)
-        }
+//        if let room = roomID {
+////            Socket_API.sharedInstance.readyToGameEvent(roomId: room)
+//        }
     }
     
     @IBAction func button4Tapped(_ sender: UIButton) {
@@ -69,49 +87,49 @@ class MultiPlayerViewController: UIViewController {
     private var roomID: String?
     override func viewDidLoad() {
         super.viewDidLoad()
-        Socket_API.sharedInstance.delegate = self
-        Socket_API.sharedInstance.createGameResponseEvent()
-        Socket_API.sharedInstance.readyToGameResponseEvent()
-        Socket_API.sharedInstance.startGameResponseEvent()
-        Socket_API.sharedInstance.downloadSongsResponseEvent()
+//        Socket_API.sharedInstance.delegate = self
+//        Socket_API.sharedInstance.createGameResponseEvent()
+//        Socket_API.sharedInstance.readyToGameResponseEvent()
+//        Socket_API.sharedInstance.startGameResponseEvent()
+//        Socket_API.sharedInstance.downloadSongsResponseEvent()
         // Do any additional setup after loading the view.
     }
 }
 
-extension MultiPlayerViewController: ResponseGameDelegate {
-    func createGameResult(roomId: String) {
-        print("createGameResult \(roomId)")
-        roomID = roomId
-    }
-    
-    func downloadSongsResult() {
-        print("downloadSongsResult ")
-    }
-    
-    func readyToGameResult(result: String) {
-        print("readyToGameResult \(result)")
-    }
-    
-    func startGame(action: String) {
-        print("startGame delegate \(action)")
-        
-    }
-    
-    func success() {
-        
-    }
-    
-    func printErrorMessage(error: String?) {
-        
-    }
-    
-    func informDisconnectedMessage() {
-        
-    }
-    
-    func informErrorMessage(error: String) {
-        
-    }
-    
-    
-}
+//extension MultiPlayerViewController: ResponseGameDelegate {
+//    func createGameResult(roomId: String) {
+//        print("createGameResult \(roomId)")
+//        roomID = roomId
+//    }
+//
+//    func downloadSongsResult() {
+//        print("downloadSongsResult ")
+//    }
+//
+//    func readyToGameResult(result: String) {
+//        print("readyToGameResult \(result)")
+//    }
+//
+//    func startGame(action: String) {
+//        print("startGame delegate \(action)")
+//
+//    }
+//
+//    func success() {
+//
+//    }
+//
+//    func printErrorMessage(error: String?) {
+//
+//    }
+//
+//    func informDisconnectedMessage() {
+//
+//    }
+//
+//    func informErrorMessage(error: String) {
+//
+//    }
+//
+//
+//}

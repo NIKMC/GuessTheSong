@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0220380620CAABCA00AF0B0D /* MultiPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0220380520CAABCA00AF0B0D /* MultiPlayerViewController.swift */; };
-		023E7F4420B15A7900DDFC39 /* LevelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023E7F4320B15A7900DDFC39 /* LevelViewCell.swift */; };
 		023E7F4620B15B9000DDFC39 /* SinglePlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023E7F4520B15B9000DDFC39 /* SinglePlayViewController.swift */; };
 		0241AA3C206E7BEB00AD078D /* Socket_API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241AA3B206E7BEA00AD078D /* Socket_API.swift */; };
 		0241AA3E206E7FE100AD078D /* ResponseMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241AA3D206E7FE100AD078D /* ResponseMessage.swift */; };
@@ -18,6 +17,8 @@
 		0246B7602062C0240043506F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0246B75E2062C0240043506F /* Main.storyboard */; };
 		0246B7622062C0240043506F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0246B7612062C0240043506F /* Assets.xcassets */; };
 		0246B7652062C0240043506F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0246B7632062C0240043506F /* LaunchScreen.storyboard */; };
+		024F9CDD20E2E5A600935310 /* BackendConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024F9CDC20E2E5A600935310 /* BackendConfiguration.swift */; };
+		024F9CDF20E2E6EF00935310 /* ServiceOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024F9CDE20E2E6EF00935310 /* ServiceOperation.swift */; };
 		025B046120E0F7630006B7A4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 025B045F20E0F7630006B7A4 /* Localizable.strings */; };
 		025B046320E0FB1A0006B7A4 /* MenuScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 025B046520E0FB1A0006B7A4 /* MenuScreen.storyboard */; };
 		025CAD8520945B4B00177A6C /* SinglePlayerLevelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025CAD8320945B4B00177A6C /* SinglePlayerLevelsViewController.swift */; };
@@ -26,9 +27,33 @@
 		0266E55C2062C3A200326EF0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0266E55B2062C3A200326EF0 /* LoginViewController.swift */; };
 		0266E55E2062C3B700326EF0 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0266E55D2062C3B700326EF0 /* RegistrationViewController.swift */; };
 		0266E5622062D89200326EF0 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0266E5612062D89200326EF0 /* MenuViewController.swift */; };
+		0267AE5E20E296DB00E1E14E /* BackendAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0267AE5D20E296DB00E1E14E /* BackendAPIRequest.swift */; };
+		0267AE6020E2984900E1E14E /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0267AE5F20E2984900E1E14E /* NetworkService.swift */; };
+		02743AF9210218B60031322D /* SignUpOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02743AF8210218B60031322D /* SignUpOperation.swift */; };
+		02743AFB210219230031322D /* SignUpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02743AFA210219230031322D /* SignUpRequest.swift */; };
+		02743AFD21021B0F0031322D /* SinglePlayerLevelsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02743AFC21021B0F0031322D /* SinglePlayerLevelsRequest.swift */; };
+		02743AFF21021BB70031322D /* ProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02743AFE21021BB70031322D /* ProfileRequest.swift */; };
+		02743B0121021C0F0031322D /* LevelOfUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02743B0021021C0F0031322D /* LevelOfUserRequest.swift */; };
+		02743B0321021C7E0031322D /* UpdateLevelOfUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02743B0221021C7E0031322D /* UpdateLevelOfUserRequest.swift */; };
+		02957C9920FF387400E3F231 /* BackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02957C9820FF387400E3F231 /* BackendService.swift */; };
+		02957C9B20FF3E6400E3F231 /* NetworkBackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02957C9A20FF3E6400E3F231 /* NetworkBackendService.swift */; };
+		02957C9E20FF41CA00E3F231 /* NetworkOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02957C9D20FF41CA00E3F231 /* NetworkOperation.swift */; };
+		02957CA020FF6A9E00E3F231 /* NetworkQueryGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02957C9F20FF6A9E00E3F231 /* NetworkQueryGenerator.swift */; };
+		02957CA220FF6FF200E3F231 /* NetworkQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02957CA120FF6FF200E3F231 /* NetworkQueue.swift */; };
+		02957CA520FF711500E3F231 /* SignInRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02957CA420FF711500E3F231 /* SignInRequest.swift */; };
 		02B465AD2075635D0009667E /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B465AC2075635D0009667E /* LoginRequest.swift */; };
 		02B465AF207563750009667E /* RegisterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B465AE207563750009667E /* RegisterRequest.swift */; };
 		02BDC2FC20CB09630072D868 /* AppDelegateEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BDC2FB20CB09630072D868 /* AppDelegateEx.swift */; };
+		02CD0F3C2100AC0400C5B941 /* SignInOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CD0F3B2100AC0400C5B941 /* SignInOperation.swift */; };
+		02D001042100AE1B00A43EA8 /* SignInModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D001032100AE1B00A43EA8 /* SignInModelType.swift */; };
+		02D001062100AE2C00A43EA8 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D001052100AE2C00A43EA8 /* SignInViewModel.swift */; };
+		02D001082100AE6500A43EA8 /* SignUpModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D001072100AE6500A43EA8 /* SignUpModelType.swift */; };
+		02D0010A2100AE9000A43EA8 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D001092100AE9000A43EA8 /* SignUpViewModel.swift */; };
+		02D0010C2100AEC100A43EA8 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D0010B2100AEC100A43EA8 /* MainViewModel.swift */; };
+		02D0010E2100AED000A43EA8 /* MainModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D0010D2100AED000A43EA8 /* MainModelType.swift */; };
+		02D001102100AEDC00A43EA8 /* MenuModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D0010F2100AEDC00A43EA8 /* MenuModelType.swift */; };
+		02D001122100AEE500A43EA8 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D001112100AEE500A43EA8 /* MenuViewModel.swift */; };
+		02D001162100B44600A43EA8 /* LevelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D001152100B44600A43EA8 /* LevelViewCell.swift */; };
 		02D0B87F20C97ED8007CE013 /* MultiPlayerScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02D0B87E20C97ED8007CE013 /* MultiPlayerScreen.storyboard */; };
 		02D553EC20CE73DE009F1FE6 /* GameRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D553EB20CE73DE009F1FE6 /* GameRequest.swift */; };
 		02E5BCE2207A3F5000272CFD /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E5BCE1207A3F5000272CFD /* UserProfile.swift */; };
@@ -41,7 +66,6 @@
 
 /* Begin PBXFileReference section */
 		0220380520CAABCA00AF0B0D /* MultiPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPlayerViewController.swift; sourceTree = "<group>"; };
-		023E7F4320B15A7900DDFC39 /* LevelViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LevelViewCell.swift; path = Controllers/LevelViewCell.swift; sourceTree = "<group>"; };
 		023E7F4520B15B9000DDFC39 /* SinglePlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePlayViewController.swift; sourceTree = "<group>"; };
 		0241AA3B206E7BEA00AD078D /* Socket_API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Socket_API.swift; sourceTree = "<group>"; };
 		0241AA3D206E7FE100AD078D /* ResponseMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMessage.swift; sourceTree = "<group>"; };
@@ -53,6 +77,8 @@
 		0246B7612062C0240043506F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0246B7642062C0240043506F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0246B7662062C0240043506F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		024F9CDC20E2E5A600935310 /* BackendConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendConfiguration.swift; sourceTree = "<group>"; };
+		024F9CDE20E2E6EF00935310 /* ServiceOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceOperation.swift; sourceTree = "<group>"; };
 		025B045D20E0F68C0006B7A4 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Main.strings; sourceTree = "<group>"; };
 		025B045E20E0F68C0006B7A4 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		025B046020E0F7630006B7A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -65,9 +91,33 @@
 		0266E55B2062C3A200326EF0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0266E55D2062C3B700326EF0 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		0266E5612062D89200326EF0 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		0267AE5D20E296DB00E1E14E /* BackendAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendAPIRequest.swift; sourceTree = "<group>"; };
+		0267AE5F20E2984900E1E14E /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		02743AF8210218B60031322D /* SignUpOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpOperation.swift; sourceTree = "<group>"; };
+		02743AFA210219230031322D /* SignUpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequest.swift; sourceTree = "<group>"; };
+		02743AFC21021B0F0031322D /* SinglePlayerLevelsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePlayerLevelsRequest.swift; sourceTree = "<group>"; };
+		02743AFE21021BB70031322D /* ProfileRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRequest.swift; sourceTree = "<group>"; };
+		02743B0021021C0F0031322D /* LevelOfUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelOfUserRequest.swift; sourceTree = "<group>"; };
+		02743B0221021C7E0031322D /* UpdateLevelOfUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLevelOfUserRequest.swift; sourceTree = "<group>"; };
+		02957C9820FF387400E3F231 /* BackendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendService.swift; sourceTree = "<group>"; };
+		02957C9A20FF3E6400E3F231 /* NetworkBackendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkBackendService.swift; sourceTree = "<group>"; };
+		02957C9D20FF41CA00E3F231 /* NetworkOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkOperation.swift; sourceTree = "<group>"; };
+		02957C9F20FF6A9E00E3F231 /* NetworkQueryGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkQueryGenerator.swift; sourceTree = "<group>"; };
+		02957CA120FF6FF200E3F231 /* NetworkQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkQueue.swift; sourceTree = "<group>"; };
+		02957CA420FF711500E3F231 /* SignInRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRequest.swift; sourceTree = "<group>"; };
 		02B465AC2075635D0009667E /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		02B465AE207563750009667E /* RegisterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRequest.swift; sourceTree = "<group>"; };
 		02BDC2FB20CB09630072D868 /* AppDelegateEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateEx.swift; sourceTree = "<group>"; };
+		02CD0F3B2100AC0400C5B941 /* SignInOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInOperation.swift; sourceTree = "<group>"; };
+		02D001032100AE1B00A43EA8 /* SignInModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInModelType.swift; sourceTree = "<group>"; };
+		02D001052100AE2C00A43EA8 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		02D001072100AE6500A43EA8 /* SignUpModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModelType.swift; sourceTree = "<group>"; };
+		02D001092100AE9000A43EA8 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		02D0010B2100AEC100A43EA8 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		02D0010D2100AED000A43EA8 /* MainModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModelType.swift; sourceTree = "<group>"; };
+		02D0010F2100AEDC00A43EA8 /* MenuModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModelType.swift; sourceTree = "<group>"; };
+		02D001112100AEE500A43EA8 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
+		02D001152100B44600A43EA8 /* LevelViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelViewCell.swift; sourceTree = "<group>"; };
 		02D0B87E20C97ED8007CE013 /* MultiPlayerScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MultiPlayerScreen.storyboard; sourceTree = "<group>"; };
 		02D553EB20CE73DE009F1FE6 /* GameRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRequest.swift; sourceTree = "<group>"; };
 		02E5BCE1207A3F5000272CFD /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
@@ -78,6 +128,8 @@
 		10E95A2EF5B7252B0A3BCFC5 /* Pods_GuessTheSong.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GuessTheSong.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1674BA00180422A438958E2E /* Pods-GuessTheSong.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuessTheSong.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GuessTheSong/Pods-GuessTheSong.debug.xcconfig"; sourceTree = "<group>"; };
 		22E91150352D8D5C12F4BC7C /* Pods-GuessTheSong.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuessTheSong.release.xcconfig"; path = "Pods/Target Support Files/Pods-GuessTheSong/Pods-GuessTheSong.release.xcconfig"; sourceTree = "<group>"; };
+		5142AE10A04458D80BEBF4D3 /* Pods-GuessTheSong.release-testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuessTheSong.release-testing.xcconfig"; path = "Pods/Target Support Files/Pods-GuessTheSong/Pods-GuessTheSong.release-testing.xcconfig"; sourceTree = "<group>"; };
+		E7C7260D092C7BF916DCE938 /* Pods-GuessTheSong.debug-testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuessTheSong.debug-testing.xcconfig"; path = "Pods/Target Support Files/Pods-GuessTheSong/Pods-GuessTheSong.debug-testing.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,15 +165,16 @@
 		0246B7592062C0240043506F /* GuessTheSong */ = {
 			isa = PBXGroup;
 			children = (
-				02F03E6E20C0124D00A20C99 /* DBLayer */,
 				0246B7662062C0240043506F /* Info.plist */,
-				0246B75A2062C0240043506F /* AppDelegate.swift */,
-				0266E55A2062C36E00326EF0 /* Models */,
-				0266E5592062C35500326EF0 /* Controllers */,
+				025B045F20E0F7630006B7A4 /* Localizable.strings */,
+				0267AE5C20E295AC00E1E14E /* NetworkLayer */,
+				02F03E6E20C0124D00A20C99 /* DBLayer */,
+				0266E55A2062C36E00326EF0 /* Model */,
+				02D001132100AF1900A43EA8 /* Protocol */,
+				02D001142100AF3100A43EA8 /* ViewModel */,
+				0266E5592062C35500326EF0 /* Controller */,
 				0266E5572062C33B00326EF0 /* Views */,
 				0266E5582062C34A00326EF0 /* Supporting Files */,
-				02BDC2FB20CB09630072D868 /* AppDelegateEx.swift */,
-				025B045F20E0F7630006B7A4 /* Localizable.strings */,
 			);
 			path = GuessTheSong;
 			sourceTree = "<group>";
@@ -149,15 +202,18 @@
 		0266E5582062C34A00326EF0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0246B75A2062C0240043506F /* AppDelegate.swift */,
+				02BDC2FB20CB09630072D868 /* AppDelegateEx.swift */,
 				0246B7612062C0240043506F /* Assets.xcassets */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0266E5592062C35500326EF0 /* Controllers */ = {
+		0266E5592062C35500326EF0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				0246B75C2062C0240043506F /* MainViewController.swift */,
+				02D001152100B44600A43EA8 /* LevelViewCell.swift */,
 				0266E55B2062C3A200326EF0 /* LoginViewController.swift */,
 				0266E55D2062C3B700326EF0 /* RegistrationViewController.swift */,
 				0266E5612062D89200326EF0 /* MenuViewController.swift */,
@@ -165,10 +221,10 @@
 				023E7F4520B15B9000DDFC39 /* SinglePlayViewController.swift */,
 				0220380520CAABCA00AF0B0D /* MultiPlayerViewController.swift */,
 			);
-			path = Controllers;
+			path = Controller;
 			sourceTree = "<group>";
 		};
-		0266E55A2062C36E00326EF0 /* Models */ = {
+		0266E55A2062C36E00326EF0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				0241AA3B206E7BEA00AD078D /* Socket_API.swift */,
@@ -178,10 +234,87 @@
 				025CAD8720945CDF00177A6C /* Level.swift */,
 				02E5BCE1207A3F5000272CFD /* UserProfile.swift */,
 				02464FF32080B08600BA8AC9 /* ProfileRequest.swift */,
-				023E7F4320B15A7900DDFC39 /* LevelViewCell.swift */,
 				02D553EB20CE73DE009F1FE6 /* GameRequest.swift */,
 			);
-			name = Models;
+			name = Model;
+			sourceTree = "<group>";
+		};
+		0267AE5C20E295AC00E1E14E /* NetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+				02957C9C20FF3F5400E3F231 /* Backend */,
+				02957CA320FF706A00E3F231 /* Core Network */,
+				02CD0F3E2100AD4000C5B941 /* Requests */,
+				02CD0F3D2100AD3700C5B941 /* Operations */,
+			);
+			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		02957C9C20FF3F5400E3F231 /* Backend */ = {
+			isa = PBXGroup;
+			children = (
+				0267AE5D20E296DB00E1E14E /* BackendAPIRequest.swift */,
+				024F9CDC20E2E5A600935310 /* BackendConfiguration.swift */,
+				024F9CDE20E2E6EF00935310 /* ServiceOperation.swift */,
+				02957C9820FF387400E3F231 /* BackendService.swift */,
+				02957C9A20FF3E6400E3F231 /* NetworkBackendService.swift */,
+			);
+			path = Backend;
+			sourceTree = "<group>";
+		};
+		02957CA320FF706A00E3F231 /* Core Network */ = {
+			isa = PBXGroup;
+			children = (
+				0267AE5F20E2984900E1E14E /* NetworkService.swift */,
+				02957C9F20FF6A9E00E3F231 /* NetworkQueryGenerator.swift */,
+				02957C9D20FF41CA00E3F231 /* NetworkOperation.swift */,
+				02957CA120FF6FF200E3F231 /* NetworkQueue.swift */,
+			);
+			path = "Core Network";
+			sourceTree = "<group>";
+		};
+		02CD0F3D2100AD3700C5B941 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				02CD0F3B2100AC0400C5B941 /* SignInOperation.swift */,
+				02743AF8210218B60031322D /* SignUpOperation.swift */,
+			);
+			path = Operations;
+			sourceTree = "<group>";
+		};
+		02CD0F3E2100AD4000C5B941 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				02957CA420FF711500E3F231 /* SignInRequest.swift */,
+				02743AFC21021B0F0031322D /* SinglePlayerLevelsRequest.swift */,
+				02743AFE21021BB70031322D /* ProfileRequest.swift */,
+				02743B0021021C0F0031322D /* LevelOfUserRequest.swift */,
+				02743B0221021C7E0031322D /* UpdateLevelOfUserRequest.swift */,
+				02743AFA210219230031322D /* SignUpRequest.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		02D001132100AF1900A43EA8 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				02D001032100AE1B00A43EA8 /* SignInModelType.swift */,
+				02D0010D2100AED000A43EA8 /* MainModelType.swift */,
+				02D0010F2100AEDC00A43EA8 /* MenuModelType.swift */,
+				02D001072100AE6500A43EA8 /* SignUpModelType.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		02D001142100AF3100A43EA8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				02D001052100AE2C00A43EA8 /* SignInViewModel.swift */,
+				02D001092100AE9000A43EA8 /* SignUpViewModel.swift */,
+				02D0010B2100AEC100A43EA8 /* MainViewModel.swift */,
+				02D001112100AEE500A43EA8 /* MenuViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		02F03E6E20C0124D00A20C99 /* DBLayer */ = {
@@ -209,6 +342,8 @@
 			children = (
 				1674BA00180422A438958E2E /* Pods-GuessTheSong.debug.xcconfig */,
 				22E91150352D8D5C12F4BC7C /* Pods-GuessTheSong.release.xcconfig */,
+				E7C7260D092C7BF916DCE938 /* Pods-GuessTheSong.debug-testing.xcconfig */,
+				5142AE10A04458D80BEBF4D3 /* Pods-GuessTheSong.release-testing.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -233,7 +368,6 @@
 				0246B7542062C0240043506F /* Frameworks */,
 				0246B7552062C0240043506F /* Resources */,
 				D28AE8C6C23117E47D46B859 /* [CP] Embed Pods Frameworks */,
-				BA3CBB54B1BCC02BC9294610 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -257,6 +391,11 @@
 					0246B7562062C0240043506F = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -314,21 +453,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BA3CBB54B1BCC02BC9294610 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GuessTheSong/Pods-GuessTheSong-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		D28AE8C6C23117E47D46B859 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -336,22 +460,20 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GuessTheSong/Pods-GuessTheSong-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/ProgressHUD/ProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
-				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -367,27 +489,52 @@
 			buildActionMask = 2147483647;
 			files = (
 				025CAD8820945CDF00177A6C /* Level.swift in Sources */,
+				02743B0321021C7E0031322D /* UpdateLevelOfUserRequest.swift in Sources */,
 				02F03E7720C0181A00A20C99 /* RealmStorageContextOperations.swift in Sources */,
+				02D001082100AE6500A43EA8 /* SignUpModelType.swift in Sources */,
 				0266E55C2062C3A200326EF0 /* LoginViewController.swift in Sources */,
+				02D001162100B44600A43EA8 /* LevelViewCell.swift in Sources */,
 				02BDC2FC20CB09630072D868 /* AppDelegateEx.swift in Sources */,
+				02D0010C2100AEC100A43EA8 /* MainViewModel.swift in Sources */,
+				02957C9B20FF3E6400E3F231 /* NetworkBackendService.swift in Sources */,
 				0246B75D2062C0240043506F /* MainViewController.swift in Sources */,
+				024F9CDD20E2E5A600935310 /* BackendConfiguration.swift in Sources */,
+				02D001042100AE1B00A43EA8 /* SignInModelType.swift in Sources */,
+				02D001062100AE2C00A43EA8 /* SignInViewModel.swift in Sources */,
 				02E5BCE2207A3F5000272CFD /* UserProfile.swift in Sources */,
 				02B465AF207563750009667E /* RegisterRequest.swift in Sources */,
 				0266E55E2062C3B700326EF0 /* RegistrationViewController.swift in Sources */,
+				02743B0121021C0F0031322D /* LevelOfUserRequest.swift in Sources */,
+				02743AF9210218B60031322D /* SignUpOperation.swift in Sources */,
+				02957C9920FF387400E3F231 /* BackendService.swift in Sources */,
+				02D001122100AEE500A43EA8 /* MenuViewModel.swift in Sources */,
+				0267AE6020E2984900E1E14E /* NetworkService.swift in Sources */,
+				024F9CDF20E2E6EF00935310 /* ServiceOperation.swift in Sources */,
+				02957CA020FF6A9E00E3F231 /* NetworkQueryGenerator.swift in Sources */,
+				02743AFF21021BB70031322D /* ProfileRequest.swift in Sources */,
 				02D553EC20CE73DE009F1FE6 /* GameRequest.swift in Sources */,
 				0246B75B2062C0240043506F /* AppDelegate.swift in Sources */,
+				02743AFD21021B0F0031322D /* SinglePlayerLevelsRequest.swift in Sources */,
+				02D001102100AEDC00A43EA8 /* MenuModelType.swift in Sources */,
 				025CAD8520945B4B00177A6C /* SinglePlayerLevelsViewController.swift in Sources */,
 				02F03E7120C012FC00A20C99 /* StorageContext.swift in Sources */,
 				02F03E7320C014B100A20C99 /* Storable.swift in Sources */,
+				0267AE5E20E296DB00E1E14E /* BackendAPIRequest.swift in Sources */,
 				0241AA3E206E7FE100AD078D /* ResponseMessage.swift in Sources */,
-				023E7F4420B15A7900DDFC39 /* LevelViewCell.swift in Sources */,
+				02743AFB210219230031322D /* SignUpRequest.swift in Sources */,
+				02D0010A2100AE9000A43EA8 /* SignUpViewModel.swift in Sources */,
 				02464FF42080B08600BA8AC9 /* ProfileRequest.swift in Sources */,
+				02957C9E20FF41CA00E3F231 /* NetworkOperation.swift in Sources */,
 				0241AA3C206E7BEB00AD078D /* Socket_API.swift in Sources */,
 				0220380620CAABCA00AF0B0D /* MultiPlayerViewController.swift in Sources */,
 				0263AD1520BF239500BBC32B /* LevelData.swift in Sources */,
+				02957CA220FF6FF200E3F231 /* NetworkQueue.swift in Sources */,
 				023E7F4620B15B9000DDFC39 /* SinglePlayViewController.swift in Sources */,
 				0266E5622062D89200326EF0 /* MenuViewController.swift in Sources */,
 				02F03E7520C0169600A20C99 /* RealmStorageContext.swift in Sources */,
+				02CD0F3C2100AC0400C5B941 /* SignInOperation.swift in Sources */,
+				02957CA520FF711500E3F231 /* SignInRequest.swift in Sources */,
+				02D0010E2100AED000A43EA8 /* MainModelType.swift in Sources */,
 				02B465AD2075635D0009667E /* LoginRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -647,7 +794,7 @@
 		};
 		02E5BCDE207A17FC00272CFD /* Debug-Testing */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1674BA00180422A438958E2E /* Pods-GuessTheSong.debug.xcconfig */;
+			baseConfigurationReference = E7C7260D092C7BF916DCE938 /* Pods-GuessTheSong.debug-testing.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -718,7 +865,7 @@
 		};
 		02E5BCE0207A180600272CFD /* Release-Testing */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 22E91150352D8D5C12F4BC7C /* Pods-GuessTheSong.release.xcconfig */;
+			baseConfigurationReference = 5142AE10A04458D80BEBF4D3 /* Pods-GuessTheSong.release-testing.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -1,26 +1,26 @@
+////
+////  GameRequest.swift
+////  GuessTheSong
+////
+////  Created by Ivan Nikitin on 11/06/2018.
+////  Copyright © 2018 Иван Никитин. All rights reserved.
+////
 //
-//  GameRequest.swift
-//  GuessTheSong
+//import Foundation
+////import SocketIO
 //
-//  Created by Ivan Nikitin on 11/06/2018.
-//  Copyright © 2018 Иван Никитин. All rights reserved.
+//struct GameRequest: SocketData {
+//    let id: String
 //
-
-import Foundation
-import SocketIO
-
-struct GameRequest: SocketData {
-    let id: String
-    
-    func socketRepresentation() -> SocketData {
-        return ["id": id]
-    }
-}
-
-struct RoomRequest: SocketData {
-    let room: String
-    
-    func socketRepresentation() -> SocketData {
-        return ["room": room]
-    }
-}
+//    func socketRepresentation() -> SocketData {
+//        return ["id": id]
+//    }
+//}
+//
+//struct RoomRequest: SocketData {
+//    let room: String
+//
+//    func socketRepresentation() -> SocketData {
+//        return ["room": room]
+//    }
+//}
