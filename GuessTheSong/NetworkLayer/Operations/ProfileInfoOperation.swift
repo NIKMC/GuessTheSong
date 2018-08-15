@@ -1,22 +1,23 @@
 //
-//  SignUpOperation.swift
+//  ProfileInfoOperation.swift
 //  GuessTheSong
 //
-//  Created by Ivan Nikitin on 20/07/2018.
+//  Created by Ivan Nikitin on 06/08/2018.
 //  Copyright © 2018 Иван Никитин. All rights reserved.
 //
 
 import Foundation
 
-public class SignUpOperation: ServiceOperation {
+
+public class ProfileInfoOperation: ServiceOperation {
     
-    private let request: SignUpRequest
+    private let request: ProfileRequest
     
-        public var success: ((SignUpResponse) -> Void)?
+        public var success: ((UserProfile) -> Void)?
         public var failure: ((NSError) -> Void)?
     
-    public init(email: String, login username: String, password: String, passwordRep: String, service: BackendService = NetworkBackendService(BackendConfiguration.shared)) {
-        request = SignUpRequest(email: email, login: username, password: password, first_name: username, last_name: username)
+    public init(token: String, id: String, service: BackendService = NetworkBackendService(BackendConfiguration.shared)) {
+        request = ProfileRequest(token: token, userId: id)
         super.init(service: service)
     }
     
@@ -25,16 +26,16 @@ public class SignUpOperation: ServiceOperation {
         service.request(request, success: handleSuccess, failure: handleFailure)
     }
     
-    private func handleSuccess(_ response: Data) {
+    private func handleSuccess(_ response: Any?) {
         do {
-            let data = try JSONDecoder().decode(SignUpResponse.self, from: response)
-            print("The response is: \(String(describing: data))")
+            let data = try JSONDecoder().decode(UserProfile.self, from: response as! Data)
+            //            print("The response is: \(String(describing: data.response))")
             success?(data)
         } catch let error {
             print("Error of parsing \(error)")
 
         }
-        self.finish()
+
         
 //        do {
 //            //            let item = try SignInResponseMapper.process(response)
@@ -46,7 +47,7 @@ public class SignUpOperation: ServiceOperation {
     }
     
     private func handleFailure(_ error: NSError) {
-        self.failure?(error)
+        //        self.failure?(error)
         self.finish()
     }
 }

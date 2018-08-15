@@ -49,7 +49,7 @@ public class NetworkService {
         mutableRequest.allHTTPHeaderFields = headers
         
         let session = URLSession.shared
-        
+        print("The url path is \(mutableRequest.description)")
         task = session.dataTask(with: mutableRequest, completionHandler: { (data, response, error) in
             
             guard let httpResponse = response as? HTTPURLResponse else {

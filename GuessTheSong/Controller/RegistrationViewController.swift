@@ -27,6 +27,7 @@ class RegistrationViewController: UIViewController {
     var keyboardHeight: CGFloat!
     var lastOffset: CGPoint!
     
+    private let goToSignIn = "registrationSucceed"
     
     var viewModel: SignUpModelType?
     
@@ -44,6 +45,7 @@ class RegistrationViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.back(sender:)))
 //        Socket_API.sharedInstance.delegate = self
 //        Socket_API.sharedInstance.registerResponseEvent()
+        
         
         // Observe keyboard change
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -76,15 +78,34 @@ class RegistrationViewController: UIViewController {
     
     @IBAction func registerTapped(_ sender: UIButton) {
         ProgressHUD.show()
-
+        viewModel?.setData(email: emailView.text!, login: loginView.text!, password: passwordView.text!, passwordRep: repasswordView.text!)
+        viewModel?.signUp(completion: { [weak self] (user) in
+            print("ok signUp")
+            ProgressHUD.dismiss()
+            self?.performSegue(withIdentifier: (self?.goToSignIn)!, sender: self)
+        }, errorHandle: { (error) in
+            print(error)
+            ProgressHUD.showError(error)
+        })
 //        Socket_API.sharedInstance.registerEvent(login: loginView.text!, email: emailView.text!, password: passwordView.text!, password2: repasswordView.text!)
     }
     
     
     @IBAction func goToLoginTapped(_ sender: UIButton) {
 //        Socket_API.sharedInstance.resetResponseEvent(eventName: EventName.REGISTER)
-        self.performSegue(withIdentifier: "registrationSucceed", sender: self)
+        self.performSegue(withIdentifier: self.goToSignIn, sender: self)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let identifier = segue.identifier
+        if identifier == goToSignIn {
+            if let dvc = segue.destination as? LoginViewController {
+                dvc.viewModel = viewModel?.signIn()
+            }
+        } 
+        
+    }
+    
 }
 
 

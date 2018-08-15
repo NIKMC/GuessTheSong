@@ -13,17 +13,19 @@ struct SignUpRequest: BackendAPIRequest {
     private let email: String
     private let login: String
     private let password: String
-    private let passwordRep: String
+    private let first_name: String
+    private let last_name: String
     
-    init(email: String, login: String, password: String, passwordRep: String) {
+    init(email: String, login: String, password: String, first_name: String, last_name: String) {
         self.email = email
         self.login = login
         self.password = password
-        self.passwordRep = passwordRep
+        self.first_name = first_name
+        self.last_name = last_name
     }
     
     var path: String {
-        return "/users/sign_up"
+        return "/users/"
     }
     
     var method: HTTPMethod {
@@ -36,10 +38,11 @@ struct SignUpRequest: BackendAPIRequest {
     
     var parameters: [String : String]? {
         return [
+            "username": login,
+            "first_name": first_name,
+            "last_name": last_name,
             "email": email,
-            "login": login,
-            "password": password,
-            "passwordRep": passwordRep
+            "password": password
         ]
     }
     

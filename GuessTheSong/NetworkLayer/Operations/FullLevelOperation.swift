@@ -1,22 +1,22 @@
 //
-//  SignUpOperation.swift
+//  FullLevelOperation.swift
 //  GuessTheSong
 //
-//  Created by Ivan Nikitin on 20/07/2018.
+//  Created by Ivan Nikitin on 07/08/2018.
 //  Copyright © 2018 Иван Никитин. All rights reserved.
 //
 
 import Foundation
 
-public class SignUpOperation: ServiceOperation {
+public class FullLevelOperation: ServiceOperation {
     
-    private let request: SignUpRequest
+    private let request: LevelInfoRequest
     
-        public var success: ((SignUpResponse) -> Void)?
-        public var failure: ((NSError) -> Void)?
+    public var success: ((FullDataLevel) -> Void)?
+    public var failure: ((NSError) -> Void)?
     
-    public init(email: String, login username: String, password: String, passwordRep: String, service: BackendService = NetworkBackendService(BackendConfiguration.shared)) {
-        request = SignUpRequest(email: email, login: username, password: password, first_name: username, last_name: username)
+    public init(levelId: String, service: BackendService = NetworkBackendService(BackendConfiguration.shared)) {
+        request = LevelInfoRequest(id: levelId)
         super.init(service: service)
     }
     
@@ -25,16 +25,16 @@ public class SignUpOperation: ServiceOperation {
         service.request(request, success: handleSuccess, failure: handleFailure)
     }
     
-    private func handleSuccess(_ response: Data) {
+    private func handleSuccess(_ response: Any?) {
         do {
-            let data = try JSONDecoder().decode(SignUpResponse.self, from: response)
+            let data = try JSONDecoder().decode(FullDataLevel.self, from: response as! Data)
             print("The response is: \(String(describing: data))")
             success?(data)
         } catch let error {
             print("Error of parsing \(error)")
 
         }
-        self.finish()
+        
         
 //        do {
 //            //            let item = try SignInResponseMapper.process(response)
@@ -46,7 +46,7 @@ public class SignUpOperation: ServiceOperation {
     }
     
     private func handleFailure(_ error: NSError) {
-        self.failure?(error)
+        //        self.failure?(error)
         self.finish()
     }
 }

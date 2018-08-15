@@ -10,16 +10,16 @@ import Foundation
 
 struct SignInRequest: BackendAPIRequest {
     
-    private let email: String
+    private let username: String
     private let password: String
     
-    init(email: String, password: String) {
-        self.email = email
+    init(login: String, password: String) {
+        self.username = login
         self.password = password
     }
     
     var path: String {
-        return "/users/sign_in"
+        return "/api-token-auth/"
     }
     
     var method: HTTPMethod {
@@ -32,7 +32,7 @@ struct SignInRequest: BackendAPIRequest {
     
     var parameters: [String : String]? {
         return [
-            "email": email,
+            "username": username,
             "password": password
         ]
     }

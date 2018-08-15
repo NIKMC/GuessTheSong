@@ -10,7 +10,13 @@ import Foundation
 
 protocol SignInModelType {
     
-    func signIn()
+    func setLoginAndPassword(email mail: String, password pass: String)
+    
+    func signIn(completion: ((Profile)->())?, errorHandle: ((String)->())?)
+    
+    func goToTheMenu() -> MenuModelType
+    
+    func signUp() -> SignUpModelType
     
     func loadLogin() -> String
     

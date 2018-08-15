@@ -8,7 +8,7 @@
 
 import Foundation
 
-class UserProfile {
+public class Profile: Codable {
     var email: String=""
     var password: String=""
     

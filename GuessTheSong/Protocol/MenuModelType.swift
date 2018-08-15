@@ -10,9 +10,9 @@ import Foundation
 
 protocol MenuModelType {
     
-    func showProfileInfo()
+    func showProfileInfo(completion: ((UserProfile)->())?, errorHandle: ((String)->())?)
     
-    func logOut()
+    func logOut(completion: ((String)->())?, errorHandle: ((String)->())?)
     
     func singlePlay()
     

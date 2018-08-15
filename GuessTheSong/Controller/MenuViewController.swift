@@ -17,7 +17,9 @@ class MenuViewController: UIViewController {
     let defaults = UserDefaults.standard
     
 //    var delegate: ResponseDelegate?
-    
+    var viewModel: MenuModelType?
+    private let goToSinglePlay = "singlePlayTapped"
+    private let goToMultyPlay = "multyPlayTapped"
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,14 +38,30 @@ class MenuViewController: UIViewController {
 
     
     @IBAction func singleTapped(_ sender: UIButton) {
+        performSegue(withIdentifier: goToSinglePlay, sender: sender)
     }
     
     @IBAction func multiTapped(_ sender: UIButton) {
+        performSegue(withIdentifier: goToMultyPlay, sender: sender)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let identifier = segue.identifier
+        if identifier == goToMultyPlay {
+//            if let dvc = segue.destination as? PrepareMultiPlayViewController {
+//                dvc.viewModel = viewModel?.signUp()
+//            }
+        }
+        
+    }
     
     @IBAction func logOutTapped(_ sender: UIBarButtonItem) {
 //        Socket_API.sharedInstance.disconnect()
+        guard(navigationController?.popToRootViewController(animated: true)) != nil
+            else {
+                print("No view controllers to pop off")
+                return
+        }
     }
     
     @IBAction func profileInfo(_ sender: UIButton) {

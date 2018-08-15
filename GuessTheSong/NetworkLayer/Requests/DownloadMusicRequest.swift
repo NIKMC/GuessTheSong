@@ -1,25 +1,23 @@
 //
-//  ProfileRequest.swift
+//  DownloadMusicRequest.swift
 //  GuessTheSong
 //
-//  Created by Ivan Nikitin on 20/07/2018.
+//  Created by Ivan Nikitin on 07/08/2018.
 //  Copyright © 2018 Иван Никитин. All rights reserved.
 //
 
 import Foundation
 
-struct ProfileRequest: BackendAPIRequest {
+struct DownloadMusicRequest: BackendAPIRequest {
     
-    private let token: String
-    private let id: String
+    private let url: String
     
-    init(token: String, userId: String) {
-            self.token = token
-            self.id = userId
-        }
+    init(url: String) {
+        self.url = url
+    }
     
     var path: String {
-        return "/users/profile"
+        return "/music/"
     }
     
     var method: HTTPMethod {
@@ -27,14 +25,12 @@ struct ProfileRequest: BackendAPIRequest {
     }
     
     var task: HTTPQuery {
-        return .path
+        return .music
     }
     
     var parameters: [String : String]? {
-//        return nil
         return [
-            "token": token,
-            "id": id
+            "url": url
         ]
     }
     

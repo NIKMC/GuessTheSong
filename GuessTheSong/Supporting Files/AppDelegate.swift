@@ -16,6 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let api = Bundle.main.object(forInfoDictionaryKey: "BASE_URL") as! String
+        print("The baseURL is \(api)")
+        BackendConfiguration.shared = BackendConfiguration(baseURL: URL(string: api)!)
+        
         return true
     }
 

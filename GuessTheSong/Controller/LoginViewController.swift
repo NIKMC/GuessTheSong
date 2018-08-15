@@ -19,11 +19,14 @@ class LoginViewController: UIViewController {
     @IBOutlet var scrollView: UIScrollView?
     @IBOutlet weak var constraintContentHeight: NSLayoutConstraint!
     
+    private let goToMenu = "goToMainMenuGame"
+    private let goToSignUp = "hasNotAccount"
+    
     var activeField: UITextField?
     var keyboardHeight: CGFloat!
     var lastOffset: CGPoint!
     
-    var user: UserProfile?
+    var user: Profile?
     var viewModel: SignInModelType?
 
     
@@ -45,7 +48,7 @@ class LoginViewController: UIViewController {
 
 //        Socket_API.sharedInstance.delegate = self
 //        Socket_API.sharedInstance.loginResponseEvent()
-        
+        loadingData()
         
         // Observe keyboard change
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -53,6 +56,12 @@ class LoginViewController: UIViewController {
         
     }
 
+    func loadingData() {
+        guard let email = viewModel?.loadLogin(), let password = viewModel?.loadPassword() else { return }
+        emailView.text = email
+        passwordView.text = password
+    }
+    
     func returnTextView(gesture: UIGestureRecognizer) {
         guard activeField != nil else {
             return
@@ -71,25 +80,48 @@ class LoginViewController: UIViewController {
         }
     }
 
-//    @IBAction func LoginPressed(_ sender: UIButton) {
-//        defaults.setValue("QwertyLogin", forKey: "loginKey")
-//
-//    }
     
     @IBAction func okPressed(_ sender: UIButton) {
-        ProgressHUD.show()
-        viewModel
+        
+        
+//        ProgressHUD.show()
+        viewModel?.setLoginAndPassword(email: emailView.text!, password: passwordView.text!)
+//        self.performSegue(withIdentifier: goToMenu, sender: sender)
+        viewModel?.signIn(completion: { [weak self] (user) in
+            print("sing IN ok")
+            ProgressHUD.dismiss()
+            self?.performSegue(withIdentifier: (self?.goToMenu)!, sender: sender)
+            
+        }, errorHandle: { (error) in
+            print(error)
+            ProgressHUD.showError(error)
+        })
+        
         
         
 //        socket?.loginEvent(email: emailView.text!, password: passwordView.text!)
 //        Socket_API.sharedInstance.loginEvent(email: emailView.text!, password: passwordView.text!)
-        user = UserProfile(email: emailView.text!, password: passwordView.text!)
+        user = Profile(email: emailView.text!, password: passwordView.text!)
     }
     
-    @IBAction func goToregistration(_ sender: UIButton) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let identifier = segue.identifier
+        if identifier == goToMenu {
+            if let dvc = segue.destination as? MenuViewController {
+                dvc.viewModel = viewModel?.goToTheMenu()
+            }
+        } else if identifier == goToSignUp {
+            if let dvc = segue.destination as? RegistrationViewController {
+                dvc.viewModel = viewModel?.signUp()
+            }
+        }
+        
+    }
+    
+    @IBAction func goToRegistration(_ sender: UIButton) {
 
 //        Socket_API.sharedInstance.resetResponseEvent(eventName: EventName.LOGIN)
-        self.performSegue(withIdentifier: "hasNotAccount", sender: self)
+        self.performSegue(withIdentifier: goToSignUp, sender: self)
 
     }
 

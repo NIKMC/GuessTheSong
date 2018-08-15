@@ -13,7 +13,7 @@ public class NetworkOperation: Operation {
     public override var isReady: Bool {
         get { return _isReady}
         set { update(key: "isReady") {
-            self.isReady = newValue
+            self._isReady = newValue
             }}
     }
     private var _isExecuting: Bool

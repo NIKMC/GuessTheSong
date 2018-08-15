@@ -7,23 +7,30 @@
 //
 
 import UIKit
+import AVFoundation
 
-class SinglePlayViewController: UIViewController {
+class PrepareSinglePlayViewController: UIViewController {
 
     var id:String = ""
-    
+    var audioPlayer:AVAudioPlayer!
+    var destinations: [URL?]?
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var IdLevel: UILabel!
     @IBOutlet weak var searchText: UILabel!
     
+    var viewModel: PrepareGameModelType?
+    
     @IBOutlet weak var circleView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        IdLevel.text = id
         loadingIndicator.color = UIColor(red: 235/255, green: 167/255, blue: 0/255, alpha: 1.0)
-        loadingIndicator.scale(factor: 2.0)
+        loadingIndicator.scale(factor: 5.0)
         // Do any additional setup after loading the view.
         addCircleView(circle: circleView)
+        viewModel?.getDestinationUrl(completionUrl: { [weak self] (destinationUrls) in
+            self?.destinations = destinationUrls
+            print("destination Url is \(String(describing: self?.destinations?.first))")
+        })
     }
 
     @IBAction func stopLoading(_ sender: UIButton) {
@@ -55,7 +62,7 @@ class SinglePlayViewController: UIViewController {
     
         circle.addSubview(blurView)
         circle.addSubview(loadingIndicator)
-        circle.addSubview(searchText)
+//        circle.addSubview(searchText)
         self.view.addSubview(circle)
     
     }
@@ -65,6 +72,51 @@ class SinglePlayViewController: UIViewController {
             loadingIndicator.startAnimating()
         }
         
+    }
+    
+    @IBAction func playMusic(_ sender: UIButton) {
+        guard let destinationURLFirst = destinations?[0] else {
+            print("no first value")
+            return
+        }
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: destinationURLFirst)
+            guard let player = audioPlayer else { return }
+            
+            player.prepareToPlay()
+            player.play()
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    
+    }
+    
+    @IBAction func stopMusic(_ sender: UIButton) {
+        guard let player = audioPlayer else { return }
+        player.stop()
+    }
+    @IBAction func goToPlayInGame(_ sender: Any) {
+        performSegue(withIdentifier: "goToPlay", sender: sender)
+    }
+    
+    @IBAction func nextTrack(_ sender: UIButton) {
+        guard let _ = destinations?.remove(at: 0) else {
+            print("error deleting")
+            return
+        }
+        guard let destinationURLFirst = destinations?[0] else {
+            print("no next value")
+            return
+        }
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: destinationURLFirst)
+            guard let player = audioPlayer else { return }
+            
+            player.prepareToPlay()
+            player.play()
+        } catch let error {
+            print(error.localizedDescription)
+        }
     }
     
 }

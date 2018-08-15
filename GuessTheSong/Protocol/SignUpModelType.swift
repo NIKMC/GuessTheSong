@@ -10,5 +10,10 @@ import Foundation
 
 protocol SignUpModelType {
     
-    func signUp()
+    func setData(email: String, login: String, password: String, passwordRep: String)
+    
+    func signUp(completion: ((Profile)->())?, errorHandle: ((String)->())?)
+    
+    func signIn() -> SignInModelType
+    
 }

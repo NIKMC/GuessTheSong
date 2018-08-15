@@ -12,15 +12,15 @@ class SinglePlayerLevelsViewController: UIViewController {
     
     @IBOutlet private weak var collectionLevelView: UICollectionView!
     private let reuseIdentifier = "LevelCell"
+    private let identityGoToPlayInTheGame = "goToPlayInTheGame"
     private let leftAndRightPaddings : CGFloat = 20
     private let numberOfItemPerRow: CGFloat = 4
     
-    var cellArray = [Level(1, StatusLevel.Done),Level(2, StatusLevel.Done),Level(3, StatusLevel.Ready),Level(4, StatusLevel.Closed),Level(5, StatusLevel.Done),Level(6, StatusLevel.Closed)]
     
+    @IBOutlet var viewModel: LevelsOfSinglePlayViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         
         //Configure the collectionView
@@ -28,8 +28,8 @@ class SinglePlayerLevelsViewController: UIViewController {
         let width = (view.frame.size.width - leftAndRightPaddings) / numberOfItemPerRow
         let layout = collectionLevelView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: width, height: width)
-        self.navigationItem.hidesBackButton = true
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Menu", style: .plain, target: self, action: #selector(self.back(sender:)))
+//        self.navigationItem.hidesBackButton = true
+//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Menu", style: .plain, target: self, action: #selector(self.back(sender:)))
     }
     
     @objc func back(sender: AnyObject) {
@@ -46,70 +46,65 @@ class SinglePlayerLevelsViewController: UIViewController {
 extension SinglePlayerLevelsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cellArray.count
+        return numberOfSections(in: collectionView, count: viewModel.numberOfItemsInSection())
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView, count numOfSections: Int) -> Int {
+        if numOfSections > 0 {
+            collectionView.backgroundView = nil
+        } else {
+            let noDataLabel: UILabel     = UILabel(frame: CGRect(x: 0, y: collectionView.bounds.size.height/4, width: collectionView.bounds.size.width, height: collectionView.bounds.size.height/2))
+            noDataLabel.text          = "No data available"
+            noDataLabel.textColor     = UIColor.black
+            noDataLabel.textAlignment = .center
+            collectionView.backgroundView  = noDataLabel
+        }
+        return numOfSections
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! LevelViewCell
+        let collectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? LevelViewCell
+        guard let cell = collectionViewCell, let viewModel = viewModel else { return UICollectionViewCell() }
+        
+        let itemViewModel = viewModel.itemViewModel(forIndexPath: indexPath)
+        cell.viewModel = itemViewModel
+
         cell.translatesAutoresizingMaskIntoConstraints = true
         
-        print("size \(cell.frame)")
-        print("size cell \(cell.frame.size.width)")
-        print("size of view \( cell.viewCell.frame.size.width)")
-        print("size dest \( cell.frame.size.width - cell.viewCell.frame.size.width)")
+//        print("size \(cell.frame)")
+//        print("size cell \(cell.frame.size.width)")
+//        print("size of view \( cell.viewCell.frame.size.width)")
+//        print("size dest \( cell.frame.size.width - cell.viewCell.frame.size.width)")
         
         cell.completedImage.center.x = cell.viewCell.frame.origin.x + cell.viewCell.frame.size.width + (cell.frame.size.width - cell.viewCell.frame.size.width)/2
-        //bounds.size.width
         cell.completedImage.center.y = cell.viewCell.frame.origin.y + cell.viewCell.frame.size.height/4
-            //cell.viewCell.bounds.size.height/3
         cell.viewCell.layer.borderWidth = 1
         cell.viewCell.layer.borderColor = UIColor.black.cgColor
         cell.viewCell.layer.cornerRadius = 5
-        let level = cellArray[indexPath.item]
-        switch level.status {
-        case .Closed:
-            cell.viewCell.backgroundColor = UIColor(red: 195.0/255.0, green: 161.0/255.0, blue: 50.0/255.0, alpha: 0.65)
-            cell.completedImage.isHidden = true
-            cell.closedImage.isHidden = false
-            cell.levelText.text = ""
-        case .Ready:
-            //            cell.buttonCell.backgroundColor = UIColor(red: 195.0/255.0, green: 161.0/255.0, blue: 50.0/255.0, alpha: 1.0)
-            cell.completedImage.isHidden = true
-            cell.closedImage.isHidden = true
-            cell.levelText.text = "\(level.id)"
-        case .Done:
-            //            cell.buttonCell.backgroundColor = UIColor(red: 195.0/255.0, green: 161.0/255.0, blue: 50.0/255.0, alpha: 1.0)
-            cell.completedImage.isHidden = false
-            cell.closedImage.isHidden = true
-            cell.levelText.text = "\(level.id)"
-        }
-        
-        // Configure the cell
         
         return cell
         
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if cellArray[indexPath.item].status != .Closed {
-            performSegue(withIdentifier: "goToPlayInTheGame", sender: self)
+        guard let notClosed = viewModel.itemIsNotClosed(forIndexPath: indexPath) else { return }
+        if notClosed {
+            performSegue(withIdentifier: identityGoToPlayInTheGame, sender: self)
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToPlayInTheGame" {
-            
-            
-            let destinationVC = segue.destination as? SinglePlayViewController
-            if let indexPath = collectionLevelView.indexPathsForSelectedItems?.first {
-                destinationVC?.id = "\(cellArray[indexPath.item].id)"
+        if segue.identifier == identityGoToPlayInTheGame {
+            if let dvc = segue.destination as? PrepareSinglePlayViewController, let indexPath = collectionLevelView.indexPathsForSelectedItems?.first {
+                dvc.viewModel = viewModel.viewModelForSelectedItem(forIndexPath: indexPath)
             }
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
         
-        if cellArray[indexPath.item].status != .Closed {
+        guard let notClosed = viewModel.itemIsNotClosed(forIndexPath: indexPath) else { return }
+        if notClosed {
             UIView.animate(withDuration: 0.5) {
                 if let cell = collectionView.cellForItem(at: indexPath) as? LevelViewCell {
                     cell.transform = .init(scaleX: 0.95, y: 0.95)
@@ -120,7 +115,8 @@ extension SinglePlayerLevelsViewController: UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-        if cellArray[indexPath.item].status != .Closed {
+        guard let notClosed = viewModel.itemIsNotClosed(forIndexPath: indexPath) else { return }
+        if notClosed {
             UIView.animate(withDuration: 0.5) {
                 if let cell = collectionView.cellForItem(at: indexPath) as? LevelViewCell {
                     cell.transform = .identity

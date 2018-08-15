@@ -8,7 +8,7 @@
 
 import UIKit
 import Alamofire
-class MultiPlayerViewController: UIViewController {
+class PrepareMultiPlayViewController: UIViewController {
 
     @IBAction func button1Tapped(_ sender: UIButton) {
 //        Socket_API.sharedInstance.createGameEvent(id: "5a252ef224c6b30979198ca3")
