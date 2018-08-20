@@ -49,7 +49,6 @@ public class NetworkService {
         mutableRequest.allHTTPHeaderFields = headers
         
         let session = URLSession.shared
-        print("The url path is \(mutableRequest.description)")
         task = session.dataTask(with: mutableRequest, completionHandler: { (data, response, error) in
             
             guard let httpResponse = response as? HTTPURLResponse else {
@@ -65,7 +64,7 @@ public class NetworkService {
                 print("request's been finished with success \(String(describing: mutableRequest.url?.absoluteString))")
                 success?(data)
             } else if self.failureCodes.contains(httpResponse.statusCode){
-                print("request's been finished with failure")
+                print("request's been finished with failure \(httpResponse.statusCode)")
                 failure?(data,error as NSError?, httpResponse.statusCode)
             } else {
                 print("Request finished with failure on the server.")

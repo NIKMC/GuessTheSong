@@ -28,13 +28,13 @@ public class SignInOperation: ServiceOperation {
     private func handleSuccess(_ response: Data) {
         do {
             let data = try JSONDecoder().decode(SignInResponse.self, from: response)
-                        print("The response is: \(String(describing: data.token))")
-            success?(data.token)
+                        print("The response of SignIn is: \(String(describing: data.token))")
+            self.success?(data.token)
+            self.finish()
         } catch let error {
             print("Error of parsing \(error)")
-
+            handleFailure(error as NSError)
         }
-        self.finish()
         
 //        do {
 ////            let item = try SignInResponseMapper.process(response)

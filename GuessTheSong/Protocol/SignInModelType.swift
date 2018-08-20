@@ -12,7 +12,7 @@ protocol SignInModelType {
     
     func setLoginAndPassword(email mail: String, password pass: String)
     
-    func signIn(completion: ((Profile)->())?, errorHandle: ((String)->())?)
+    func signIn(completion: ((String)->())?, errorHandle: ((String)->())?)
     
     func goToTheMenu() -> MenuModelType
     

@@ -14,18 +14,20 @@ class MenuViewModel: MenuModelType {
     private var networkManager: ProfileInfoOperation?
     
     
-    func showProfileInfo(completion: ((UserProfile)->())?, errorHandle: ((String)->())?) {
+    func showProfileInfo(completion: ((ProfileResponse)->())?, errorHandle: ((String)->())?) {
         let token = defaults.value(forKey: "token") as! String
-        let userId = defaults.value(forKey: "id") as! String
-        networkManager = ProfileInfoOperation(token: token, id: userId)
-        
+//        let userId = defaults.value(forKey: "id") as! String
+        networkManager = ProfileInfoOperation(token: token)
+        networkManager?.start()
         networkManager?.success = { (myProfile) in
             print("success get my profile")
+            completion?(myProfile)
             
         }
         
         networkManager?.failure = { (error) in
             print("error of get profile = \(error)")
+            errorHandle?(error.domain)
         }
         
     }

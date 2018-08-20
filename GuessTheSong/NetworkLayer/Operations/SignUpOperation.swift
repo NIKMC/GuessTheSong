@@ -29,12 +29,13 @@ public class SignUpOperation: ServiceOperation {
         do {
             let data = try JSONDecoder().decode(SignUpResponse.self, from: response)
             print("The response is: \(String(describing: data))")
-            success?(data)
+            self.success?(data)
+            self.finish()
+
         } catch let error {
             print("Error of parsing \(error)")
-
+            handleFailure(error as NSError)
         }
-        self.finish()
         
 //        do {
 //            //            let item = try SignInResponseMapper.process(response)

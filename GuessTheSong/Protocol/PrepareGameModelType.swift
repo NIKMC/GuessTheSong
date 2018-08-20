@@ -11,11 +11,15 @@ import Foundation
 protocol PrepareGameModelType {
  
     
-    func prepareDataForStartGame()
+    func prepareDataForStartGame(completion: (()->())?, errorHandle: ((String)->())?)
     
-    func loadingLevel(completion: ((FullDataLevel)->())?, errorHandle: ((String)->())?)
+    func loadingLevel(completion: ((LevelResponse)->())?, errorHandle: ((String)->())?)
     
-    func downloadMusic(musicUrls: [Task], completion: ((String)->())?, errorHandle: ((String)->())?)
+    func downloadSong(taskInfo: SongResponse, songUrl: URL, destination destinationURL: URL, errorHandler: ((Error?)->())?)
     
-    func getDestinationUrl(completionUrl: @escaping ([URL?])->() )  
+    func downloadMusic(musics: [SongResponse], completion: (()->())?, errorHandle: ((String?)->())?)
+    
+//    func getDestinationUrl(completionUrl: @escaping ([URL?])->() )
+    
+    func goToPlaySinglePlay() -> SinglePlayModelType
 }

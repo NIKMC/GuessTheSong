@@ -11,6 +11,6 @@ import Foundation
 protocol CollectionViewCellModelType: class {
     
     var title: String { get }
-    var status: StatusLevel { get }
+    var status: StatusLevel.RawValue { get }
     
 }

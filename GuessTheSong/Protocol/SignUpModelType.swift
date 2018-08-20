@@ -12,7 +12,7 @@ protocol SignUpModelType {
     
     func setData(email: String, login: String, password: String, passwordRep: String)
     
-    func signUp(completion: ((Profile)->())?, errorHandle: ((String)->())?)
+    func signUp(completion: ((SignUpResponse)->())?, errorHandle: ((String)->())?)
     
     func signIn() -> SignInModelType
     

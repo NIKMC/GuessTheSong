@@ -12,7 +12,7 @@ public class FullLevelOperation: ServiceOperation {
     
     private let request: LevelInfoRequest
     
-    public var success: ((FullDataLevel) -> Void)?
+    public var success: ((LevelResponse) -> Void)?
     public var failure: ((NSError) -> Void)?
     
     public init(levelId: String, service: BackendService = NetworkBackendService(BackendConfiguration.shared)) {
@@ -27,7 +27,7 @@ public class FullLevelOperation: ServiceOperation {
     
     private func handleSuccess(_ response: Any?) {
         do {
-            let data = try JSONDecoder().decode(FullDataLevel.self, from: response as! Data)
+            let data = try JSONDecoder().decode(LevelResponse.self, from: response as! Data)
             print("The response is: \(String(describing: data))")
             success?(data)
         } catch let error {

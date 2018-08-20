@@ -8,9 +8,11 @@
 
 import UIKit
 import AVFoundation
+import ProgressHUD
 
 class PrepareSinglePlayViewController: UIViewController {
 
+    private let goToPlay = "goToPlay"
     var id:String = ""
     var audioPlayer:AVAudioPlayer!
     var destinations: [URL?]?
@@ -26,18 +28,25 @@ class PrepareSinglePlayViewController: UIViewController {
         loadingIndicator.color = UIColor(red: 235/255, green: 167/255, blue: 0/255, alpha: 1.0)
         loadingIndicator.scale(factor: 5.0)
         // Do any additional setup after loading the view.
-        addCircleView(circle: circleView)
-        viewModel?.getDestinationUrl(completionUrl: { [weak self] (destinationUrls) in
-            self?.destinations = destinationUrls
-            print("destination Url is \(String(describing: self?.destinations?.first))")
+        addCircleView(circle: circleView)        
+        processLoadingSongs()
+    }
+    
+    func processLoadingSongs() {
+        startLoading()
+        viewModel?.prepareDataForStartGame(completion: { [weak self] in
+            self?.stopLoading()
+            self?.performSegue(withIdentifier: (self?.goToPlay)!, sender: self)
+        }, errorHandle: { [weak self] (errorMessage) in
+            self?.stopLoading()
+            ProgressHUD.showError(errorMessage)
         })
     }
 
-    @IBAction func stopLoading(_ sender: UIButton) {
+    func stopLoading() {
         if loadingIndicator.isAnimating {
             loadingIndicator.stopAnimating()
         }
-        
     }
     
     private func addCircleView(circle: UIView) {
@@ -67,11 +76,10 @@ class PrepareSinglePlayViewController: UIViewController {
     
     }
     
-    @IBAction func startLoading(_ sender: UIButton) {
+    func startLoading() {
         if !loadingIndicator.isAnimating {
             loadingIndicator.startAnimating()
         }
-        
     }
     
     @IBAction func playMusic(_ sender: UIButton) {
@@ -95,8 +103,14 @@ class PrepareSinglePlayViewController: UIViewController {
         guard let player = audioPlayer else { return }
         player.stop()
     }
-    @IBAction func goToPlayInGame(_ sender: Any) {
-        performSegue(withIdentifier: "goToPlay", sender: sender)
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let identifier = segue.identifier
+        if identifier == goToPlay {
+            if let dvc = segue.destination as? GamePlayViewController {
+                dvc.viewModel = viewModel?.goToPlaySinglePlay()
+            }
+        }
     }
     
     @IBAction func nextTrack(_ sender: UIButton) {

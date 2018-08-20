@@ -82,7 +82,9 @@ class RegistrationViewController: UIViewController {
         viewModel?.signUp(completion: { [weak self] (user) in
             print("ok signUp")
             ProgressHUD.dismiss()
-            self?.performSegue(withIdentifier: (self?.goToSignIn)!, sender: self)
+            OperationQueue.main.addOperation {
+                self?.performSegue(withIdentifier: (self?.goToSignIn)!, sender: self)
+            }
         }, errorHandle: { (error) in
             print(error)
             ProgressHUD.showError(error)

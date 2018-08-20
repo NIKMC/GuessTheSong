@@ -22,19 +22,23 @@ class LevelViewCell: UICollectionViewCell {
             guard let viewModel = viewModel else { return }
             let status = viewModel.status
             switch status {
-            case .Closed:
+            case StatusLevel.Closed.rawValue:
                 viewCell.backgroundColor = UIColor(red: 195.0/255.0, green: 161.0/255.0, blue: 50.0/255.0, alpha: 0.65)
                 completedImage.isHidden = true
                 closedImage.isHidden = false
                 levelText.text = ""
-            case .Ready:
+            case StatusLevel.Ready.rawValue:
                 //            cell.buttonCell.backgroundColor = UIColor(red: 195.0/255.0, green: 161.0/255.0, blue: 50.0/255.0, alpha: 1.0)
                 completedImage.isHidden = true
                 closedImage.isHidden = true
                 levelText.text = "\(viewModel.title)"
-            case .Done:
+            case StatusLevel.Done.rawValue:
                 //            cell.buttonCell.backgroundColor = UIColor(red: 195.0/255.0, green: 161.0/255.0, blue: 50.0/255.0, alpha: 1.0)
                 completedImage.isHidden = false
+                closedImage.isHidden = true
+                levelText.text = "\(viewModel.title)"
+            default:
+                completedImage.isHidden = true
                 closedImage.isHidden = true
                 levelText.text = "\(viewModel.title)"
             }

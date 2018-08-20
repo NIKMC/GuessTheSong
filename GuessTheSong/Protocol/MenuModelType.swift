@@ -10,7 +10,7 @@ import Foundation
 
 protocol MenuModelType {
     
-    func showProfileInfo(completion: ((UserProfile)->())?, errorHandle: ((String)->())?)
+    func showProfileInfo(completion: ((ProfileResponse)->())?, errorHandle: ((String)->())?)
     
     func logOut(completion: ((String)->())?, errorHandle: ((String)->())?)
     

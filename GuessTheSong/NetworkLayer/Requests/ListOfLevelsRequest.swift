@@ -1,25 +1,23 @@
 //
-//  ProfileRequest.swift
+//  ListOfLevelsRequest.swift
 //  GuessTheSong
 //
-//  Created by Ivan Nikitin on 20/07/2018.
+//  Created by Ivan Nikitin on 16/08/2018.
 //  Copyright © 2018 Иван Никитин. All rights reserved.
 //
 
 import Foundation
 
-struct ProfileRequest: BackendAPIRequest {
+struct ListOfLevelsRequest: BackendAPIRequest {
     
     private let token: String
-//    private let id: String
     
     init(token: String) {
-            self.token = token
-//            self.id = userId
-        }
+        self.token = token
+    }
     
     var path: String {
-        return "/users/profile/"
+        return "/games/"
     }
     
     var method: HTTPMethod {
@@ -32,10 +30,6 @@ struct ProfileRequest: BackendAPIRequest {
     
     var parameters: [String : String]? {
         return nil
-//        return [
-//            "token": token,
-//            "id": id
-//        ]
     }
     
     var headers: [String : String]? {

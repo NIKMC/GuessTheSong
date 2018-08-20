@@ -84,13 +84,15 @@ class LoginViewController: UIViewController {
     @IBAction func okPressed(_ sender: UIButton) {
         
         
-//        ProgressHUD.show()
+        ProgressHUD.show()
         viewModel?.setLoginAndPassword(email: emailView.text!, password: passwordView.text!)
 //        self.performSegue(withIdentifier: goToMenu, sender: sender)
         viewModel?.signIn(completion: { [weak self] (user) in
             print("sing IN ok")
             ProgressHUD.dismiss()
-            self?.performSegue(withIdentifier: (self?.goToMenu)!, sender: sender)
+            OperationQueue.main.addOperation {
+              self?.performSegue(withIdentifier: (self?.goToMenu)!, sender: self)
+            }
             
         }, errorHandle: { (error) in
             print(error)
@@ -103,6 +105,7 @@ class LoginViewController: UIViewController {
 //        Socket_API.sharedInstance.loginEvent(email: emailView.text!, password: passwordView.text!)
         user = Profile(email: emailView.text!, password: passwordView.text!)
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let identifier = segue.identifier

@@ -34,6 +34,15 @@ class MenuViewController: UIViewController {
         } else {
             print("Not the Login")
         }
+        viewModel?.showProfileInfo(completion: { (profile) in
+            print("get profile ok")
+            print("username from get my profile is \(profile.username)")
+        }, errorHandle: { (error) in
+            print(error)
+            ProgressHUD.showError(error)
+        })
+        
+        
     }
 
     

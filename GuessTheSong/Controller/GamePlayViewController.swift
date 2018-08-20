@@ -19,6 +19,8 @@ class GamePlayViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var life2: UIImageView!
     @IBOutlet weak var life3: UIImageView!
     
+    var viewModel: SinglePlayModelType?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

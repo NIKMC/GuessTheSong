@@ -17,7 +17,7 @@ struct LevelInfoRequest: BackendAPIRequest {
     }
     
     var path: String {
-        return "/level"
+        return "/levels/"
     }
     
     var method: HTTPMethod {

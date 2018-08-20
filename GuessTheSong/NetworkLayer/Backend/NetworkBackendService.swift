@@ -18,7 +18,6 @@ public class NetworkBackendService: BackendService {
     }
     
     public func request(_ request: BackendAPIRequest, success: ((Data) -> ())?, failure: ((NSError) -> ())?) {
-        print("request")
         let url = conf.baseURL.appendingPathComponent(request.path)
         let headers = request.headers
         

@@ -1,23 +1,23 @@
 //
-//  ProfileInfoOperation.swift
+//  ListOfLevelsOperation.swift
 //  GuessTheSong
 //
-//  Created by Ivan Nikitin on 06/08/2018.
+//  Created by Ivan Nikitin on 16/08/2018.
 //  Copyright © 2018 Иван Никитин. All rights reserved.
 //
 
 import Foundation
 
 
-public class ProfileInfoOperation: ServiceOperation {
+public class ListOfLevelsOperation: ServiceOperation {
     
-    private let request: ProfileRequest
+    private let request: ListOfLevelsRequest
     
-        public var success: ((ProfileResponse) -> Void)?
-        public var failure: ((NSError) -> Void)?
+    public var success: (([GameResponse]) -> Void)?
+    public var failure: ((NSError) -> Void)?
     
     public init(token: String, service: BackendService = NetworkBackendService(BackendConfiguration.shared)) {
-        request = ProfileRequest(token: token)
+        request = ListOfLevelsRequest(token: token)
         super.init(service: service)
     }
     
@@ -28,9 +28,9 @@ public class ProfileInfoOperation: ServiceOperation {
     
     private func handleSuccess(_ response: Any?) {
         do {
-            let data = try JSONDecoder().decode(ProfileResponse.self, from: response as! Data)
-            print("The response of ProfileInfoOperation is: \(String(describing: data.username))")
-            self.success?(data)
+            let data = try JSONDecoder().decode(GamesResponse.self, from: response as! Data)
+            print("The response of ProfileInfoOperation is: \(String(describing: data))")
+            self.success?(data.results)
             self.finish()
         } catch let error {
             print("Error of parsing \(error)")

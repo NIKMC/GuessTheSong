@@ -28,22 +28,23 @@ class SignInViewModel : SignInModelType {
         return SignUpViewModel()
     }
     
-    func signIn(completion: ((Profile)->())?, errorHandle: ((String)->())?) {
+    func signIn(completion: ((String)->())?, errorHandle: ((String)->())?) {
         guard let email = email, let password = password else { return }
         
         networkManager = SignInOperation(username: email, password: password)
         networkManager?.start()
-        networkManager?.success = { [unowned self] (user) in
+        networkManager?.success = { [unowned self] (token) in
             self.defaults.setValue(email, forKey: "user_email")
             self.defaults.setValue(password, forKey: "user_password")
+            self.defaults.setValue(token, forKey: "token")
+            completion?("authorization is success")
         }
         
         networkManager?.failure = { (error) in
             print(error.localizedDescription)
+            errorHandle?(error.domain)
         }
-//        NetworkQueue.shared.addOperation(networkManager!)
-        
-//        waitForExpectations(timeout: 10, handler:nil)
+
     }
     
     func loadLogin() -> String {
