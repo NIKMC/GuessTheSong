@@ -83,7 +83,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func okPressed(_ sender: UIButton) {
         
-        
+        //FIXME: Doesn't dismiss when error of request
         ProgressHUD.show()
         viewModel?.setLoginAndPassword(email: emailView.text!, password: passwordView.text!)
 //        self.performSegue(withIdentifier: goToMenu, sender: sender)

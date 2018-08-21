@@ -17,7 +17,7 @@ struct ListOfLevelsRequest: BackendAPIRequest {
     }
     
     var path: String {
-        return "/games/"
+        return "/games/my_games/"
     }
     
     var method: HTTPMethod {

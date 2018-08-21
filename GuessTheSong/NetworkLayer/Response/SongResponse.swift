@@ -10,14 +10,14 @@ import Foundation
 
 public class SongResponse: Codable {
     
-    var idUrl: Int
+    var id: Int
     var name: String
     var audio_file: String
     var song_text: String
     var missing_words_text: [String]
     
-    init(idUrl: Int, name: String, audio_file: String, song_text: String, missing_words_text: [String]) {
-        self.idUrl = idUrl
+    init(id: Int, name: String, audio_file: String, song_text: String, missing_words_text: [String]) {
+        self.id = id
         self.name = name
         self.audio_file = audio_file
         self.song_text = song_text
@@ -41,6 +41,6 @@ public class SongResponse: Codable {
     }
     
     func getIdSongURL() -> Int {
-        return idUrl
+        return id
     }
 }

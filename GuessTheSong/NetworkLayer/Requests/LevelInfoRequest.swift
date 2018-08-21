@@ -12,8 +12,8 @@ struct LevelInfoRequest: BackendAPIRequest {
     
     private let id: String
     
-    init(id: String) {
-        self.id = id
+    init(id: Int) {
+        self.id = String(describing: id)
     }
     
     var path: String {

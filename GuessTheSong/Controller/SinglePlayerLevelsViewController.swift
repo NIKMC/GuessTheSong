@@ -16,7 +16,7 @@ class SinglePlayerLevelsViewController: UIViewController {
     private let leftAndRightPaddings : CGFloat = 20
     private let numberOfItemPerRow: CGFloat = 4
     
-    
+    //FIXME: there is not request to server from viewmodel
     @IBOutlet var viewModel: LevelsOfSinglePlayViewModel!
     
     override func viewDidLoad() {

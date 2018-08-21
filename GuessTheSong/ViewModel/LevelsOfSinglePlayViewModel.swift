@@ -13,9 +13,18 @@ class LevelsOfSinglePlayViewModel: NSObject, LevelsCollectionModelType {
     private var selectedIndexPath: IndexPath?
 //    private var levels: [Level]? = [Level(1, StatusLevel.Done),Level(2, StatusLevel.Done),Level(3, StatusLevel.Ready),Level(4, StatusLevel.Closed),Level(5, StatusLevel.Done),Level(6, StatusLevel.Closed)]
     
+//    private var storage: StorableContext
+    
     private var levels: [GameResponse]?
     private var levelsNetworkManager: ListOfLevelsOperation?
     private var token: String = ""
+    
+    private let DEFAULT_SET = 100
+    private let DEFAULT_SIZE = 20
+    
+    var pageSize: Int
+    var pageOffSet: Int
+    
     
     func numberOfItemsInSection() -> Int {
         return levels?.count ?? 0
@@ -30,7 +39,7 @@ class LevelsOfSinglePlayViewModel: NSObject, LevelsCollectionModelType {
     func itemIsNotClosed(forIndexPath indexPath: IndexPath) -> Bool? {
         guard let levels = levels else { return nil }
         let currentLevel = levels[indexPath.item]
-        return currentLevel.status != StatusLevel.Closed.rawValue ? true : false
+        return currentLevel.status != StatusLevel.closed.rawValue ? true : false
     }
     
     func viewModelForSelectedItem(forIndexPath indexPath: IndexPath) -> PrepareGameModelType? {
@@ -47,6 +56,18 @@ class LevelsOfSinglePlayViewModel: NSObject, LevelsCollectionModelType {
         return self.selectedIndexPath
     }
     
+    //TODO: I need to think about cache levels
+    func fetchListOfLevels(completion: (()->())?, errorHandle: ((String)->())?) {
+        loadingLevels(completion: { [weak self] (results) in
+            self?.levels?.removeAll()
+            self?.levels?.append(contentsOf: results)
+            completion?()
+        }) { (errorMessage) in
+            errorHandle?(errorMessage)
+        }
+    }
+    
+    
     func loadingLevels(completion: (([GameResponse])->())?, errorHandle: ((String)->())?) {
         levelsNetworkManager = ListOfLevelsOperation(token: token)
         levelsNetworkManager?.start()
@@ -61,6 +82,16 @@ class LevelsOfSinglePlayViewModel: NSObject, LevelsCollectionModelType {
         }
     }
     
+    override init() {
+        self.pageSize = DEFAULT_SIZE
+        self.pageOffSet = DEFAULT_SET
+        self.levels = [GameResponse]()
+//        guard let realm = try? RealmStorageContext() else { print("error")}
+//        self.storage = realm
+        
+//        guard self.storage = try RealmStorageContext() as StorageContext else { return }
+        
+    }
     
     
 }

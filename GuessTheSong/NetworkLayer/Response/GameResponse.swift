@@ -9,25 +9,25 @@
 import Foundation
 
 public class GameResponse: Codable {
-    var url: String
+    var id: Int
     var status: String
-    var level: String
+    var level: Int
     var created_at: String
-    var user: ProfileResponse
+    var user: Int
     
-    init(gameURL url: String, status: String, levelURL level: String, created_at: String, user: ProfileResponse ) {
-        self.url = url
+    init(id: Int, status: String, levelURL level: Int, created_at: String, user: Int ) {
+        self.id = id
         self.status = status
         self.level = level
         self.user = user
         self.created_at = created_at
     }
     
-    func getGameURL() -> String {
-        return url
+    func getGameURL() -> Int {
+        return id
     }
     
-    func getLevelURL() -> String {
+    func getLevelURL() -> Int {
         return level
     }
     

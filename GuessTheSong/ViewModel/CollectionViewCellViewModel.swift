@@ -10,18 +10,18 @@ import Foundation
 
 class CollectionViewCellViewModel: CollectionViewCellModelType {
    
-    private var level: String
+    private var level: Int
     private var statusOfLevel: String
     
     var title: String  {
-        return level
+        return String(describing: level)
     }
     
     var status: StatusLevel.RawValue {
         return statusOfLevel
     }
     
-    init(level: String, status: StatusLevel.RawValue) {
+    init(level: Int, status: StatusLevel.RawValue) {
         self.level = level
         self.statusOfLevel = status
     }

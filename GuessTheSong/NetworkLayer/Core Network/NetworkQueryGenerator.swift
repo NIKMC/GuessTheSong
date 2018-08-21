@@ -12,7 +12,7 @@ struct NetworkQueryGenerator {
     func makeQuery(for url: URL, params: [String: String]?, type: HTTPQuery) -> URLRequest {
         switch type {
         case .json:
-            print("json")
+//            print("json")
             var mutableRequest = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
             if let params = params {
                 mutableRequest.httpBody = try! JSONSerialization.data(withJSONObject: params, options: [])

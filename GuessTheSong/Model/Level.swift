@@ -19,7 +19,5 @@ class Level {
 }
 
 enum StatusLevel: String {
-    case Done
-    case Closed
-    case Ready
+    case running, closed, done
 }

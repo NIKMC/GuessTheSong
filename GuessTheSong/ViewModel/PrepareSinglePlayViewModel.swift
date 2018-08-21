@@ -11,16 +11,18 @@ import Alamofire
 
 class PrepareSinglePlayViewModel: PrepareGameModelType {
     
-    private var level: String
-    private var gameId: String
+    private var level: Int
+    private var gameId: Int
     private var levelNetworkManager: FullLevelOperation?
     private var musicsPath: [Int:URL]
     private var group: DispatchGroup
+    private var fullLevelInfo: [SongResponse]
     
-    init(level currentLevel: String, idGame gameId: String) {
+    init(level currentLevel: Int, idGame gameId: Int) {
         self.level = currentLevel
         self.gameId = gameId
         self.musicsPath = [:]
+        self.fullLevelInfo = []
         print("the id is \(level)")
         self.group = DispatchGroup()
     }
@@ -28,7 +30,9 @@ class PrepareSinglePlayViewModel: PrepareGameModelType {
     func prepareDataForStartGame(completion: (()->())?, errorHandle: ((String)->())?) {
         
         loadingLevel(completion: { [weak self] (levelInfo) in
+            self?.fullLevelInfo.removeAll()
             let listOfSongs = levelInfo.songs
+            self?.fullLevelInfo.append(contentsOf: listOfSongs)
             self?.downloadMusic(musics: listOfSongs, completion: {
                 completion?()
             }, errorHandle: { (errorMessage) in
@@ -42,10 +46,9 @@ class PrepareSinglePlayViewModel: PrepareGameModelType {
     }
     
     func goToPlaySinglePlay() -> SinglePlayModelType {
-        
         let sortedSongs = musicsPath.sorted(by: {$0.key<$1.key})
         let songs = sortedSongs.map({$0.value})
-        return SinglePlayViewModel(path: songs, id: gameId)
+        return SinglePlayViewModel(path: songs, id: gameId, info: fullLevelInfo)
     }
     
 //    func getDestinationUrl(completionUrl: @escaping ([URL?])->() )  {
@@ -67,7 +70,7 @@ class PrepareSinglePlayViewModel: PrepareGameModelType {
 //    }
     
     func loadingLevel(completion: ((LevelResponse)->())?, errorHandle: ((String)->())?) {
-        levelNetworkManager = FullLevelOperation(levelId: String(describing: level))
+        levelNetworkManager = FullLevelOperation(levelId: level)
         levelNetworkManager?.start()
         levelNetworkManager?.success = { (levelInfo) in
             print("the result is ok \(levelInfo.name)")
@@ -95,7 +98,7 @@ class PrepareSinglePlayViewModel: PrepareGameModelType {
                     // after downloading your file you need to move it to your destination url
                     try FileManager.default.moveItem(at: responseMusicPath, to: destinationURL)
                     if taskInfo.getSongURL() == destinationURL.absoluteString {
-                        self.musicsPath[taskInfo.idUrl] = destinationURL
+                        self.musicsPath[taskInfo.id] = destinationURL
                     }
                     print("File moved to documents folder")
                 } catch let error as NSError {
@@ -123,7 +126,7 @@ class PrepareSinglePlayViewModel: PrepareGameModelType {
             // to check if it exists before downloading it
                 if FileManager.default.fileExists(atPath: destinationUrl.path) {
                     print("The file already exists at path")
-                    self?.musicsPath[task.idUrl] = destinationUrl
+                    self?.musicsPath[task.id] = destinationUrl
                 } else {
                     self?.downloadSong(taskInfo: task, songUrl: url, destination: destinationUrl) { (error) in
                         errorHandle?(error?.localizedDescription)

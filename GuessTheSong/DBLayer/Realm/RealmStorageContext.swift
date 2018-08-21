@@ -23,7 +23,7 @@ public enum ConfigurationType{
     }
 }
 
-class RealmStorageContext: StorageContext {
+class RealmStorageContext: StorableContext {
     var realm: Realm?
     
     required init(configuration: ConfigurationType = .basic(url: nil)) throws {

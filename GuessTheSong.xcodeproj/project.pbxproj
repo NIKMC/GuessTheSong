@@ -75,7 +75,7 @@
 		02D0B87F20C97ED8007CE013 /* MultiPlayerScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02D0B87E20C97ED8007CE013 /* MultiPlayerScreen.storyboard */; };
 		02D553EC20CE73DE009F1FE6 /* GameRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D553EB20CE73DE009F1FE6 /* GameRequest.swift */; };
 		02E5BCE2207A3F5000272CFD /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E5BCE1207A3F5000272CFD /* Profile.swift */; };
-		02F03E7120C012FC00A20C99 /* StorageContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F03E7020C012FC00A20C99 /* StorageContext.swift */; };
+		02F03E7120C012FC00A20C99 /* StorableContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F03E7020C012FC00A20C99 /* StorableContext.swift */; };
 		02F03E7320C014B100A20C99 /* Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F03E7220C014B100A20C99 /* Storable.swift */; };
 		02F03E7520C0169600A20C99 /* RealmStorageContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F03E7420C0169600A20C99 /* RealmStorageContext.swift */; };
 		02F03E7720C0181A00A20C99 /* RealmStorageContextOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F03E7620C0181A00A20C99 /* RealmStorageContextOperations.swift */; };
@@ -166,7 +166,7 @@
 		02D0B87E20C97ED8007CE013 /* MultiPlayerScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MultiPlayerScreen.storyboard; sourceTree = "<group>"; };
 		02D553EB20CE73DE009F1FE6 /* GameRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRequest.swift; sourceTree = "<group>"; };
 		02E5BCE1207A3F5000272CFD /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
-		02F03E7020C012FC00A20C99 /* StorageContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageContext.swift; sourceTree = "<group>"; };
+		02F03E7020C012FC00A20C99 /* StorableContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorableContext.swift; sourceTree = "<group>"; };
 		02F03E7220C014B100A20C99 /* Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storable.swift; sourceTree = "<group>"; };
 		02F03E7420C0169600A20C99 /* RealmStorageContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmStorageContext.swift; sourceTree = "<group>"; };
 		02F03E7620C0181A00A20C99 /* RealmStorageContextOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmStorageContextOperations.swift; sourceTree = "<group>"; };
@@ -394,7 +394,7 @@
 			isa = PBXGroup;
 			children = (
 				02F03E7220C014B100A20C99 /* Storable.swift */,
-				02F03E7020C012FC00A20C99 /* StorageContext.swift */,
+				02F03E7020C012FC00A20C99 /* StorableContext.swift */,
 				0263AD1320BF212600BBC32B /* Entities */,
 				02F03E6F20C0127900A20C99 /* Realm */,
 			);
@@ -622,7 +622,7 @@
 				02743AFD21021B0F0031322D /* SinglePlayerLevelsRequest.swift in Sources */,
 				02D001102100AEDC00A43EA8 /* MenuModelType.swift in Sources */,
 				025CAD8520945B4B00177A6C /* SinglePlayerLevelsViewController.swift in Sources */,
-				02F03E7120C012FC00A20C99 /* StorageContext.swift in Sources */,
+				02F03E7120C012FC00A20C99 /* StorableContext.swift in Sources */,
 				02884CF8211415CC00309B06 /* LevelsCollectionModelType.swift in Sources */,
 				02A02D162119ADF600EA1676 /* DownloadMusicOperation.swift in Sources */,
 				02F03E7320C014B100A20C99 /* Storable.swift in Sources */,
@@ -821,6 +821,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C897U44A5R;
+				HOST_NAME = "http://89.223.93.117:80";
 				INFOPLIST_FILE = GuessTheSong/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nikmc-i.GuessTheSong";
@@ -837,6 +838,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C897U44A5R;
+				HOST_NAME = "http://89.223.93.117:80";
 				INFOPLIST_FILE = GuessTheSong/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nikmc-i.GuessTheSong";
@@ -915,6 +917,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C897U44A5R;
+				HOST_NAME = "http://89.223.93.117:80";
 				INFOPLIST_FILE = GuessTheSong/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nikmc-i.GuessTheSong";
@@ -986,6 +989,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C897U44A5R;
+				HOST_NAME = "http://89.223.93.117:80";
 				INFOPLIST_FILE = GuessTheSong/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nikmc-i.GuessTheSong";

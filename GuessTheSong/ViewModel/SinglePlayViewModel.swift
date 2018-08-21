@@ -7,13 +7,15 @@
 //
 
 import Foundation
+import AVFoundation
 
 class SinglePlayViewModel: SinglePlayModelType {
     
     private var levelOfLive: Int
     private var pathOfSongs: [URL]
+    private var dataOfLevel: [SongResponse]
     private var index: Int
-    private var gameId: String
+    private var gameId: Int
     
     func decreaseLive() -> Bool {
         self.levelOfLive = currentLive() - 1
@@ -43,10 +45,24 @@ class SinglePlayViewModel: SinglePlayModelType {
         self.index = currentIndex() + 1
     }
     
-    init(path: [URL], id gameId: String) {
+    func preparePlayer() {
+        
+    }
+    
+    func startPlayMusic() {
+        
+    }
+    
+    func stopPlayMusic() {
+        
+    }
+    
+    
+    init(path: [URL], id gameId: Int, info: [SongResponse]) {
         self.index = 0
         self.levelOfLive = 3
         self.pathOfSongs = path
         self.gameId = gameId
+        self.dataOfLevel = info
     }
 }

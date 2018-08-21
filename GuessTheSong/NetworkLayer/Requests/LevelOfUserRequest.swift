@@ -10,11 +10,11 @@ import Foundation
 
 struct LevelOfUserRequest: BackendAPIRequest {
     
-        private let id: String
+    private let id: String
     
-        init(id: String) {
-            self.id = id
-        }
+    init(id: String) {
+        self.id = id
+    }
     
     var path: String {
         return "/users/level"

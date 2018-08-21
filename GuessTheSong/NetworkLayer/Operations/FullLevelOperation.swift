@@ -15,7 +15,7 @@ public class FullLevelOperation: ServiceOperation {
     public var success: ((LevelResponse) -> Void)?
     public var failure: ((NSError) -> Void)?
     
-    public init(levelId: String, service: BackendService = NetworkBackendService(BackendConfiguration.shared)) {
+    public init(levelId: Int, service: BackendService = NetworkBackendService(BackendConfiguration.shared)) {
         request = LevelInfoRequest(id: levelId)
         super.init(service: service)
     }

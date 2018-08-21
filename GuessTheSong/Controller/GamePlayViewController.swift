@@ -10,7 +10,7 @@ import UIKit
 
 class GamePlayViewController: UIViewController,UITextFieldDelegate {
 
-    
+    //TODO: I need create a struct which will used to determine singleplay or multyPlay
     @IBOutlet weak var scoreTitleLabelText: UILabel!
     @IBOutlet weak var textLabelText: UILabel!
     @IBOutlet weak var containerView: UIView!
@@ -44,6 +44,14 @@ class GamePlayViewController: UIViewController,UITextFieldDelegate {
 
         }
         
+        
+    }
+    
+    func prepareTextOfSong() {
+        
+    }
+    
+    func prepareAnswersOfSong() {
         
     }
 

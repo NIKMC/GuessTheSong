@@ -44,11 +44,11 @@ extension RealmStorageContext {
         }
         let objects = List<Object>()
         if let level = object as? LevelData {
-            level.status = StatusLevel.Done.rawValue
+            level.status = StatusLevel.done.rawValue
             objects.append(level)
             let predicate = NSPredicate(format: "id = %@", level.id + 1 )
             if let nextLevel = fetchNext(LevelData.self, predicate: predicate) {
-                nextLevel.status = StatusLevel.Ready.rawValue
+                nextLevel.status = StatusLevel.running.rawValue
                 objects.append(nextLevel)
             }
             try self.safeWrite {

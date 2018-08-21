@@ -14,7 +14,7 @@ struct Sorted {
 }
 
 
-protocol StorageContext {
+protocol StorableContext {
     //    MARK: Save an object that is conformed to the 'Storable' protocol
     func save(object: Storable) throws
 
