@@ -20,6 +20,11 @@ class LevelViewCell: UICollectionViewCell {
     weak var viewModel: CollectionViewCellModelType? {
         willSet(viewModel) {
             guard let viewModel = viewModel else { return }
+            
+            viewCell.layer.borderWidth = 1
+            viewCell.layer.borderColor = UIColor.black.cgColor
+            viewCell.layer.cornerRadius = 5
+            
             let status = viewModel.status
             switch status {
             case StatusLevel.closed.rawValue:
@@ -28,15 +33,18 @@ class LevelViewCell: UICollectionViewCell {
                 closedImage.isHidden = false
                 levelText.text = ""
             case StatusLevel.running.rawValue:
-                //            cell.buttonCell.backgroundColor = UIColor(red: 195.0/255.0, green: 161.0/255.0, blue: 50.0/255.0, alpha: 1.0)
+                viewCell.backgroundColor = UIColor(red: 195.0/255.0, green: 161.0/255.0, blue: 50.0/255.0, alpha: 1.0)
                 completedImage.isHidden = true
                 closedImage.isHidden = true
                 levelText.text = "\(viewModel.title)"
             case StatusLevel.done.rawValue:
-                //            cell.buttonCell.backgroundColor = UIColor(red: 195.0/255.0, green: 161.0/255.0, blue: 50.0/255.0, alpha: 1.0)
+                viewCell.backgroundColor = UIColor(red: 195.0/255.0, green: 161.0/255.0, blue: 50.0/255.0, alpha: 1.0)
                 completedImage.isHidden = false
                 closedImage.isHidden = true
                 levelText.text = "\(viewModel.title)"
+                //FIXME: wrong add completed image after refreshing
+                completedImage.center.x = viewCell.layer.frame.origin.x + viewCell.layer.frame.size.width + (frame.size.width - viewCell.layer.frame.size.width)/2
+                completedImage.center.y = viewCell.layer.frame.origin.y + viewCell.layer.frame.size.height/4
             default:
                 completedImage.isHidden = true
                 closedImage.isHidden = true

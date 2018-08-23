@@ -96,6 +96,7 @@ class LoginViewController: UIViewController {
             
         }, errorHandle: { (error) in
             print(error)
+//            ProgressHUD.dismiss()
             ProgressHUD.showError(error)
         })
         

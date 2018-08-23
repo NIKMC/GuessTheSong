@@ -17,7 +17,6 @@ class LevelsOfSinglePlayViewModel: NSObject, LevelsCollectionModelType {
     
     private var levels: [GameResponse]?
     private var levelsNetworkManager: ListOfLevelsOperation?
-    private var token: String = ""
     
     private let DEFAULT_SET = 100
     private let DEFAULT_SIZE = 20
@@ -69,6 +68,11 @@ class LevelsOfSinglePlayViewModel: NSObject, LevelsCollectionModelType {
     
     
     func loadingLevels(completion: (([GameResponse])->())?, errorHandle: ((String)->())?) {
+        //FIXME: change on the Static class with variable token
+        guard let token = UserDefaults.standard.string(forKey: "token") else {
+            errorHandle?("Error update token")
+            return
+        }
         levelsNetworkManager = ListOfLevelsOperation(token: token)
         levelsNetworkManager?.start()
         levelsNetworkManager?.success = { (levels) in

@@ -37,9 +37,11 @@ class PrepareSinglePlayViewModel: PrepareGameModelType {
                 completion?()
             }, errorHandle: { (errorMessage) in
                 print("error of loading or downloading songs")
+                errorHandle?(errorMessage)
             })
         }) { (error) in
             print("error loading info about level")
+            errorHandle?(error)
         }
         
         
@@ -70,7 +72,12 @@ class PrepareSinglePlayViewModel: PrepareGameModelType {
 //    }
     
     func loadingLevel(completion: ((LevelResponse)->())?, errorHandle: ((String)->())?) {
-        levelNetworkManager = FullLevelOperation(levelId: level)
+        //FIXME: change on the Static class with variable token
+        guard let token = UserDefaults.standard.string(forKey: "token") else {
+            errorHandle?("Error update token")
+            return
+        }
+        levelNetworkManager = FullLevelOperation(token: token, levelId: level)
         levelNetworkManager?.start()
         levelNetworkManager?.success = { (levelInfo) in
             print("the result is ok \(levelInfo.name)")
@@ -83,35 +90,45 @@ class PrepareSinglePlayViewModel: PrepareGameModelType {
         }
     }
     
-    func downloadSong(taskInfo: SongResponse, songUrl: URL, destination destinationURL: URL, errorHandler: ((Error?)->())?) {
+    func downloadSong(taskInfo: SongResponse, destination destinationURL: URL, errorHandler: ((Error)->())?) {
         
         let destination: DownloadRequest.DownloadFileDestination = { _, _ in
             let fileURL = destinationURL
             return (fileURL, [.createIntermediateDirectories])
         }
         
-        Alamofire.download(songUrl, to: destination).response { [unowned self] response in
+        let stringMusicUrl = taskInfo.getSongURL()
+        guard let url = URL(string: stringMusicUrl) else { return }
+        
+        
+        Alamofire.download(url, to: destination).response { [unowned self] response in
             print(response)
             
             if response.error == nil, let responseMusicPath = response.destinationURL {
                 do {
                     // after downloading your file you need to move it to your destination url
                     try FileManager.default.moveItem(at: responseMusicPath, to: destinationURL)
-                    if taskInfo.getSongURL() == destinationURL.absoluteString {
+                    
+                    print("task info \(url.lastPathComponent)")
+                    print("destinationURL.absoluteString \(destinationURL.lastPathComponent)")
+                    
+                    if url.lastPathComponent == destinationURL.lastPathComponent {
                         self.musicsPath[taskInfo.id] = destinationURL
+                        self.group.leave()
                     }
                     print("File moved to documents folder")
                 } catch let error as NSError {
                     print(error.localizedDescription)
+                    errorHandler?(error)
                 }
             } else {
-                errorHandler?(response.error)
+                errorHandler?(response.error ?? NSError())
             }
         }
     }
    
     
-    func downloadMusic(musics: [SongResponse], completion: (()->())?, errorHandle: ((String?)->())?) {
+    func downloadMusic(musics: [SongResponse], completion: (()->())?, errorHandle: ((String)->())?) {
         
         for task in musics {
             // create document folder url
@@ -122,24 +139,30 @@ class PrepareSinglePlayViewModel: PrepareGameModelType {
             let destinationUrl =  documentsDirectoryURL.appendingPathComponent(url.lastPathComponent)
             
             print(destinationUrl)
-            DispatchQueue.global(qos: .userInitiated).async(group: group) { [weak self] in
+//            DispatchQueue.global(qos: .userInitiated).async(group: group) { [weak self] in
+            group.enter()
             // to check if it exists before downloading it
                 if FileManager.default.fileExists(atPath: destinationUrl.path) {
                     print("The file already exists at path")
-                    self?.musicsPath[task.id] = destinationUrl
+                    musicsPath[task.id] = destinationUrl
+                    group.leave()
                 } else {
-                    self?.downloadSong(taskInfo: task, songUrl: url, destination: destinationUrl) { (error) in
-                        errorHandle?(error?.localizedDescription)
+                    downloadSong(taskInfo: task, destination: destinationUrl) { [weak self] (error) in
+                        errorHandle?(error.localizedDescription)
+                        self?.group.leave()
                     }
                 }
-            }
+//            }
         }
         
         group.notify(queue: .main) { [unowned self] in
+            print("The musics count is \(musics.count)")
+            print("The musicsPath count is \(self.musicsPath.count)")
             if musics.count == self.musicsPath.count {
                 completion?()
             } else {
                 print("Something went WRONG!!!!!!!!!!!!")
+                errorHandle?("Error of downloading songs. Try again!")
             }
         }
 

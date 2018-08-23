@@ -87,6 +87,7 @@ class RegistrationViewController: UIViewController {
             }
         }, errorHandle: { (error) in
             print(error)
+//            ProgressHUD.dismiss()
             ProgressHUD.showError(error)
         })
 //        Socket_API.sharedInstance.registerEvent(login: loginView.text!, email: emailView.text!, password: passwordView.text!, password2: repasswordView.text!)

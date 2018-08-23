@@ -42,7 +42,7 @@ class SignInViewModel : SignInModelType {
         
         networkManager?.failure = { (error) in
             print(error.localizedDescription)
-            errorHandle?(error.domain)
+            errorHandle?(error.localizedDescription)
         }
 
     }

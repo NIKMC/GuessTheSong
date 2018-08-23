@@ -15,8 +15,8 @@ public class FullLevelOperation: ServiceOperation {
     public var success: ((LevelResponse) -> Void)?
     public var failure: ((NSError) -> Void)?
     
-    public init(levelId: Int, service: BackendService = NetworkBackendService(BackendConfiguration.shared)) {
-        request = LevelInfoRequest(id: levelId)
+    public init(token: String, levelId: Int, service: BackendService = NetworkBackendService(BackendConfiguration.shared)) {
+        request = LevelInfoRequest(token: token, id: levelId)
         super.init(service: service)
     }
     
@@ -30,23 +30,15 @@ public class FullLevelOperation: ServiceOperation {
             let data = try JSONDecoder().decode(LevelResponse.self, from: response as! Data)
             print("The response is: \(String(describing: data))")
             success?(data)
+            self.finish()
         } catch let error {
             print("Error of parsing \(error)")
-
+            handleFailure(error as NSError)
         }
-        
-        
-//        do {
-//            //            let item = try SignInResponseMapper.process(response)
-//            //            self.success?(item)
-//            self.finish()
-//        } catch {
-//            //            handleFailure(NSError.cannotParseResponse())
-//        }
     }
     
     private func handleFailure(_ error: NSError) {
-        //        self.failure?(error)
+        self.failure?(error)
         self.finish()
     }
 }

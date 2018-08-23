@@ -15,9 +15,9 @@ protocol PrepareGameModelType {
     
     func loadingLevel(completion: ((LevelResponse)->())?, errorHandle: ((String)->())?)
     
-    func downloadSong(taskInfo: SongResponse, songUrl: URL, destination destinationURL: URL, errorHandler: ((Error?)->())?)
+    func downloadSong(taskInfo: SongResponse, destination destinationURL: URL, errorHandler: ((Error)->())?)
     
-    func downloadMusic(musics: [SongResponse], completion: (()->())?, errorHandle: ((String?)->())?)
+    func downloadMusic(musics: [SongResponse], completion: (()->())?, errorHandle: ((String)->())?)
     
 //    func getDestinationUrl(completionUrl: @escaping ([URL?])->() )
     

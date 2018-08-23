@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ProgressHUD
 
 class SinglePlayerLevelsViewController: UIViewController {
     
@@ -16,18 +17,22 @@ class SinglePlayerLevelsViewController: UIViewController {
     private let leftAndRightPaddings : CGFloat = 20
     private let numberOfItemPerRow: CGFloat = 4
     
-    //FIXME: there is not request to server from viewmodel
+    //TODO: create request update collectionview by pullToRefresh
     @IBOutlet var viewModel: LevelsOfSinglePlayViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Refresh", style: .plain, target: self, action: #selector(self.refreshLevels(sender:)))
         
         //Configure the collectionView
 //        let width = (collectionLevelView.frame.size.width - leftAndRightPaddings) / numberOfItemPerRow
         let width = (view.frame.size.width - leftAndRightPaddings) / numberOfItemPerRow
         let layout = collectionLevelView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: width, height: width)
+        
+        loadLevels()
+        
 //        self.navigationItem.hidesBackButton = true
 //        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Menu", style: .plain, target: self, action: #selector(self.back(sender:)))
     }
@@ -38,6 +43,24 @@ class SinglePlayerLevelsViewController: UIViewController {
             else {
                 print("No view controllers to pop off")
                 return
+        }
+    }
+    //TODO: replace on the refresh, not to load full data
+    //FIXME: not correctly update UI after refresh
+    @objc func refreshLevels(sender: AnyObject) {
+        loadLevels()
+    }
+    
+    func loadLevels() {
+        ProgressHUD.show()
+        viewModel.fetchListOfLevels(completion: { [weak self] in
+            ProgressHUD.dismiss()
+            OperationQueue.main.addOperation {
+                self?.collectionLevelView.reloadData()
+            }
+        }) { (errorMessage) in
+            //            ProgressHUD.dismiss()
+            ProgressHUD.showError(errorMessage)
         }
     }
     
@@ -55,12 +78,14 @@ extension SinglePlayerLevelsViewController: UICollectionViewDelegate, UICollecti
         } else {
             let noDataLabel: UILabel     = UILabel(frame: CGRect(x: 0, y: collectionView.bounds.size.height/4, width: collectionView.bounds.size.width, height: collectionView.bounds.size.height/2))
             noDataLabel.text          = "No data available"
-            noDataLabel.textColor     = UIColor.black
+            noDataLabel.textColor     = UIColor.white
             noDataLabel.textAlignment = .center
             collectionView.backgroundView  = noDataLabel
         }
         return numOfSections
     }
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let collectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? LevelViewCell
@@ -69,18 +94,7 @@ extension SinglePlayerLevelsViewController: UICollectionViewDelegate, UICollecti
         let itemViewModel = viewModel.itemViewModel(forIndexPath: indexPath)
         cell.viewModel = itemViewModel
 
-        cell.translatesAutoresizingMaskIntoConstraints = true
-        
-//        print("size \(cell.frame)")
-//        print("size cell \(cell.frame.size.width)")
-//        print("size of view \( cell.viewCell.frame.size.width)")
-//        print("size dest \( cell.frame.size.width - cell.viewCell.frame.size.width)")
-        
-        cell.completedImage.center.x = cell.viewCell.frame.origin.x + cell.viewCell.frame.size.width + (cell.frame.size.width - cell.viewCell.frame.size.width)/2
-        cell.completedImage.center.y = cell.viewCell.frame.origin.y + cell.viewCell.frame.size.height/4
-        cell.viewCell.layer.borderWidth = 1
-        cell.viewCell.layer.borderColor = UIColor.black.cgColor
-        cell.viewCell.layer.cornerRadius = 5
+//        cell.translatesAutoresizingMaskIntoConstraints = true
         
         return cell
         

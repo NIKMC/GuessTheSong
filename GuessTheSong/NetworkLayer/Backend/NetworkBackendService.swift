@@ -28,6 +28,8 @@ public class NetworkBackendService: BackendService {
         }) { (data, error, statusCode) in
             if data == nil {
                 failure?(error ?? NSError(domain: "Error on backend side", code: 0, userInfo: nil))
+            } else {
+                failure?(error ?? NSError(domain: "Incorrect request to the server", code: 0, userInfo: nil))
             }
         }
     }

@@ -48,6 +48,8 @@ public class NetworkService {
         mutableRequest.httpMethod = method.rawValue
         mutableRequest.allHTTPHeaderFields = headers
         
+        print("The url of request is: \(mutableRequest.url)")
+        
         let session = URLSession.shared
         task = session.dataTask(with: mutableRequest, completionHandler: { (data, response, error) in
             

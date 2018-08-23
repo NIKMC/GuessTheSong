@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import ProgressHUD
 
 class MainViewController: UIViewController {
 

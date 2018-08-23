@@ -11,13 +11,15 @@ import Foundation
 struct LevelInfoRequest: BackendAPIRequest {
     
     private let id: String
+    private let token: String
     
-    init(id: Int) {
+    init(token: String, id: Int) {
         self.id = String(describing: id)
+        self.token = token
     }
     
     var path: String {
-        return "/levels/"
+        return "/levels/\(id)/"
     }
     
     var method: HTTPMethod {
@@ -29,12 +31,12 @@ struct LevelInfoRequest: BackendAPIRequest {
     }
     
     var parameters: [String : String]? {
-        return [
-            "id": id
-        ]
+        return nil
     }
     
     var headers: [String : String]? {
-        return defaultJSONHeader()
+        var jsonHeaders = defaultJSONHeader()
+        jsonHeaders["Authorization"] = "JWT \(token)"
+        return jsonHeaders
     }
 }
