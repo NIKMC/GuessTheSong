@@ -13,6 +13,7 @@ import ProgressHUD
 class PrepareSinglePlayViewController: UIViewController {
 
     private let goToPlay = "goToPlay"
+    private let GameControllerID = "GameControllerID"
     var id:String = ""
     var audioPlayer:AVAudioPlayer!
     var destinations: [URL?]?
@@ -25,19 +26,39 @@ class PrepareSinglePlayViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.hidesBackButton = true
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back"), style: .plain, target: self, action: #selector(self.back(sender:)))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Refresh", style: .plain, target: self, action: #selector(self.refreshDownloadMusic(sender:)))
+        
         loadingIndicator.color = UIColor(red: 235/255, green: 167/255, blue: 0/255, alpha: 1.0)
         loadingIndicator.scale(factor: 5.0)
+        
         // Do any additional setup after loading the view.
         addCircleView(circle: circleView)        
         processLoadingSongs()
     }
     
+    @objc func refreshDownloadMusic(sender: AnyObject) {
+        processLoadingSongs()
+    }
+    
+    @objc func back(sender: AnyObject) {
+        guard(navigationController?.popViewController(animated: true)) != nil
+            else {
+                print("No view controllers to pop off")
+                return
+        }
+    }
+    
     func processLoadingSongs() {
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
         startLoading()
         viewModel?.prepareDataForStartGame(completion: { [weak self] in
+            self?.navigationItem.rightBarButtonItem?.isEnabled = true
             self?.stopLoading()
             self?.performSegue(withIdentifier: (self?.goToPlay)!, sender: self)
         }, errorHandle: { [weak self] (errorMessage) in
+            self?.navigationItem.rightBarButtonItem?.isEnabled = true
             self?.stopLoading()
             ProgressHUD.showError(errorMessage)
         })
@@ -55,8 +76,6 @@ class PrepareSinglePlayViewController: UIViewController {
             let size = self.view.frame.size.width - 100
             circle.frame.size.width = size
             circle.frame.size.height = size
-        } else {
-//            circle
         }
         circle.center = self.view.center
         circle.layer.cornerRadius = circleView.frame.width / 2
@@ -71,7 +90,6 @@ class PrepareSinglePlayViewController: UIViewController {
     
         circle.addSubview(blurView)
         circle.addSubview(loadingIndicator)
-//        circle.addSubview(searchText)
         self.view.addSubview(circle)
     
     }
@@ -82,57 +100,26 @@ class PrepareSinglePlayViewController: UIViewController {
         }
     }
     
-    @IBAction func playMusic(_ sender: UIButton) {
-        guard let destinationURLFirst = destinations?[0] else {
-            print("no first value")
-            return
-        }
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: destinationURLFirst)
-            guard let player = audioPlayer else { return }
-            
-            player.prepareToPlay()
-            player.play()
-        } catch let error {
-            print(error.localizedDescription)
-        }
-    
-    }
-    
-    @IBAction func stopMusic(_ sender: UIButton) {
-        guard let player = audioPlayer else { return }
-        player.stop()
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let identifier = segue.identifier
         if identifier == goToPlay {
-            if let dvc = segue.destination as? GamePlayViewController {
-                dvc.viewModel = viewModel?.goToPlaySinglePlay()
-            }
-        }
-    }
-    
-    @IBAction func nextTrack(_ sender: UIButton) {
-        guard let _ = destinations?.remove(at: 0) else {
-            print("error deleting")
-            return
-        }
-        guard let destinationURLFirst = destinations?[0] else {
-            print("no next value")
-            return
-        }
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: destinationURLFirst)
-            guard let player = audioPlayer else { return }
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let root = appDelegate.switchRootViewController(nameStoryBoard: "GameScreen", idViewController: GameControllerID)
+            guard let dvc = root.childViewControllers.first as? GamePlayViewController else { print("Not found destinationaViewController")
+                return }
             
-            player.prepareToPlay()
-            player.play()
-        } catch let error {
-            print(error.localizedDescription)
+//            guard let navigationVC = segue.destination as? UINavigationController else {
+//                print("not found UINavigationController of MenuViewController")
+//                return
+//
+//            }
+//            guard let dvc = navigationVC.topViewController as? GamePlayViewController else {
+//                print("not found menuview controller")
+//                return
+//            }
+             dvc.viewModel = viewModel?.goToPlaySinglePlay()
         }
     }
-    
 }
 
 extension UIActivityIndicatorView {

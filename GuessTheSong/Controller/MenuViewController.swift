@@ -20,6 +20,8 @@ class MenuViewController: UIViewController {
     var viewModel: MenuModelType?
     private let goToSinglePlay = "singlePlayTapped"
     private let goToMultyPlay = "multyPlayTapped"
+    private let MainControllerID = "MainControllerID"
+    private let goToMain = "goToMain"
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,8 +29,6 @@ class MenuViewController: UIViewController {
 //        Socket_API.sharedInstance.connect(connection: .User)
 //        Socket_API.sharedInstance.profileResponseEvent()
 //        ProgressHUD.showSuccess()
-        
-        
         if let login = defaults.value(forKey: "token") as? String {
             print( "The token is \(login)")
         } else {
@@ -60,22 +60,29 @@ class MenuViewController: UIViewController {
 //            if let dvc = segue.destination as? PrepareMultiPlayViewController {
 //                dvc.viewModel = viewModel?.signUp()
 //            }
+        } else if identifier == goToMain {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let root = appDelegate.switchRootViewController(nameStoryBoard: "Main", idViewController: MainControllerID)
+            //        guard let dvc = root.childViewControllers.first as? SignUpViewController else { print("Not found destinationaViewController")
+            //            return }
         }
+        
         
     }
     
     @IBAction func logOutTapped(_ sender: UIBarButtonItem) {
-//        Socket_API.sharedInstance.disconnect()
-        guard(navigationController?.popToRootViewController(animated: true)) != nil
-            else {
-                print("No view controllers to pop off")
-                return
-        }
+//        guard(navigationController?.popToRootViewController(animated: true)) != nil
+//            else {
+//                print("No view controllers to pop off")
+//                return
+//        }
+       
+
+        performSegue(withIdentifier: goToMain, sender: sender)
     }
     
     @IBAction func profileInfo(_ sender: UIButton) {
-//       getProfileEvent(userId: "5ac7c93aa426d060217d8caf")
-//        Socket_API.sharedInstance.getProfileEvent(userId: "5ac7c93aa426d060217d8caf")
+
     }
     
 }

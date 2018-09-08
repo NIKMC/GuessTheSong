@@ -7,7 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		021F1CE1213DB1E200A8E010 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021F1CE0213DB1E200A8E010 /* UIColor+Extension.swift */; };
+		021F1CE3213DB7F600A8E010 /* UIAnswers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021F1CE2213DB7F600A8E010 /* UIAnswers.swift */; };
 		0220380620CAABCA00AF0B0D /* PrepareMultiPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0220380520CAABCA00AF0B0D /* PrepareMultiPlayViewController.swift */; };
+		023D679C213DCCDF005D13CE /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023D679B213DCCDF005D13CE /* Box.swift */; };
+		023D679E213E6A91005D13CE /* FinishGameRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023D679D213E6A91005D13CE /* FinishGameRequest.swift */; };
+		023D67A0213E6BFB005D13CE /* FinishGameResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023D679F213E6BFB005D13CE /* FinishGameResponse.swift */; };
+		023D67A2213E6CC6005D13CE /* FinishGameOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023D67A1213E6CC6005D13CE /* FinishGameOperation.swift */; };
 		023E7F4620B15B9000DDFC39 /* PrepareSinglePlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023E7F4520B15B9000DDFC39 /* PrepareSinglePlayViewController.swift */; };
 		0241AA3C206E7BEB00AD078D /* Socket_API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241AA3B206E7BEA00AD078D /* Socket_API.swift */; };
 		0241AA3E206E7FE100AD078D /* ResponseMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241AA3D206E7FE100AD078D /* ResponseMessage.swift */; };
@@ -17,6 +23,12 @@
 		0246B7652062C0240043506F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0246B7632062C0240043506F /* LaunchScreen.storyboard */; };
 		024F9CDD20E2E5A600935310 /* BackendConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024F9CDC20E2E5A600935310 /* BackendConfiguration.swift */; };
 		024F9CDF20E2E6EF00935310 /* ServiceOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024F9CDE20E2E6EF00935310 /* ServiceOperation.swift */; };
+		0259E5B9214186DE0098101E /* UILives.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0259E5B8214186DD0098101E /* UILives.swift */; };
+		0259E5C52144078D0098101E /* FinishGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0259E5C42144078D0098101E /* FinishGameViewController.swift */; };
+		0259E5C721440FB10098101E /* FinishGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0259E5C621440FB10098101E /* FinishGameViewModel.swift */; };
+		0259E5C921440FDA0098101E /* FinishGameModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0259E5C821440FDA0098101E /* FinishGameModelType.swift */; };
+		0259E5CB21441B9F0098101E /* WaitingRoomMultiPlayModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0259E5CA21441B9F0098101E /* WaitingRoomMultiPlayModelType.swift */; };
+		0259E5CD21441BB40098101E /* WaitingRoomMultiPlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0259E5CC21441BB40098101E /* WaitingRoomMultiPlayViewModel.swift */; };
 		025B046120E0F7630006B7A4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 025B045F20E0F7630006B7A4 /* Localizable.strings */; };
 		025B046320E0FB1A0006B7A4 /* MenuScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 025B046520E0FB1A0006B7A4 /* MenuScreen.storyboard */; };
 		025CAD8520945B4B00177A6C /* SinglePlayerLevelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025CAD8320945B4B00177A6C /* SinglePlayerLevelsViewController.swift */; };
@@ -79,6 +91,8 @@
 		02F03E7320C014B100A20C99 /* Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F03E7220C014B100A20C99 /* Storable.swift */; };
 		02F03E7520C0169600A20C99 /* RealmStorageContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F03E7420C0169600A20C99 /* RealmStorageContext.swift */; };
 		02F03E7720C0181A00A20C99 /* RealmStorageContextOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F03E7620C0181A00A20C99 /* RealmStorageContextOperations.swift */; };
+		02F48D7221372809000D0A36 /* GSAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F48D7121372809000D0A36 /* GSAudio.swift */; };
+		02F48D74213735EC000D0A36 /* AudioPlayerLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F48D73213735EC000D0A36 /* AudioPlayerLayer.swift */; };
 		02FF12C12124B17E001A4264 /* ProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FF12C02124B17E001A4264 /* ProfileResponse.swift */; };
 		02FF12C42124C81E001A4264 /* SongResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FF12C32124C81E001A4264 /* SongResponse.swift */; };
 		02FF12C62124C84D001A4264 /* SongsListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FF12C52124C84D001A4264 /* SongsListResponse.swift */; };
@@ -92,7 +106,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		021F1CE0213DB1E200A8E010 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		021F1CE2213DB7F600A8E010 /* UIAnswers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAnswers.swift; sourceTree = "<group>"; };
 		0220380520CAABCA00AF0B0D /* PrepareMultiPlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareMultiPlayViewController.swift; sourceTree = "<group>"; };
+		023D679B213DCCDF005D13CE /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		023D679D213E6A91005D13CE /* FinishGameRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishGameRequest.swift; sourceTree = "<group>"; };
+		023D679F213E6BFB005D13CE /* FinishGameResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishGameResponse.swift; sourceTree = "<group>"; };
+		023D67A1213E6CC6005D13CE /* FinishGameOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishGameOperation.swift; sourceTree = "<group>"; };
 		023E7F4520B15B9000DDFC39 /* PrepareSinglePlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareSinglePlayViewController.swift; sourceTree = "<group>"; };
 		0241AA3B206E7BEA00AD078D /* Socket_API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Socket_API.swift; sourceTree = "<group>"; };
 		0241AA3D206E7FE100AD078D /* ResponseMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMessage.swift; sourceTree = "<group>"; };
@@ -104,6 +124,12 @@
 		0246B7662062C0240043506F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		024F9CDC20E2E5A600935310 /* BackendConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendConfiguration.swift; sourceTree = "<group>"; };
 		024F9CDE20E2E6EF00935310 /* ServiceOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceOperation.swift; sourceTree = "<group>"; };
+		0259E5B8214186DD0098101E /* UILives.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILives.swift; sourceTree = "<group>"; };
+		0259E5C42144078D0098101E /* FinishGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishGameViewController.swift; sourceTree = "<group>"; };
+		0259E5C621440FB10098101E /* FinishGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishGameViewModel.swift; sourceTree = "<group>"; };
+		0259E5C821440FDA0098101E /* FinishGameModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishGameModelType.swift; sourceTree = "<group>"; };
+		0259E5CA21441B9F0098101E /* WaitingRoomMultiPlayModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingRoomMultiPlayModelType.swift; sourceTree = "<group>"; };
+		0259E5CC21441BB40098101E /* WaitingRoomMultiPlayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingRoomMultiPlayViewModel.swift; sourceTree = "<group>"; };
 		025B045D20E0F68C0006B7A4 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Main.strings; sourceTree = "<group>"; };
 		025B045E20E0F68C0006B7A4 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		025B046020E0F7630006B7A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -170,6 +196,8 @@
 		02F03E7220C014B100A20C99 /* Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storable.swift; sourceTree = "<group>"; };
 		02F03E7420C0169600A20C99 /* RealmStorageContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmStorageContext.swift; sourceTree = "<group>"; };
 		02F03E7620C0181A00A20C99 /* RealmStorageContextOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmStorageContextOperations.swift; sourceTree = "<group>"; };
+		02F48D7121372809000D0A36 /* GSAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSAudio.swift; sourceTree = "<group>"; };
+		02F48D73213735EC000D0A36 /* AudioPlayerLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerLayer.swift; sourceTree = "<group>"; };
 		02FF12C02124B17E001A4264 /* ProfileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResponse.swift; sourceTree = "<group>"; };
 		02FF12C32124C81E001A4264 /* SongResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongResponse.swift; sourceTree = "<group>"; };
 		02FF12C52124C84D001A4264 /* SongsListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsListResponse.swift; sourceTree = "<group>"; };
@@ -229,8 +257,18 @@
 				0266E5592062C35500326EF0 /* Controller */,
 				0266E5572062C33B00326EF0 /* Views */,
 				0266E5582062C34A00326EF0 /* Supporting Files */,
+				021F1CE0213DB1E200A8E010 /* UIColor+Extension.swift */,
 			);
 			path = GuessTheSong;
+			sourceTree = "<group>";
+		};
+		0259E5B7214186C20098101E /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				0259E5B8214186DD0098101E /* UILives.swift */,
+				021F1CE2213DB7F600A8E010 /* UIAnswers.swift */,
+			);
+			path = Elements;
 			sourceTree = "<group>";
 		};
 		0263AD1320BF212600BBC32B /* Entities */ = {
@@ -276,6 +314,8 @@
 				023E7F4520B15B9000DDFC39 /* PrepareSinglePlayViewController.swift */,
 				0220380520CAABCA00AF0B0D /* PrepareMultiPlayViewController.swift */,
 				02A02D19211ABEBB00EA1676 /* GamePlayViewController.swift */,
+				0259E5C42144078D0098101E /* FinishGameViewController.swift */,
+				0259E5B7214186C20098101E /* Elements */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -338,6 +378,7 @@
 				02743AF8210218B60031322D /* SignUpOperation.swift */,
 				02940C0E21186CE4005CE8B7 /* ProfileInfoOperation.swift */,
 				02A02D112119A09800EA1676 /* FullLevelOperation.swift */,
+				023D67A1213E6CC6005D13CE /* FinishGameOperation.swift */,
 				02FF12CB2124CFE6001A4264 /* ListOfLevelsOperation.swift */,
 				02A02D152119ADF600EA1676 /* DownloadMusicOperation.swift */,
 			);
@@ -356,6 +397,7 @@
 				02FF12CD2124D02B001A4264 /* ListOfLevelsRequest.swift */,
 				02743AFA210219230031322D /* SignUpRequest.swift */,
 				02A02D172119AE1D00EA1676 /* DownloadMusicRequest.swift */,
+				023D679D213E6A91005D13CE /* FinishGameRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -371,6 +413,8 @@
 				02884CF92114161900309B06 /* CollectionViewCellModelType.swift */,
 				02884CFD2114169400309B06 /* PrepareGameModelType.swift */,
 				02A631262114E9BF002A96E3 /* SinglePlayModelType.swift */,
+				0259E5C821440FDA0098101E /* FinishGameModelType.swift */,
+				0259E5CA21441B9F0098101E /* WaitingRoomMultiPlayModelType.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -386,6 +430,11 @@
 				02884CFB2114165200309B06 /* CollectionViewCellViewModel.swift */,
 				02A631242114E998002A96E3 /* PrepareSinglePlayViewModel.swift */,
 				02A631282114E9CD002A96E3 /* SinglePlayViewModel.swift */,
+				0259E5C621440FB10098101E /* FinishGameViewModel.swift */,
+				0259E5CC21441BB40098101E /* WaitingRoomMultiPlayViewModel.swift */,
+				02F48D73213735EC000D0A36 /* AudioPlayerLayer.swift */,
+				02F48D7121372809000D0A36 /* GSAudio.swift */,
+				023D679B213DCCDF005D13CE /* Box.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -422,6 +471,7 @@
 				02FF12C92124C881001A4264 /* LevelResponse.swift */,
 				02FF12CF212A97A0001A4264 /* GameResponse.swift */,
 				02FF12D1212A9881001A4264 /* GamesResponse.swift */,
+				023D679F213E6BFB005D13CE /* FinishGameResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -579,7 +629,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				025CAD8820945CDF00177A6C /* Level.swift in Sources */,
+				023D67A0213E6BFB005D13CE /* FinishGameResponse.swift in Sources */,
 				02A631272114E9BF002A96E3 /* SinglePlayModelType.swift in Sources */,
+				02F48D7221372809000D0A36 /* GSAudio.swift in Sources */,
 				02A631292114E9CD002A96E3 /* SinglePlayViewModel.swift in Sources */,
 				02A02D182119AE1D00EA1676 /* DownloadMusicRequest.swift in Sources */,
 				02743B0321021C7E0031322D /* UpdateLevelOfUserRequest.swift in Sources */,
@@ -596,9 +648,11 @@
 				02A631252114E998002A96E3 /* PrepareSinglePlayViewModel.swift in Sources */,
 				02957C9B20FF3E6400E3F231 /* NetworkBackendService.swift in Sources */,
 				02FF12CE2124D02B001A4264 /* ListOfLevelsRequest.swift in Sources */,
+				0259E5C721440FB10098101E /* FinishGameViewModel.swift in Sources */,
 				0246B75D2062C0240043506F /* MainViewController.swift in Sources */,
 				02FF12CA2124C881001A4264 /* LevelResponse.swift in Sources */,
 				024F9CDD20E2E5A600935310 /* BackendConfiguration.swift in Sources */,
+				0259E5C52144078D0098101E /* FinishGameViewController.swift in Sources */,
 				02940C0D21186BDB005CE8B7 /* UserProfile.swift in Sources */,
 				027A4ADB21236057007C0036 /* SignUpResponse.swift in Sources */,
 				02D001042100AE1B00A43EA8 /* SignInModelType.swift in Sources */,
@@ -606,18 +660,23 @@
 				02D001062100AE2C00A43EA8 /* SignInViewModel.swift in Sources */,
 				02E5BCE2207A3F5000272CFD /* Profile.swift in Sources */,
 				02B465AF207563750009667E /* RegisterRequest.swift in Sources */,
+				023D679C213DCCDF005D13CE /* Box.swift in Sources */,
 				0266E55E2062C3B700326EF0 /* RegistrationViewController.swift in Sources */,
 				02743B0121021C0F0031322D /* LevelOfUserRequest.swift in Sources */,
 				02743AF9210218B60031322D /* SignUpOperation.swift in Sources */,
 				02FF12C62124C84D001A4264 /* SongsListResponse.swift in Sources */,
 				02957C9920FF387400E3F231 /* BackendService.swift in Sources */,
 				02A02D122119A09800EA1676 /* FullLevelOperation.swift in Sources */,
+				0259E5B9214186DE0098101E /* UILives.swift in Sources */,
+				0259E5C921440FDA0098101E /* FinishGameModelType.swift in Sources */,
 				02D001122100AEE500A43EA8 /* MenuViewModel.swift in Sources */,
 				0267AE6020E2984900E1E14E /* NetworkService.swift in Sources */,
 				024F9CDF20E2E6EF00935310 /* ServiceOperation.swift in Sources */,
+				023D67A2213E6CC6005D13CE /* FinishGameOperation.swift in Sources */,
 				02957CA020FF6A9E00E3F231 /* NetworkQueryGenerator.swift in Sources */,
 				02743AFF21021BB70031322D /* ProfileRequest.swift in Sources */,
 				02D553EC20CE73DE009F1FE6 /* GameRequest.swift in Sources */,
+				02F48D74213735EC000D0A36 /* AudioPlayerLayer.swift in Sources */,
 				0246B75B2062C0240043506F /* AppDelegate.swift in Sources */,
 				02743AFD21021B0F0031322D /* SinglePlayerLevelsRequest.swift in Sources */,
 				02D001102100AEDC00A43EA8 /* MenuModelType.swift in Sources */,
@@ -626,6 +685,7 @@
 				02884CF8211415CC00309B06 /* LevelsCollectionModelType.swift in Sources */,
 				02A02D162119ADF600EA1676 /* DownloadMusicOperation.swift in Sources */,
 				02F03E7320C014B100A20C99 /* Storable.swift in Sources */,
+				021F1CE3213DB7F600A8E010 /* UIAnswers.swift in Sources */,
 				0267AE5E20E296DB00E1E14E /* BackendAPIRequest.swift in Sources */,
 				0241AA3E206E7FE100AD078D /* ResponseMessage.swift in Sources */,
 				02743AFB210219230031322D /* SignUpRequest.swift in Sources */,
@@ -635,6 +695,7 @@
 				02FF12D2212A9881001A4264 /* GamesResponse.swift in Sources */,
 				0241AA3C206E7BEB00AD078D /* Socket_API.swift in Sources */,
 				0220380620CAABCA00AF0B0D /* PrepareMultiPlayViewController.swift in Sources */,
+				0259E5CD21441BB40098101E /* WaitingRoomMultiPlayViewModel.swift in Sources */,
 				02884CFC2114165200309B06 /* CollectionViewCellViewModel.swift in Sources */,
 				02FF12D0212A97A0001A4264 /* GameResponse.swift in Sources */,
 				02884CF6211415A500309B06 /* LevelsOfSinglePlayViewModel.swift in Sources */,
@@ -644,12 +705,15 @@
 				02A02D142119A0D400EA1676 /* LevelInfoRequest.swift in Sources */,
 				02FF12C12124B17E001A4264 /* ProfileResponse.swift in Sources */,
 				023E7F4620B15B9000DDFC39 /* PrepareSinglePlayViewController.swift in Sources */,
+				023D679E213E6A91005D13CE /* FinishGameRequest.swift in Sources */,
 				0266E5622062D89200326EF0 /* MenuViewController.swift in Sources */,
 				02F03E7520C0169600A20C99 /* RealmStorageContext.swift in Sources */,
 				02CD0F3C2100AC0400C5B941 /* SignInOperation.swift in Sources */,
+				0259E5CB21441B9F0098101E /* WaitingRoomMultiPlayModelType.swift in Sources */,
 				02940C0B21186783005CE8B7 /* FullDataLevel.swift in Sources */,
 				02957CA520FF711500E3F231 /* SignInRequest.swift in Sources */,
 				02D0010E2100AED000A43EA8 /* MainModelType.swift in Sources */,
+				021F1CE1213DB1E200A8E010 /* UIColor+Extension.swift in Sources */,
 				02884CFE2114169400309B06 /* PrepareGameModelType.swift in Sources */,
 				02B465AD2075635D0009667E /* LoginRequest.swift in Sources */,
 			);

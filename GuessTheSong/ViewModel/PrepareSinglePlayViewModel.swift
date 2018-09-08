@@ -50,7 +50,7 @@ class PrepareSinglePlayViewModel: PrepareGameModelType {
     func goToPlaySinglePlay() -> SinglePlayModelType {
         let sortedSongs = musicsPath.sorted(by: {$0.key<$1.key})
         let songs = sortedSongs.map({$0.value})
-        return SinglePlayViewModel(path: songs, id: gameId, info: fullLevelInfo)
+        return SinglePlayViewModel(action: .Single, path: songs, id: gameId, info: fullLevelInfo)
     }
     
 //    func getDestinationUrl(completionUrl: @escaping ([URL?])->() )  {

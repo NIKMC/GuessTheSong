@@ -10,6 +10,8 @@ import UIKit
 import Alamofire
 class PrepareMultiPlayViewController: UIViewController {
 
+    var viewModel: WaitingRoomMultiPlayModelType?
+    
     @IBAction func button1Tapped(_ sender: UIButton) {
 //        Socket_API.sharedInstance.createGameEvent(id: "5a252ef224c6b30979198ca3")
         
@@ -87,12 +89,22 @@ class PrepareMultiPlayViewController: UIViewController {
     private var roomID: String?
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.hidesBackButton = true
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back"), style: .plain, target: self, action: #selector(self.back(sender:)))
 //        Socket_API.sharedInstance.delegate = self
 //        Socket_API.sharedInstance.createGameResponseEvent()
 //        Socket_API.sharedInstance.readyToGameResponseEvent()
 //        Socket_API.sharedInstance.startGameResponseEvent()
 //        Socket_API.sharedInstance.downloadSongsResponseEvent()
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func back(sender: AnyObject) {
+        guard(navigationController?.popViewController(animated: true)) != nil
+            else {
+                print("No view controllers to pop off")
+                return
+        }
     }
 }
 

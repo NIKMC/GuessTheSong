@@ -42,9 +42,8 @@ class LevelViewCell: UICollectionViewCell {
                 completedImage.isHidden = false
                 closedImage.isHidden = true
                 levelText.text = "\(viewModel.title)"
-                //FIXME: wrong add completed image after refreshing
-                completedImage.center.x = viewCell.layer.frame.origin.x + viewCell.layer.frame.size.width + (frame.size.width - viewCell.layer.frame.size.width)/2
-                completedImage.center.y = viewCell.layer.frame.origin.y + viewCell.layer.frame.size.height/4
+                completedImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0).isActive = true
+                completedImage.topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive = true
             default:
                 completedImage.isHidden = true
                 closedImage.isHidden = true

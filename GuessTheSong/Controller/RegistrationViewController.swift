@@ -42,7 +42,7 @@ class RegistrationViewController: UIViewController {
         passwordView.delegate = self
         repasswordView.delegate = self
         self.navigationItem.hidesBackButton = true
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.back(sender:)))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back"), style: .plain, target: self, action: #selector(self.back(sender:)))
 //        Socket_API.sharedInstance.delegate = self
 //        Socket_API.sharedInstance.registerResponseEvent()
         

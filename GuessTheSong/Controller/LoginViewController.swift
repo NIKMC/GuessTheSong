@@ -21,6 +21,7 @@ class LoginViewController: UIViewController {
     
     private let goToMenu = "goToMainMenuGame"
     private let goToSignUp = "hasNotAccount"
+    private let MenuControllerID = "MenuControllerID"
     
     var activeField: UITextField?
     var keyboardHeight: CGFloat!
@@ -44,7 +45,7 @@ class LoginViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         self.navigationItem.hidesBackButton = true
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.back(sender:)))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back"), style: .plain, target: self, action: #selector(self.back(sender:)))
 
 //        Socket_API.sharedInstance.delegate = self
 //        Socket_API.sharedInstance.loginResponseEvent()
@@ -87,11 +88,11 @@ class LoginViewController: UIViewController {
         ProgressHUD.show()
         viewModel?.setLoginAndPassword(email: emailView.text!, password: passwordView.text!)
 //        self.performSegue(withIdentifier: goToMenu, sender: sender)
-        viewModel?.signIn(completion: { [weak self] (user) in
+        viewModel?.signIn(completion: { [unowned self] (user) in
             print("sing IN ok")
             ProgressHUD.dismiss()
             OperationQueue.main.addOperation {
-              self?.performSegue(withIdentifier: (self?.goToMenu)!, sender: self)
+              self.performSegue(withIdentifier: self.goToMenu, sender: self)
             }
             
         }, errorHandle: { (error) in
@@ -111,9 +112,21 @@ class LoginViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let identifier = segue.identifier
         if identifier == goToMenu {
-            if let dvc = segue.destination as? MenuViewController {
-                dvc.viewModel = viewModel?.goToTheMenu()
-            }
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let root = appDelegate.switchRootViewController(nameStoryBoard: "MenuScreen", idViewController: MenuControllerID)
+                    guard let dvc = root.childViewControllers.first as? MenuViewController else { print("Not found destinationaViewController")
+                        return }
+//            guard let navigationVC = segue.destination as? UINavigationController else {
+//                print("not found UINavigationController of MenuViewController")
+//                return
+//                
+//            }
+//            guard let dvc = navigationVC.topViewController as? MenuViewController else {
+//                print("not found menuview controller")
+//                return
+//            }
+            dvc.viewModel = viewModel?.goToTheMenu()
+            
         } else if identifier == goToSignUp {
             if let dvc = segue.destination as? RegistrationViewController {
                 dvc.viewModel = viewModel?.signUp()
