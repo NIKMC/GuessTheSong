@@ -11,4 +11,6 @@ target 'GuessTheSong' do
     pod 'RealmSwift'
     pod 'SwiftyJSON'
     pod 'Alamofire', '~> 4.7'
+    pod 'Socket.IO-Client-Swift', '~> 13.3.0'
+    pod 'Starscream', '~> 3.0.2'
 end

@@ -95,7 +95,7 @@ class SinglePlayViewModel: SinglePlayModelType {
     
     func getCurrentCorrectAnswers() -> [String]? {
         guard dataOfLevel.count > currentIndex() else { return nil }
-        let answers = dataOfLevel[currentIndex()].getListOfAnswers()
+        let answers = dataOfLevel[currentIndex()].getListOfAnswers().map{ $0.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)}
         return answers
     }
     
@@ -127,6 +127,7 @@ class SinglePlayViewModel: SinglePlayModelType {
                     })
                 })
             }) {
+                self.stopPlayMusic()
                 loseHandler?(self.currentLive())
             }
         }

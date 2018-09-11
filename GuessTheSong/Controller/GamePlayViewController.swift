@@ -18,6 +18,8 @@ class GamePlayViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var textFieldOfAnswers: UIAnswers!
     
+//    @IBOutlet weak var constraintContentHeight: NSLayoutConstraint!
+    @IBOutlet var scrollView: UIScrollView?
     @IBOutlet weak var constraintContentHeight: NSLayoutConstraint!
     
     private let finishGame = "goToFinishGame"
@@ -41,8 +43,6 @@ class GamePlayViewController: UIViewController, UITextFieldDelegate {
         self.navigationItem.hidesBackButton = true
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Cancel", comment: ""), style: .plain, target: self, action: #selector(self.back(sender:)))
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         viewModel?.time.bind{ [unowned self] in
             guard let string = $0 else { return }
@@ -61,13 +61,19 @@ class GamePlayViewController: UIViewController, UITextFieldDelegate {
             self.livesOfGamer.setLives(value)
         }
         textFieldOfAnswers.updateUIAnswers(count: 0)
+        textFieldOfAnswers.handlerDone = { [unowned self] in
+            self.view.endEditing(true)
+        }
         viewModel?.lives.value = viewModel?.currentLive()
         prepareRound()
-        
+        showKeyboard()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
 //        self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
@@ -102,38 +108,39 @@ class GamePlayViewController: UIViewController, UITextFieldDelegate {
                 print("Didn't find behaviour")
                 return }
             //TODO: - delete this code when Iskandar change response of finishGame Request
-            self.viewModel?.setActionToFinishGame(action: .WinSingle)
-            self.viewModel?.stopGame()
-            self.performSegue(withIdentifier: self.finishGame, sender: self)
+            self.view.endEditing(true)
+//            self.viewModel?.setActionToFinishGame(action: .WinSingle)
+//            self.viewModel?.stopGame()
+//            self.performSegue(withIdentifier: self.finishGame, sender: self)
             
 //            TODO: - add this code when Iskandar change response of finishGame Request
-//            viewModel?.compareAnswersWithResults(answers: values, rightAnswersHandler: { [unowned self] in
-//                self.prepareRound()
-//            }, wrongAnswersHandler: { [unowned self] (live) in
-//                self.viewModel?.lives.value = live
-//                self.prepareRound()
-//            }, winHandler: { [unowned self] (live) in
-//                self.viewModel?.lives.value = live
-//                switch action {
-//                case .Single:
-//                    self.viewModel?.setActionToFinishGame(action: .WinSingle)
-//                    self.performSegue(withIdentifier: self.finishGame, sender: self)
-//                case .Multy:
-//                    self.viewModel?.setActionToFinishGame(action: .WinMulty)
-//                    self.performSegue(withIdentifier: self.finishGame, sender: self)
-//                }
-//            }, loseHandler: { [unowned self] (live) in
-//                self.viewModel?.lives.value = live
-//                switch action {
-//                case .Single:
-//                    self.viewModel?.setActionToFinishGame(action: .LoseSingle)
-//                    self.performSegue(withIdentifier: self.finishGame, sender: self)
-//                case .Multy:
-//                    self.viewModel?.setActionToFinishGame(action: .LoseMulty)
-//                    self.performSegue(withIdentifier: self.finishGame, sender: self)
-//                }
-//
-//            })
+            viewModel?.compareAnswersWithResults(answers: values, rightAnswersHandler: { [unowned self] in
+                self.prepareRound()
+            }, wrongAnswersHandler: { [unowned self] (live) in
+                self.viewModel?.lives.value = live
+                self.prepareRound()
+            }, winHandler: { [unowned self] (live) in
+                self.viewModel?.lives.value = live
+                switch action {
+                case .Single:
+                    self.viewModel?.setActionToFinishGame(action: .WinSingle)
+                    self.performSegue(withIdentifier: self.finishGame, sender: self)
+                case .Multy:
+                    self.viewModel?.setActionToFinishGame(action: .WinMulty)
+                    self.performSegue(withIdentifier: self.finishGame, sender: self)
+                }
+            }, loseHandler: { [unowned self] (live) in
+                self.viewModel?.lives.value = live
+                switch action {
+                case .Single:
+                    self.viewModel?.setActionToFinishGame(action: .LoseSingle)
+                    self.performSegue(withIdentifier: self.finishGame, sender: self)
+                case .Multy:
+                    self.viewModel?.setActionToFinishGame(action: .LoseMulty)
+                    self.performSegue(withIdentifier: self.finishGame, sender: self)
+                }
+
+            })
         } else {
             seconds -= 1
             viewModel?.time.value = "Timer: \(seconds)"
@@ -192,7 +199,7 @@ class GamePlayViewController: UIViewController, UITextFieldDelegate {
         runTimer()
         viewModel?.startGame()
     }
-
+    
      override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -203,16 +210,16 @@ class GamePlayViewController: UIViewController, UITextFieldDelegate {
 
 extension GamePlayViewController: UITextViewDelegate {
     
-    //    func showKeyboard() {
-    //        emailInputView.becomeFirstResponder()
-    //    }
-    
+    func showKeyboard() {
+        textFieldOfAnswers.becomeFirstResponder()
+    }
+   
     @objc func keyboardWillAppear(_ notification: NSNotification) {
         guard let userinfo = notification.userInfo,
             let duration = userinfo[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval,
             let finalRect = userinfo[UIKeyboardFrameEndUserInfoKey] as? CGRect else { return }
         UIView.animate(withDuration: duration) {
-            self.constraintContentHeight.constant += finalRect.height
+            self.constraintContentHeight.constant = finalRect.height
         }
     }
     @objc func keyboardWillHide(_ notification: NSNotification) {
@@ -223,5 +230,10 @@ extension GamePlayViewController: UITextViewDelegate {
             self.constraintContentHeight.constant -= finalRect.height
         }
     }
+    
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        self.view.endEditing(true)
+//        return false
+//    }
 }
 

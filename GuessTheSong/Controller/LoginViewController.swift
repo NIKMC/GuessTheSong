@@ -30,12 +30,6 @@ class LoginViewController: UIViewController {
     var user: Profile?
     var viewModel: SignInModelType?
 
-    
-    
-    override func awakeFromNib() {
-//        Socket_API.sharedInstance.changeTypeConnection(toConnection: .Guest)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.statusBarStyle = .lightContent
@@ -46,9 +40,6 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.navigationItem.hidesBackButton = true
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back"), style: .plain, target: self, action: #selector(self.back(sender:)))
-
-//        Socket_API.sharedInstance.delegate = self
-//        Socket_API.sharedInstance.loginResponseEvent()
         loadingData()
         
         // Observe keyboard change
@@ -73,7 +64,6 @@ class LoginViewController: UIViewController {
     }
     
     @objc func back(sender: AnyObject) {
-//        Socket_API.sharedInstance.resetResponseEvent(eventName: EventName.LOGIN)
         guard(navigationController?.popToRootViewController(animated: true)) != nil
             else {
                 print("No view controllers to pop off")
@@ -87,7 +77,6 @@ class LoginViewController: UIViewController {
         //FIXME: Doesn't dismiss when error of request
         ProgressHUD.show()
         viewModel?.setLoginAndPassword(email: emailView.text!, password: passwordView.text!)
-//        self.performSegue(withIdentifier: goToMenu, sender: sender)
         viewModel?.signIn(completion: { [unowned self] (user) in
             print("sing IN ok")
             ProgressHUD.dismiss()
@@ -101,10 +90,6 @@ class LoginViewController: UIViewController {
             ProgressHUD.showError(error)
         })
         
-        
-        
-//        socket?.loginEvent(email: emailView.text!, password: passwordView.text!)
-//        Socket_API.sharedInstance.loginEvent(email: emailView.text!, password: passwordView.text!)
         user = Profile(email: emailView.text!, password: passwordView.text!)
     }
     
@@ -136,8 +121,6 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func goToRegistration(_ sender: UIButton) {
-
-//        Socket_API.sharedInstance.resetResponseEvent(eventName: EventName.LOGIN)
         self.performSegue(withIdentifier: goToSignUp, sender: self)
 
     }
@@ -179,7 +162,7 @@ extension LoginViewController {
             
             // so increase contentView's height by keyboard height
             UIView.animate(withDuration: 0.3, animations: {
-                self.constraintContentHeight.constant += self.keyboardHeight
+                self.constraintContentHeight.constant = self.keyboardHeight
             })
             
             // move if keyboard hide input field
@@ -213,47 +196,4 @@ extension LoginViewController {
         self.view.endEditing(true)
     }
 }
-
-
-
-
-//extension LoginViewController: ResponseLoginDelegate {
-//
-//    func informErrorMessage(error: String) {
-//        print("the error is \(error)")
-//        ProgressHUD.showError(error)
-//    }
-//
-//    func informDisconnectedMessage() {
-//        print("the socket was disconnected")
-////        ProgressHUD.showError("Check your Internet connection ")
-//        ProgressHUD.dismiss()
-//        self.performSegue(withIdentifier: "goToMainMenuGame", sender: self)
-//    }
-//
-//    func loginSuccess(token: String?) {
-//        print("Login success in delegate")
-////        ProgressHUD.dismiss()
-//
-//        Socket_API.sharedInstance.resetResponseEvent(eventName: EventName.LOGIN)
-//
-//        Socket_API.sharedInstance.changeTypeConnection(toConnection: .User)
-//
-//        if let currentToken = token {
-//            defaults.setValue(currentToken, forKey: "token")
-//            defaults.setValue(user?.email, forKey: "user_email")
-//            defaults.setValue(user?.password, forKey: "user_password")
-//        }
-//    }
-//    
-//    func printErrorMessage(error: String?) {
-//        print("Login error in delegate")
-//        ProgressHUD.showError()
-//        if let errorMessage = error {
-//            print("Error message \(errorMessage)")
-//        }
-//    }
-//
-//
-//}
 

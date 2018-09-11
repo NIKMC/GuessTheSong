@@ -267,7 +267,7 @@
                 <viewControllerPlaceholder storyboardName="MultiPlayerScreen" id="Jvy-2t-oaF" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p53-ll-jpJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1369" y="482"/>
+            <point key="canvasLocation" x="2658" y="465"/>
         </scene>
         <!--Prepare Single Play View Controller-->
         <scene sceneID="Afp-Uf-eJJ">
@@ -333,7 +333,7 @@
                 <viewControllerPlaceholder storyboardName="GameScreen" id="ZRO-dg-rwa" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rfT-Ul-Oxk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2588" y="482"/>
+            <point key="canvasLocation" x="4473" y="495"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="c9a-gF-TBE">

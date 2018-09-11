@@ -28,6 +28,9 @@ final class UIAnswers: UIView {
 //        }
 //    }
     
+    var handlerDone: (() -> ())?
+    
+    
     @IBInspectable var countTextField: Int {
         get { return count }
         
@@ -79,12 +82,12 @@ final class UIAnswers: UIView {
             let container = UIView()
             let bottomLine = UIView()
             
-            let topConstraint = CGFloat((index * 40) + 20 + (20 * index))
+            let topConstraint = CGFloat((index * 35) + 10 + (10 * index))
             
             addSubview(container)
             container.translatesAutoresizingMaskIntoConstraints = false
             container.topAnchor.constraint(equalTo: topAnchor, constant: topConstraint).isActive = true
-            container.heightAnchor.constraint(equalToConstant: 40).isActive = true
+            container.heightAnchor.constraint(equalToConstant: 35).isActive = true
             container.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30).isActive = true
             container.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5).isActive = true
             container.backgroundColor = .rich
@@ -110,7 +113,8 @@ final class UIAnswers: UIView {
             answerTextField.font = UIFont.boldSystemFont(ofSize: 15)
             answerTextField.textColor = .rich
             answerTextField.backgroundColor = UIColor.black
-            answerTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+//            answerTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+//            answerTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
             answerTextField.autocorrectionType = .no
             answerTextField.returnKeyType = UIReturnKeyType.done
             answerTextField.borderStyle = .line
@@ -150,7 +154,7 @@ final class UIAnswers: UIView {
     }
     
     func getCurrentTextFromTextFields() -> [String] {
-        return textFields.map{ $0.text ?? "" }
+        return textFields.map{ $0.text?.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) ?? "" }
     }
     
     func updateUIAnswers(count value: Int) {
@@ -167,8 +171,14 @@ final class UIAnswers: UIView {
 extension UIAnswers: UITextFieldDelegate {
     
     
-    @objc func textFieldDidChange(_ textField: UITextField) {
+//    @objc func textFieldDidChange(_ textField: UITextField) {
 //        self.handlerPrinting?(textField.text)
+//
+//    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        handlerDone?()
+        return false
         
     }
     

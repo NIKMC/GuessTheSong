@@ -139,7 +139,7 @@ extension RegistrationViewController {
             
             // so increase contentView's height by keyboard height
             UIView.animate(withDuration: 0.3, animations: {
-                self.constraintContentHeight.constant += self.keyboardHeight
+                self.constraintContentHeight.constant = self.keyboardHeight
             })
             
             // move if keyboard hide input field

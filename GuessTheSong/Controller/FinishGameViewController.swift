@@ -93,8 +93,8 @@ class FinishGameViewController: UIViewController {
 //            }
             dvc.viewModel = viewModel.goToMenu()
         case goToMulty:
-            guard let dvc = segue.destination as? PrepareMultiPlayViewController else { return }
-            dvc.viewModel = viewModel.goToPlayAgain()
+            guard let _ = segue.destination as? PrepareMultiPlayViewController else { return }
+//            dvc.viewModel = viewModel.goToPlayAgain()
         default:
             return
         }

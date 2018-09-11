@@ -9,7 +9,7 @@
 import UIKit
 import ProgressHUD
 //import SocketIO
-import SwiftyJSON
+//import SwiftyJSON
 
 class MenuViewController: UIViewController {
 
@@ -62,7 +62,7 @@ class MenuViewController: UIViewController {
 //            }
         } else if identifier == goToMain {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let root = appDelegate.switchRootViewController(nameStoryBoard: "Main", idViewController: MainControllerID)
+            let _ = appDelegate.switchRootViewController(nameStoryBoard: "Main", idViewController: MainControllerID)
             //        guard let dvc = root.childViewControllers.first as? SignUpViewController else { print("Not found destinationaViewController")
             //            return }
         }
