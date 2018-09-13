@@ -16,4 +16,5 @@ protocol SignUpModelType {
     
     func signIn() -> SignInModelType
     
+    func buttonTextOk() -> String
 }

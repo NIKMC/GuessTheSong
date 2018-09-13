@@ -11,7 +11,8 @@ import UIKit
 class FinishGameViewController: UIViewController {
 
     @IBOutlet weak var finishGameImage: UIImageView!
-    @IBOutlet weak var buttonFinishGame: UIButton!
+    
+    @IBOutlet weak var GSButtonFinishGame: UIGSButton!
     
     var viewModel: FinishGameModelType?
     private let goToMain = "goToMain"
@@ -27,9 +28,30 @@ class FinishGameViewController: UIViewController {
     
     func defaultInit(viewModel: FinishGameModelType) {
         let behaviour = viewModel.getBehaviour()
-        buttonFinishGame.setTitle(viewModel.getButtonTitle(), for: .normal)
         finishGameImage.image = viewModel.getImage()
         
+        GSButtonFinishGame.style = .rich
+        
+        GSButtonFinishGame.text = viewModel.getButtonTitle()
+        
+        
+        GSButtonFinishGame.handler = { [unowned self] (button) in
+            let behaviour = viewModel.getBehaviour()
+            switch behaviour {
+            case .WinMulty:
+                self.performSegue(withIdentifier: self.goToMulty, sender: button)
+            case .LoseMulty:
+                self.performSegue(withIdentifier: self.goToMulty, sender: button)
+            case .WinSingle:
+                //            self.dismiss(animated: true)
+                self.performSegue(withIdentifier: self.goToMain, sender: button)
+                //            let storyboard = UIStoryboard(name: "MenuScreen", bundle: nil)
+                //            let vc = storyboard.instantiateViewController(withIdentifier: "SinglePlayerLevelsVCID") as! SinglePlayerLevelsViewController
+            //            present(vc, animated: true)
+            case .LoseSingle:
+                self.performSegue(withIdentifier: self.goToMain, sender: button)
+            }
+        }
         switch behaviour {
         case .WinMulty:
             self.navigationItem.hidesBackButton = true
@@ -40,25 +62,6 @@ class FinishGameViewController: UIViewController {
         default:
             self.navigationItem.hidesBackButton = true
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "goToMain", style: .plain, target: self, action: #selector(self.goToMain(sender:)))
-        }
-    }
-    
-    @IBAction func buttonTapped(_ sender: UIButton) {
-        guard let viewModel = viewModel else { return }
-        let behaviour = viewModel.getBehaviour()
-        switch behaviour {
-        case .WinMulty:
-            performSegue(withIdentifier: goToMulty, sender: sender)
-        case .LoseMulty:
-            performSegue(withIdentifier: goToMulty, sender: sender)
-        case .WinSingle:
-//            self.dismiss(animated: true)
-            performSegue(withIdentifier: goToMain, sender: sender)
-//            let storyboard = UIStoryboard(name: "MenuScreen", bundle: nil)
-//            let vc = storyboard.instantiateViewController(withIdentifier: "SinglePlayerLevelsVCID") as! SinglePlayerLevelsViewController
-//            present(vc, animated: true)
-        case .LoseSingle:
-            performSegue(withIdentifier: goToMain, sender: sender)
         }
     }
     

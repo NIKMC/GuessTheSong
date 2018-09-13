@@ -18,6 +18,7 @@ class LoginViewController: UIViewController {
    
     @IBOutlet var scrollView: UIScrollView?
     @IBOutlet weak var constraintContentHeight: NSLayoutConstraint!
+    @IBOutlet weak var GSButtonOk: UIGSButton!
     
     private let goToMenu = "goToMainMenuGame"
     private let goToSignUp = "hasNotAccount"
@@ -36,7 +37,7 @@ class LoginViewController: UIViewController {
         
         emailView.delegate = self
         passwordView.delegate = self
-        
+        defaultInit()
         // Do any additional setup after loading the view.
         self.navigationItem.hidesBackButton = true
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back"), style: .plain, target: self, action: #selector(self.back(sender:)))
@@ -48,6 +49,35 @@ class LoginViewController: UIViewController {
         
     }
 
+    func defaultInit() {
+        
+        GSButtonOk.style = .normal
+       
+        GSButtonOk.text = viewModel?.buttonTextOk()
+        
+        
+        GSButtonOk.handler = { [unowned self] (button) in
+            //FIXME: Doesn't dismiss when error of request
+            ProgressHUD.show()
+            self.viewModel?.setLoginAndPassword(email: self.emailView.text!, password: self.passwordView.text!)
+            self.viewModel?.signIn(completion: { [unowned self] (user) in
+                print("sing IN ok")
+                ProgressHUD.dismiss()
+                OperationQueue.main.addOperation {
+                    self.performSegue(withIdentifier: self.goToMenu, sender: self)
+                }
+                
+                }, errorHandle: { (error) in
+                    print(error)
+                    //            ProgressHUD.dismiss()
+                    ProgressHUD.showError(error)
+            })
+            
+            self.user = Profile(email: self.emailView.text!, password: self.passwordView.text!)
+        }
+       
+    }
+    
     func loadingData() {
         guard let email = viewModel?.loadLogin(), let password = viewModel?.loadPassword() else { return }
         emailView.text = email
@@ -74,23 +104,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func okPressed(_ sender: UIButton) {
         
-        //FIXME: Doesn't dismiss when error of request
-        ProgressHUD.show()
-        viewModel?.setLoginAndPassword(email: emailView.text!, password: passwordView.text!)
-        viewModel?.signIn(completion: { [unowned self] (user) in
-            print("sing IN ok")
-            ProgressHUD.dismiss()
-            OperationQueue.main.addOperation {
-              self.performSegue(withIdentifier: self.goToMenu, sender: self)
-            }
-            
-        }, errorHandle: { (error) in
-            print(error)
-//            ProgressHUD.dismiss()
-            ProgressHUD.showError(error)
-        })
         
-        user = Profile(email: emailView.text!, password: passwordView.text!)
     }
     
     

@@ -141,7 +141,13 @@ class SinglePlayViewModel: SinglePlayModelType {
         finishGameNetworkManager?.start()
         finishGameNetworkManager?.success = { (gameInfo) in
             print("the result is ok \(gameInfo)")
-            self.defaults.set(gameInfo.single_player_experience, forKey: "single_player_experience")
+            if var experience = self.defaults.value(forKey: "single_player_experience") as? Int {
+                experience += gameInfo.experience
+                self.defaults.set(experience, forKey: "single_player_experience")
+                
+            } else {
+                self.defaults.set(gameInfo.experience, forKey: "single_player_experience")
+            }
             completion?(gameInfo)
         }
         

@@ -31,6 +31,19 @@ class MainViewModel: NSObject, MainModelType {
         
     }
     
+    func buttonTextLogin() -> String {
+        return NSLocalizedString("Login", comment: "")
+    }
+    func buttonTextRegistration() -> String {
+        return NSLocalizedString("Registration", comment: "")
+    }
+    func buttonTextFB() -> String {
+        return NSLocalizedString("Sign in with Facebook", comment: "")
+    }
+    func buttonTextGmail() -> String {
+        return NSLocalizedString("Sign in with Gmail", comment: "")
+    }
+    
     
     
 }

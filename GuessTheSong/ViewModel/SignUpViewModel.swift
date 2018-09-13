@@ -28,6 +28,9 @@ class SignUpViewModel: SignUpModelType {
         return SignInViewModel()
     }
     
+    func buttonTextOk() -> String {
+        return NSLocalizedString("Ok", comment: "")
+    }
     
     func signUp(completion: ((SignUpResponse)->())?, errorHandle: ((String)->())?) {
         guard let email = email else { return }

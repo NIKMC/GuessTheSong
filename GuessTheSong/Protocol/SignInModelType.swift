@@ -21,4 +21,6 @@ protocol SignInModelType {
     func loadLogin() -> String
     
     func loadPassword() -> String
+    
+    func buttonTextOk() -> String
 }

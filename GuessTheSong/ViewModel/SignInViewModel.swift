@@ -10,7 +10,6 @@ import Foundation
 
 class SignInViewModel : SignInModelType {
     
-    private let defaults = UserDefaults.standard
     private var email: String?
     private var password: String?
     private var networkManager: SignInOperation?
@@ -33,10 +32,10 @@ class SignInViewModel : SignInModelType {
         
         networkManager = SignInOperation(username: email, password: password)
         networkManager?.start()
-        networkManager?.success = { [unowned self] (token) in
-            self.defaults.setValue(email, forKey: "user_email")
-            self.defaults.setValue(password, forKey: "user_password")
-            self.defaults.setValue(token, forKey: "token")
+        networkManager?.success = { (token) in
+            UserDefaults.standard.setValue(email, forKey: "user_email")
+            UserDefaults.standard.setValue(password, forKey: "user_password")
+            UserDefaults.standard.setValue(token, forKey: "token")
             completion?("authorization is success")
         }
         
@@ -48,13 +47,17 @@ class SignInViewModel : SignInModelType {
     }
     
     func loadLogin() -> String {
-        guard let email = defaults.value(forKey: "user_email") as? String else { return "" }
+        guard let email = UserDefaults.standard.value(forKey: "user_email") as? String else { return "" }
         return email
     }
     
     func loadPassword() -> String {
-        guard let password = defaults.value(forKey: "user_password") as? String else { return "" }
+        guard let password = UserDefaults.standard.value(forKey: "user_password") as? String else { return "" }
         return password
+    }
+    
+    func buttonTextOk() -> String {
+        return NSLocalizedString("Ok", comment: "")
     }
     
     

@@ -18,7 +18,7 @@ class RegistrationViewController: UIViewController {
     @IBOutlet weak var emailView: UITextField!
     @IBOutlet weak var loginView: UITextField!
     
-    
+    @IBOutlet weak var GSButtonOk: UIGSButton!
     //MARK: Keyboard appear/dissapear
     @IBOutlet var scrollView: UIScrollView?
     @IBOutlet weak var constraintContentHeight: NSLayoutConstraint!
@@ -45,11 +45,33 @@ class RegistrationViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back"), style: .plain, target: self, action: #selector(self.back(sender:)))
 //        Socket_API.sharedInstance.delegate = self
 //        Socket_API.sharedInstance.registerResponseEvent()
-        
+        defaultInit()
         
         // Observe keyboard change
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+    }
+    
+    func defaultInit() {
+        
+        GSButtonOk.style = .normal
+        GSButtonOk.text = viewModel?.buttonTextOk()
+        GSButtonOk.handler = { [unowned self] (button) in
+            ProgressHUD.show()
+            self.viewModel?.setData(email: self.emailView.text!, login: self.loginView.text!, password: self.passwordView.text!, passwordRep: self.repasswordView.text!)
+            self.viewModel?.signUp(completion: { [weak self] (user) in
+                print("ok signUp")
+                ProgressHUD.dismiss()
+                OperationQueue.main.addOperation {
+                    self?.performSegue(withIdentifier: (self?.goToSignIn)!, sender: self)
+                }
+                }, errorHandle: { (error) in
+                    print(error)
+                    //            ProgressHUD.dismiss()
+                    ProgressHUD.showError(error)
+            })
+        }
         
     }
     
@@ -75,24 +97,6 @@ class RegistrationViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
-    
-    @IBAction func registerTapped(_ sender: UIButton) {
-        ProgressHUD.show()
-        viewModel?.setData(email: emailView.text!, login: loginView.text!, password: passwordView.text!, passwordRep: repasswordView.text!)
-        viewModel?.signUp(completion: { [weak self] (user) in
-            print("ok signUp")
-            ProgressHUD.dismiss()
-            OperationQueue.main.addOperation {
-                self?.performSegue(withIdentifier: (self?.goToSignIn)!, sender: self)
-            }
-        }, errorHandle: { (error) in
-            print(error)
-//            ProgressHUD.dismiss()
-            ProgressHUD.showError(error)
-        })
-//        Socket_API.sharedInstance.registerEvent(login: loginView.text!, email: emailView.text!, password: passwordView.text!, password2: repasswordView.text!)
-    }
-    
     
     @IBAction func goToLoginTapped(_ sender: UIButton) {
 //        Socket_API.sharedInstance.resetResponseEvent(eventName: EventName.REGISTER)

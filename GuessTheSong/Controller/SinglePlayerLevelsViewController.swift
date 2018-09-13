@@ -20,6 +20,32 @@ class SinglePlayerLevelsViewController: UIViewController {
     //TODO: create request update collectionview by pullToRefresh
     @IBOutlet var viewModel: LevelsOfSinglePlayViewModel!
     
+    var shapeLayer: CAShapeLayer! {
+        didSet {
+            shapeLayer.lineWidth = 7
+            shapeLayer.lineCap = "round"
+            shapeLayer.fillColor = nil
+            shapeLayer.strokeEnd = 1
+            let color = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0).cgColor
+            shapeLayer.strokeColor = color
+        }
+    }
+    
+    var overShapeLayer: CAShapeLayer! {
+        didSet {
+            overShapeLayer.lineWidth = 6
+            overShapeLayer.lineCap = "round"
+            overShapeLayer.fillColor = nil
+            overShapeLayer.strokeEnd = 0
+            let color = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1).cgColor
+            overShapeLayer.strokeColor = color
+            let borderColor = #colorLiteral(red: 0.09803921569, green: 0.09803921569, blue: 0.09803921569, alpha: 1).cgColor
+            overShapeLayer.borderColor = borderColor
+            overShapeLayer.borderWidth = 2
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.hidesBackButton = true
@@ -33,13 +59,32 @@ class SinglePlayerLevelsViewController: UIViewController {
         layout.itemSize = CGSize(width: width, height: width)
         
         loadLevels()
+        shapeLayer = CAShapeLayer()
+        self.view.layer.addSublayer(shapeLayer)
+        
+        overShapeLayer = CAShapeLayer()
+        self.view.layer.addSublayer(overShapeLayer)
         
 //        self.navigationItem.hidesBackButton = true
 //        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Menu", style: .plain, target: self, action: #selector(self.back(sender:)))
     }
     
+    
+    override func viewDidLayoutSubviews() {
+        configShapeLayerLevel(shapeLayer)
+        configShapeLayerLevel(overShapeLayer)
+        overShapeLayer.strokeEnd = 0.4
+    }
+    
+    func configShapeLayerLevel(_ shapeLayer: CAShapeLayer) {
+        shapeLayer.frame = view.bounds
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: self.view.frame.size.width / 10, y: self.view.frame.size.height/2))
+        path.addLine(to: CGPoint(x: self.view.frame.size.width - 50, y: self.view.frame.size.height/2))
+        shapeLayer.path = path.cgPath
+    }
+    
     @objc func back(sender: AnyObject) {
-//        Socket_API.sharedInstance.resetResponseEvent(eventName: EventName.LOGIN)
         guard(navigationController?.popViewController(animated: true)) != nil
             else {
                 print("No view controllers to pop off")
@@ -47,7 +92,6 @@ class SinglePlayerLevelsViewController: UIViewController {
         }
     }
     //TODO: replace on the refresh, not to load full data
-    //FIXME: not correctly update UI after refresh
     @objc func refreshLevels(sender: AnyObject) {
         loadLevels()
     }

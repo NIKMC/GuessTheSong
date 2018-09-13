@@ -17,4 +17,9 @@ protocol MenuModelType {
     func singlePlay()
     
     func multyPlay()
+    
+    func buttonTextSingle() -> String
+    
+    func buttonTextMulty() -> String
+    
 }

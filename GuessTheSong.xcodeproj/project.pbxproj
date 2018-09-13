@@ -74,7 +74,11 @@
 		02B465AD2075635D0009667E /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B465AC2075635D0009667E /* LoginRequest.swift */; };
 		02B465AF207563750009667E /* RegisterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B465AE207563750009667E /* RegisterRequest.swift */; };
 		02BDC2FC20CB09630072D868 /* AppDelegateEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BDC2FB20CB09630072D868 /* AppDelegateEx.swift */; };
+		02CBC548214AB65100B88188 /* MultiPlayerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CBC547214AB65100B88188 /* MultiPlayerRequest.swift */; };
+		02CBC54A214AB6A300B88188 /* MultiPlayerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CBC549214AB6A300B88188 /* MultiPlayerResponse.swift */; };
+		02CBC54C214AEC1F00B88188 /* UIGSButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CBC54B214AEC1F00B88188 /* UIGSButton.swift */; };
 		02CD0F3C2100AC0400C5B941 /* SignInOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CD0F3B2100AC0400C5B941 /* SignInOperation.swift */; };
+		02CFC40C214A4FE40062804B /* NotificationName + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CFC40B214A4FE40062804B /* NotificationName + Extension.swift */; };
 		02D001042100AE1B00A43EA8 /* SignInModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D001032100AE1B00A43EA8 /* SignInModelType.swift */; };
 		02D001062100AE2C00A43EA8 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D001052100AE2C00A43EA8 /* SignInViewModel.swift */; };
 		02D001082100AE6500A43EA8 /* SignUpModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D001072100AE6500A43EA8 /* SignUpModelType.swift */; };
@@ -179,7 +183,11 @@
 		02B465AC2075635D0009667E /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		02B465AE207563750009667E /* RegisterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRequest.swift; sourceTree = "<group>"; };
 		02BDC2FB20CB09630072D868 /* AppDelegateEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateEx.swift; sourceTree = "<group>"; };
+		02CBC547214AB65100B88188 /* MultiPlayerRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPlayerRequest.swift; sourceTree = "<group>"; };
+		02CBC549214AB6A300B88188 /* MultiPlayerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPlayerResponse.swift; sourceTree = "<group>"; };
+		02CBC54B214AEC1F00B88188 /* UIGSButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGSButton.swift; sourceTree = "<group>"; };
 		02CD0F3B2100AC0400C5B941 /* SignInOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInOperation.swift; sourceTree = "<group>"; };
+		02CFC40B214A4FE40062804B /* NotificationName + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName + Extension.swift"; sourceTree = "<group>"; };
 		02D001032100AE1B00A43EA8 /* SignInModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInModelType.swift; sourceTree = "<group>"; };
 		02D001052100AE2C00A43EA8 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		02D001072100AE6500A43EA8 /* SignUpModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModelType.swift; sourceTree = "<group>"; };
@@ -257,7 +265,7 @@
 				0266E5592062C35500326EF0 /* Controller */,
 				0266E5572062C33B00326EF0 /* Views */,
 				0266E5582062C34A00326EF0 /* Supporting Files */,
-				021F1CE0213DB1E200A8E010 /* UIColor+Extension.swift */,
+				02CFC40A214A4F980062804B /* Extensions */,
 			);
 			path = GuessTheSong;
 			sourceTree = "<group>";
@@ -266,6 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				0259E5B8214186DD0098101E /* UILives.swift */,
+				02CBC54B214AEC1F00B88188 /* UIGSButton.swift */,
 				021F1CE2213DB7F600A8E010 /* UIAnswers.swift */,
 			);
 			path = Elements;
@@ -297,7 +306,6 @@
 				0246B7632062C0240043506F /* LaunchScreen.storyboard */,
 				02940C0321181F7B005CE8B7 /* Assets.xcassets */,
 				0246B75A2062C0240043506F /* AppDelegate.swift */,
-				02BDC2FB20CB09630072D868 /* AppDelegateEx.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -390,6 +398,7 @@
 			children = (
 				02957CA420FF711500E3F231 /* SignInRequest.swift */,
 				02743AFC21021B0F0031322D /* SinglePlayerLevelsRequest.swift */,
+				02CBC547214AB65100B88188 /* MultiPlayerRequest.swift */,
 				02743AFE21021BB70031322D /* ProfileRequest.swift */,
 				02743B0021021C0F0031322D /* LevelOfUserRequest.swift */,
 				02743B0221021C7E0031322D /* UpdateLevelOfUserRequest.swift */,
@@ -400,6 +409,16 @@
 				023D679D213E6A91005D13CE /* FinishGameRequest.swift */,
 			);
 			path = Requests;
+			sourceTree = "<group>";
+		};
+		02CFC40A214A4F980062804B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				02BDC2FB20CB09630072D868 /* AppDelegateEx.swift */,
+				02CFC40B214A4FE40062804B /* NotificationName + Extension.swift */,
+				021F1CE0213DB1E200A8E010 /* UIColor+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		02D001132100AF1900A43EA8 /* Protocol */ = {
@@ -466,6 +485,7 @@
 				027A4ADA21236057007C0036 /* SignUpResponse.swift */,
 				02FF12C02124B17E001A4264 /* ProfileResponse.swift */,
 				02FF12C32124C81E001A4264 /* SongResponse.swift */,
+				02CBC549214AB6A300B88188 /* MultiPlayerResponse.swift */,
 				02FF12C52124C84D001A4264 /* SongsListResponse.swift */,
 				02FF12C72124C86A001A4264 /* LevelsResponse.swift */,
 				02FF12C92124C881001A4264 /* LevelResponse.swift */,
@@ -507,6 +527,7 @@
 				0246B7542062C0240043506F /* Frameworks */,
 				0246B7552062C0240043506F /* Resources */,
 				D28AE8C6C23117E47D46B859 /* [CP] Embed Pods Frameworks */,
+				476A0CE2AE3B44CAE7488900 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -593,6 +614,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		476A0CE2AE3B44CAE7488900 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GuessTheSong/Pods-GuessTheSong-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GuessTheSong/Pods-GuessTheSong-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D28AE8C6C23117E47D46B859 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -601,7 +640,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GuessTheSong/Pods-GuessTheSong-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/ProgressHUD/ProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
@@ -612,7 +657,13 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
@@ -640,12 +691,14 @@
 				02A02D182119AE1D00EA1676 /* DownloadMusicRequest.swift in Sources */,
 				02743B0321021C7E0031322D /* UpdateLevelOfUserRequest.swift in Sources */,
 				02F03E7720C0181A00A20C99 /* RealmStorageContextOperations.swift in Sources */,
+				02CBC548214AB65100B88188 /* MultiPlayerRequest.swift in Sources */,
 				027A4AD921235FA8007C0036 /* SignInResponse.swift in Sources */,
 				02940C0F21186CE4005CE8B7 /* ProfileInfoOperation.swift in Sources */,
 				02FF12C82124C86A001A4264 /* LevelsResponse.swift in Sources */,
 				02D001082100AE6500A43EA8 /* SignUpModelType.swift in Sources */,
 				0266E55C2062C3A200326EF0 /* LoginViewController.swift in Sources */,
 				02D001162100B44600A43EA8 /* LevelViewCell.swift in Sources */,
+				02CBC54A214AB6A300B88188 /* MultiPlayerResponse.swift in Sources */,
 				02BDC2FC20CB09630072D868 /* AppDelegateEx.swift in Sources */,
 				02FF12CC2124CFE6001A4264 /* ListOfLevelsOperation.swift in Sources */,
 				02D0010C2100AEC100A43EA8 /* MainViewModel.swift in Sources */,
@@ -657,6 +710,7 @@
 				02FF12CA2124C881001A4264 /* LevelResponse.swift in Sources */,
 				024F9CDD20E2E5A600935310 /* BackendConfiguration.swift in Sources */,
 				0259E5C52144078D0098101E /* FinishGameViewController.swift in Sources */,
+				02CBC54C214AEC1F00B88188 /* UIGSButton.swift in Sources */,
 				02940C0D21186BDB005CE8B7 /* UserProfile.swift in Sources */,
 				027A4ADB21236057007C0036 /* SignUpResponse.swift in Sources */,
 				02D001042100AE1B00A43EA8 /* SignInModelType.swift in Sources */,
@@ -700,6 +754,7 @@
 				0241AA3C206E7BEB00AD078D /* Socket_API.swift in Sources */,
 				0220380620CAABCA00AF0B0D /* PrepareMultiPlayViewController.swift in Sources */,
 				0259E5CD21441BB40098101E /* WaitingRoomMultiPlayViewModel.swift in Sources */,
+				02CFC40C214A4FE40062804B /* NotificationName + Extension.swift in Sources */,
 				02884CFC2114165200309B06 /* CollectionViewCellViewModel.swift in Sources */,
 				02FF12D0212A97A0001A4264 /* GameResponse.swift in Sources */,
 				02884CF6211415A500309B06 /* LevelsOfSinglePlayViewModel.swift in Sources */,

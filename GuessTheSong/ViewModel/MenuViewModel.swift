@@ -48,5 +48,13 @@ class MenuViewModel: MenuModelType {
         
     }
     
+    func buttonTextSingle() -> String {
+        return NSLocalizedString("Single Player", comment: "")
+    }
+    func buttonTextMulty() -> String {
+        return NSLocalizedString("Multiplayer", comment: "")
+    }
+    
+    
     
 }

@@ -22,13 +22,15 @@ class MenuViewController: UIViewController {
     private let goToMultyPlay = "multyPlayTapped"
     private let MainControllerID = "MainControllerID"
     private let goToMain = "goToMain"
+    
+    @IBOutlet weak var GSButtonSingle: UIGSButton!
+    @IBOutlet weak var GSButtonMulti: UIGSButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        Socket_API.sharedInstance.delegate = self
-//        Socket_API.sharedInstance.connect(connection: .User)
-//        Socket_API.sharedInstance.profileResponseEvent()
-//        ProgressHUD.showSuccess()
+        defaultInit()
         if let login = defaults.value(forKey: "token") as? String {
             print( "The token is \(login)")
         } else {
@@ -44,16 +46,25 @@ class MenuViewController: UIViewController {
         
         
     }
+    
+    func defaultInit() {
+        
+        GSButtonSingle.style = .rich
+        GSButtonMulti.style = .rich
+        
+        GSButtonSingle.text = viewModel?.buttonTextSingle()
+        GSButtonMulti.text = viewModel?.buttonTextMulty()
+        
+        
+        GSButtonSingle.handler = { [unowned self] (button) in
+            self.performSegue(withIdentifier: self.goToSinglePlay, sender: button)
+        }
+        GSButtonMulti.handler = { [unowned self] (button) in
+            self.performSegue(withIdentifier: self.goToMultyPlay, sender: button)
+        }
+        
+    }
 
-    
-    @IBAction func singleTapped(_ sender: UIButton) {
-        performSegue(withIdentifier: goToSinglePlay, sender: sender)
-    }
-    
-    @IBAction func multiTapped(_ sender: UIButton) {
-        performSegue(withIdentifier: goToMultyPlay, sender: sender)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let identifier = segue.identifier
         if identifier == goToMultyPlay {

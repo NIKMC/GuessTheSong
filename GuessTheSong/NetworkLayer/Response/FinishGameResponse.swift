@@ -10,21 +10,17 @@ import Foundation
 
 public class FinishGameResponse: Codable {
     
-    var id: Int
-    var status: StatusLevel.RawValue
-    var created_at: String
-    var user: Int
-    var level: Int
-    var single_player_experience: String
+    var message: String
+    var experience: Int
     
     
-    init(id: Int, status: String, created_at: String, user: Int, level: Int, single_player_experience: String) {
-        self.id = id
-        self.status = status
-        self.created_at = created_at
-        self.user = user
-        self.level = level
-        self.single_player_experience = single_player_experience
+    init(message: String, experience: Int) {
+        self.message = message
+        self.experience = experience
     }
+    
+    //FIXME: - Error of parsing keyNotFound(CodingKeys(stringValue: "experience", intValue: nil), Swift.DecodingError.Context(codingPath: [], debugDescription: "No value associated with key CodingKeys(stringValue: \"experience\", intValue: nil) (\"experience\").", underlyingError: nil))
+//    error of loading indfo about level Error Domain=NSCocoaErrorDomain Code=4865 "No value associated with key CodingKeys(stringValue: "experience", intValue: nil) ("experience")." UserInfo={NSCodingPath=(
+//    ), NSDebugDescription=No value associated with key CodingKeys(stringValue: "experience", intValue: nil) ("experience").}
 
 }

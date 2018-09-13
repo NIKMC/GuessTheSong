@@ -4,6 +4,8 @@
 <dict>
 	<key>BASE_URL</key>
 	<string>$(HOST_NAME)</string>
+	<key>BUNDLE_ID</key>
+	<string>com.nikmc-i.GuessTheSong</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -18,10 +20,40 @@
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb234932950703520</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.1001800585661-8dthpavstfen5r11gbqds7ug8trl4dt5</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>CLIENT_ID</key>
+	<string>1001800585661-8dthpavstfen5r11gbqds7ug8trl4dt5.apps.googleusercontent.com</string>
+	<key>FacebookAppID</key>
+	<string>234932950703520</string>
+	<key>FacebookDisplayName</key>
+	<string>Guess The Song</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-share-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -32,14 +64,14 @@
 		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>http://89.223.93.117:80</key>
+			<key>freetone.org</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
 				<key>NSIncludesSubdomains</key>
 				<true/>
 			</dict>
-			<key>freetone.org</key>
+			<key>http://89.223.93.117:80</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
@@ -48,6 +80,8 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.638051641649-65kd1i6ctrot0jpcn7sp74n431p5he1t</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>external-accessory</string>
