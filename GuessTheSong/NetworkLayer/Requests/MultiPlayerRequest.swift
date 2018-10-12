@@ -10,6 +10,12 @@ import Foundation
 
 struct MultiPlayerRequest: BackendAPIRequest {
     
+    private let token: String
+    
+    init(token: String) {
+        self.token = token
+    }
+    
     var path: String {
         return "/socket/multiplayer/join"
     }
@@ -27,6 +33,8 @@ struct MultiPlayerRequest: BackendAPIRequest {
     }
     
     var headers: [String : String]? {
-        return defaultJSONHeader()
+        var jsonHeaders = defaultJSONHeader()
+        jsonHeaders["Authorization"] = "JWT \(token)"
+        return jsonHeaders
     }
 }

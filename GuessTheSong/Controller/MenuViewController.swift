@@ -31,20 +31,24 @@ class MenuViewController: UIViewController {
         super.viewDidLoad()
 
         defaultInit()
+        
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         if let login = defaults.value(forKey: "token") as? String {
             print( "The token is \(login)")
         } else {
             print("Not the Login")
         }
-        viewModel?.showProfileInfo(completion: { (profile) in
+        viewModel?.showProfileInfo(completion: {
             print("get profile ok")
-            print("username from get my profile is \(profile.username)")
         }, errorHandle: { (error) in
             print(error)
             ProgressHUD.showError(error)
         })
-        
-        
     }
     
     func defaultInit() {
@@ -68,9 +72,9 @@ class MenuViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let identifier = segue.identifier
         if identifier == goToMultyPlay {
-//            if let dvc = segue.destination as? PrepareMultiPlayViewController {
-//                dvc.viewModel = viewModel?.signUp()
-//            }
+            if let dvc = segue.destination as? PrepareMultiPlayViewController {
+                dvc.viewModel = viewModel?.multiPlay()
+            }
         } else if identifier == goToMain {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let _ = appDelegate.switchRootViewController(nameStoryBoard: "Main", idViewController: MainControllerID)

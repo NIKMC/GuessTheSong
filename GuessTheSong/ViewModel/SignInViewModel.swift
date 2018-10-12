@@ -27,32 +27,44 @@ class SignInViewModel : SignInModelType {
         return SignUpViewModel()
     }
     
+    func checkPasswordOnStrong(password: String, handlerSuccess: (()->())?, handlerFailure: ((String)->())?) {
+        let passwordValidator = PasswordValidator.init(text: password).reliability
+        if !passwordValidator.contains(.atLeastEightCharacters) {
+            handlerFailure?(NSLocalizedString("The password is too short", comment: ""))
+        } else {
+            handlerSuccess?()
+        }
+    }
+    
     func signIn(completion: ((String)->())?, errorHandle: ((String)->())?) {
         guard let email = email, let password = password else { return }
         
         networkManager = SignInOperation(username: email, password: password)
         networkManager?.start()
-        networkManager?.success = { (token) in
-            UserDefaults.standard.setValue(email, forKey: "user_email")
-            UserDefaults.standard.setValue(password, forKey: "user_password")
-            UserDefaults.standard.setValue(token, forKey: "token")
+        networkManager?.success = {
+            Session.shared.username = email
+            Session.shared.password = password
             completion?("authorization is success")
         }
         
         networkManager?.failure = { (error) in
-            print(error.localizedDescription)
-            errorHandle?(error.localizedDescription)
+            print("Error of SignIn \(error.localizedDescription)")
+            ErrorValidator().chooseActionAfterResponse(errorResponse: error, success: { () in
+                completion?("authorization is success")
+            }, failure: { (errorMessage) in
+                errorHandle?(errorMessage.localizedDescription)
+            })
         }
 
     }
     
     func loadLogin() -> String {
-        guard let email = UserDefaults.standard.value(forKey: "user_email") as? String else { return "" }
+        guard let email = Session.shared.username else { return "" }
         return email
     }
     
     func loadPassword() -> String {
-        guard let password = UserDefaults.standard.value(forKey: "user_password") as? String else { return "" }
+        guard let password = Session.shared.password else { return "" }
         return password
     }
     

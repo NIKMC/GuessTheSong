@@ -25,7 +25,7 @@ struct DownloadMusicRequest: BackendAPIRequest {
     }
     
     var task: HTTPQuery {
-        return .music
+        return .multi
     }
     
     var parameters: [String : String]? {

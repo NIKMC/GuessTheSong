@@ -23,4 +23,6 @@ protocol SignInModelType {
     func loadPassword() -> String
     
     func buttonTextOk() -> String
+    
+    func checkPasswordOnStrong(password: String, handlerSuccess: (()->())?, handlerFailure: ((String)->())?)
 }

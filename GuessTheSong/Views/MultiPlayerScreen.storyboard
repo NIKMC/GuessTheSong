@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OAf-in-oxV">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OAf-in-oxV">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,109 +15,67 @@
             <objects>
                 <viewController id="OAf-in-oxV" customClass="PrepareMultiPlayViewController" customModule="GuessTheSong" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hY3-QV-Fy9">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fon" translatesAutoresizingMaskIntoConstraints="NO" id="DQT-iM-15z">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="htz-Oi-hEo">
-                                <rect key="frame" x="170.5" y="318.5" width="34" height="30"/>
-                                <state key="normal" title="Start"/>
-                                <connections>
-                                    <action selector="button1Tapped:" destination="OAf-in-oxV" eventType="touchUpInside" id="cXF-wn-3fc"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T3g-C2-6jx">
-                                <rect key="frame" x="293" y="578" width="32" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Stop"/>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching for players..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oM0-zA-Sb7">
+                                <rect key="frame" x="20" y="30" width="280" height="147"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EBM-P0-qXn" customClass="UISpinner" customModule="GuessTheSong" customModuleProvider="target">
+                                <rect key="frame" x="53" y="177" width="214" height="214"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="214" id="Vsi-Vs-GBm"/>
+                                    <constraint firstAttribute="height" constant="214" id="gJW-jc-hZD"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="foreground">
+                                        <color key="value" red="0.76470588240000004" green="0.63137254899999995" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="background">
+                                        <color key="value" red="0.098039215690000001" green="0.098039215690000001" blue="0.098039215690000001" alpha="0.40394905821917809" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstItem="DQT-iM-15z" firstAttribute="trailing" secondItem="Uts-F3-wlx" secondAttribute="trailing" id="0oN-mi-dUS"/>
-                            <constraint firstItem="htz-Oi-hEo" firstAttribute="centerX" secondItem="hY3-QV-Fy9" secondAttribute="centerX" id="1e4-Ot-XZy"/>
-                            <constraint firstItem="htz-Oi-hEo" firstAttribute="centerY" secondItem="hY3-QV-Fy9" secondAttribute="centerY" id="hz7-BN-XvW"/>
+                            <constraint firstItem="EBM-P0-qXn" firstAttribute="centerY" secondItem="hY3-QV-Fy9" secondAttribute="centerY" id="3Eb-h9-gp0"/>
+                            <constraint firstItem="oM0-zA-Sb7" firstAttribute="centerX" secondItem="hY3-QV-Fy9" secondAttribute="centerX" id="ADP-Rf-2De"/>
+                            <constraint firstItem="EBM-P0-qXn" firstAttribute="top" secondItem="oM0-zA-Sb7" secondAttribute="bottom" id="LJL-8i-cLJ"/>
+                            <constraint firstItem="EBM-P0-qXn" firstAttribute="centerX" secondItem="hY3-QV-Fy9" secondAttribute="centerX" id="NYo-AK-Car"/>
+                            <constraint firstItem="oM0-zA-Sb7" firstAttribute="leading" secondItem="Uts-F3-wlx" secondAttribute="leading" constant="20" id="irJ-vr-uXd"/>
                             <constraint firstItem="DQT-iM-15z" firstAttribute="top" secondItem="hY3-QV-Fy9" secondAttribute="top" id="mLA-4r-iqv"/>
                             <constraint firstItem="DQT-iM-15z" firstAttribute="leading" secondItem="Uts-F3-wlx" secondAttribute="leading" id="pjr-t0-pkp"/>
                             <constraint firstItem="Uts-F3-wlx" firstAttribute="bottom" secondItem="DQT-iM-15z" secondAttribute="bottom" id="qyY-Kq-ci3"/>
+                            <constraint firstItem="oM0-zA-Sb7" firstAttribute="top" secondItem="hY3-QV-Fy9" secondAttribute="top" multiplier="1.5" constant="30" id="zDy-hE-DZV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Uts-F3-wlx"/>
                     </view>
                     <navigationItem key="navigationItem" id="7af-BT-O2v"/>
                     <connections>
-                        <segue destination="Kz9-Cj-d9r" kind="show" id="tYM-8d-v1N"/>
+                        <outlet property="loaderView" destination="EBM-P0-qXn" id="PS1-Ol-HqA"/>
+                        <outlet property="searchText" destination="oM0-zA-Sb7" id="y8C-rh-50h"/>
+                        <segue destination="Kz9-Cj-d9r" kind="show" identifier="goToPlay" id="tYM-8d-v1N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XXz-En-w7l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="692" y="44.527736131934034"/>
         </scene>
-        <!--GameScreen-->
+        <!--MultiPlayGameScreen-->
         <scene sceneID="VkT-zn-HRt">
             <objects>
-                <viewControllerPlaceholder storyboardName="GameScreen" id="Kz9-Cj-d9r" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="MultiPlayGameScreen" id="Kz9-Cj-d9r" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QDb-QD-nho" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1271" y="62"/>
-        </scene>
-        <!--Prepare Single Play View Controller-->
-        <scene sceneID="IWH-gJ-cGM">
-            <objects>
-                <viewController id="RK7-mz-toQ" customClass="PrepareSinglePlayViewController" customModule="GuessTheSong" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fML-Xf-Xci">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fon" translatesAutoresizingMaskIntoConstraints="NO" id="aH0-gc-Awo">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Download music... " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODJ-mH-3KV">
-                                <rect key="frame" x="106" y="70" width="163" height="76"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pts-bm-ASx">
-                                <rect key="frame" x="50" y="196" width="275" height="275"/>
-                                <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="6XF-Bt-V06">
-                                        <rect key="frame" x="119" y="119" width="37" height="37"/>
-                                    </activityIndicatorView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="6XF-Bt-V06" firstAttribute="centerX" secondItem="Pts-bm-ASx" secondAttribute="centerX" id="6jZ-21-t6x"/>
-                                    <constraint firstItem="6XF-Bt-V06" firstAttribute="centerY" secondItem="Pts-bm-ASx" secondAttribute="centerY" id="Hfc-9f-928"/>
-                                    <constraint firstAttribute="width" secondItem="Pts-bm-ASx" secondAttribute="height" multiplier="1:1" id="IGg-5q-0Mf"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <constraints>
-                            <constraint firstItem="Pts-bm-ASx" firstAttribute="leading" secondItem="b62-am-0Qh" secondAttribute="leading" constant="50" id="DRv-HX-hWg"/>
-                            <constraint firstItem="aH0-gc-Awo" firstAttribute="leading" secondItem="b62-am-0Qh" secondAttribute="leading" id="H9r-Nx-5Hp"/>
-                            <constraint firstItem="Pts-bm-ASx" firstAttribute="top" secondItem="ODJ-mH-3KV" secondAttribute="bottom" constant="50" id="K2e-cZ-fqa"/>
-                            <constraint firstItem="aH0-gc-Awo" firstAttribute="top" secondItem="b62-am-0Qh" secondAttribute="top" id="Rry-zF-30N"/>
-                            <constraint firstItem="Pts-bm-ASx" firstAttribute="centerY" secondItem="fML-Xf-Xci" secondAttribute="centerY" id="VfM-Mb-leC"/>
-                            <constraint firstItem="ODJ-mH-3KV" firstAttribute="top" secondItem="b62-am-0Qh" secondAttribute="top" constant="50" id="d9g-VL-mcF"/>
-                            <constraint firstItem="ODJ-mH-3KV" firstAttribute="centerX" secondItem="fML-Xf-Xci" secondAttribute="centerX" id="ou8-Eq-vF6"/>
-                            <constraint firstItem="b62-am-0Qh" firstAttribute="bottom" secondItem="aH0-gc-Awo" secondAttribute="bottom" id="qZh-mV-i9f"/>
-                            <constraint firstItem="b62-am-0Qh" firstAttribute="trailing" secondItem="aH0-gc-Awo" secondAttribute="trailing" id="tcd-ty-JbT"/>
-                            <constraint firstItem="Pts-bm-ASx" firstAttribute="centerX" secondItem="fML-Xf-Xci" secondAttribute="centerX" id="yqn-D5-MWE"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="b62-am-0Qh"/>
-                    </view>
-                    <connections>
-                        <outlet property="circleView" destination="Pts-bm-ASx" id="jUg-nH-whU"/>
-                        <outlet property="loadingIndicator" destination="6XF-Bt-V06" id="RyL-5s-Ysd"/>
-                        <outlet property="searchText" destination="ODJ-mH-3KV" id="zfm-kq-Phx"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Hc7-Jb-iHj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1697" y="-323"/>
         </scene>
     </scenes>
     <resources>

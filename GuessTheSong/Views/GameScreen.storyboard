@@ -6,100 +6,18 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Finish Game View Controller-->
-        <scene sceneID="CwJ-n7-li9">
-            <objects>
-                <viewController id="8Og-ia-hg3" customClass="FinishGameViewController" customModule="GuessTheSong" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="pcL-Q3-itp">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fon" translatesAutoresizingMaskIntoConstraints="NO" id="DOd-iO-FEl">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="win" translatesAutoresizingMaskIntoConstraints="NO" id="ofa-Nr-6ia">
-                                <rect key="frame" x="50" y="114" width="220" height="220"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="ofa-Nr-6ia" secondAttribute="height" multiplier="1:1" id="BuB-wF-6VF"/>
-                                </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_fon" translatesAutoresizingMaskIntoConstraints="NO" id="aST-XB-L1O">
-                                <rect key="frame" x="0.0" y="377.5" width="320" height="170.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="aST-XB-L1O" secondAttribute="height" multiplier="15:8" id="huA-8w-sB9"/>
-                                </constraints>
-                            </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GKb-Fl-Q9y" userLabel="GSButton FinishGame" customClass="UIGSButton" customModule="GuessTheSong" customModuleProvider="target">
-                                <rect key="frame" x="50" y="473" width="220" height="45"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="Xvn-c3-KYO"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="styleType">
-                                        <integer key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="Next Level"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                                        <real key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="aST-XB-L1O" secondAttribute="trailing" id="0DE-4T-seN"/>
-                            <constraint firstItem="oeC-Ej-hEn" firstAttribute="bottom" secondItem="GKb-Fl-Q9y" secondAttribute="bottom" constant="50" id="3ww-VV-18l"/>
-                            <constraint firstItem="GKb-Fl-Q9y" firstAttribute="leading" secondItem="oeC-Ej-hEn" secondAttribute="leading" constant="50" id="4Ap-kp-OGr"/>
-                            <constraint firstItem="aST-XB-L1O" firstAttribute="centerX" secondItem="pcL-Q3-itp" secondAttribute="centerX" id="78U-7n-JnB"/>
-                            <constraint firstItem="ofa-Nr-6ia" firstAttribute="top" secondItem="oeC-Ej-hEn" secondAttribute="top" constant="50" id="8dq-ge-5sJ"/>
-                            <constraint firstItem="DOd-iO-FEl" firstAttribute="leading" secondItem="oeC-Ej-hEn" secondAttribute="leading" id="DIs-Z6-2VC"/>
-                            <constraint firstItem="ofa-Nr-6ia" firstAttribute="centerX" secondItem="pcL-Q3-itp" secondAttribute="centerX" id="Haq-k7-FMo"/>
-                            <constraint firstItem="oeC-Ej-hEn" firstAttribute="bottom" secondItem="DOd-iO-FEl" secondAttribute="bottom" id="PH6-eu-PWZ"/>
-                            <constraint firstItem="GKb-Fl-Q9y" firstAttribute="centerX" secondItem="pcL-Q3-itp" secondAttribute="centerX" id="RkU-P2-H5l"/>
-                            <constraint firstItem="ofa-Nr-6ia" firstAttribute="leading" secondItem="oeC-Ej-hEn" secondAttribute="leading" constant="50" id="SJ6-Js-9pJ"/>
-                            <constraint firstItem="aST-XB-L1O" firstAttribute="leading" secondItem="pcL-Q3-itp" secondAttribute="leading" id="UzL-6j-BsE"/>
-                            <constraint firstItem="DOd-iO-FEl" firstAttribute="trailing" secondItem="oeC-Ej-hEn" secondAttribute="trailing" id="WUs-NW-nMs"/>
-                            <constraint firstItem="DOd-iO-FEl" firstAttribute="top" secondItem="pcL-Q3-itp" secondAttribute="top" id="iCq-YF-2K8"/>
-                            <constraint firstItem="oeC-Ej-hEn" firstAttribute="bottom" secondItem="aST-XB-L1O" secondAttribute="bottom" constant="20" id="nG2-7q-MpI"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="oeC-Ej-hEn"/>
-                    </view>
-                    <connections>
-                        <outlet property="GSButtonFinishGame" destination="GKb-Fl-Q9y" id="9Ee-W0-gFE"/>
-                        <outlet property="finishGameImage" destination="ofa-Nr-6ia" id="8HL-of-cg2"/>
-                        <segue destination="gzv-CZ-LGO" kind="show" identifier="goToMain" id="2D5-R8-861"/>
-                        <segue destination="tFM-QR-jVF" kind="show" identifier="goToMultyPlayer" id="tAu-EI-cMA"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="inF-s7-BWB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2190" y="-323.23943661971833"/>
-        </scene>
         <!--MenuScreen-->
         <scene sceneID="3qe-aX-HBK">
             <objects>
                 <viewControllerPlaceholder storyboardName="MenuScreen" id="gzv-CZ-LGO" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QR4-MM-8YJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2190" y="-952"/>
-        </scene>
-        <!--MultiPlayerScreen-->
-        <scene sceneID="LtI-WK-p4r">
-            <objects>
-                <viewControllerPlaceholder storyboardName="MultiPlayerScreen" id="tFM-QR-jVF" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gTQ-h5-bC0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2191" y="119"/>
+            <point key="canvasLocation" x="2154" y="-462"/>
         </scene>
         <!--Game Play View Controller-->
         <scene sceneID="yRF-TY-J6e">
@@ -118,47 +36,60 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B1J-ll-Ncs" userLabel="Container">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="822-ed-ZSX">
-                                                <rect key="frame" x="10" y="5" width="215" height="40"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DaH-Wn-v6n" userLabel="TopContainer">
+                                                <rect key="frame" x="10" y="5" width="300" height="40"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="822-ed-ZSX">
+                                                        <rect key="frame" x="0.0" y="0.0" width="210" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="5Om-yT-m9m"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
+                                                        <color key="textColor" red="0.76470588240000004" green="0.63137254899999995" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R2n-hd-498" customClass="UILives" customModule="GuessTheSong" customModuleProvider="target">
+                                                        <rect key="frame" x="220" y="0.0" width="80" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="MXT-mL-bz4"/>
+                                                            <constraint firstAttribute="width" constant="80" id="vjB-76-xhb"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="styleType">
+                                                                <integer key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="firstImage" value="isLife"/>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="isLife"/>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="liveImage" value="isLife"/>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="noLiveImage" value="noLife"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="5Om-yT-m9m"/>
+                                                    <constraint firstItem="R2n-hd-498" firstAttribute="leading" secondItem="822-ed-ZSX" secondAttribute="trailing" constant="10" id="2yl-zk-4hW"/>
+                                                    <constraint firstAttribute="trailing" secondItem="R2n-hd-498" secondAttribute="trailing" id="UYB-fK-zhK"/>
+                                                    <constraint firstAttribute="height" constant="40" id="eaj-gx-xsW"/>
+                                                    <constraint firstItem="822-ed-ZSX" firstAttribute="centerY" secondItem="DaH-Wn-v6n" secondAttribute="centerY" id="ep0-Jf-gQs"/>
+                                                    <constraint firstItem="R2n-hd-498" firstAttribute="centerY" secondItem="DaH-Wn-v6n" secondAttribute="centerY" id="kPB-qh-jEB"/>
+                                                    <constraint firstItem="822-ed-ZSX" firstAttribute="leading" secondItem="DaH-Wn-v6n" secondAttribute="leading" id="uAl-Au-pFU"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
-                                                <color key="textColor" red="0.76470588240000004" green="0.63137254899999995" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R2n-hd-498" customClass="UILives" customModule="GuessTheSong" customModuleProvider="target">
-                                                <rect key="frame" x="235" y="5" width="80" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="MXT-mL-bz4"/>
-                                                    <constraint firstAttribute="width" constant="80" id="vjB-76-xhb"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="styleType">
-                                                        <integer key="value" value="1"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="image" keyPath="firstImage" value="isLife"/>
-                                                    <userDefinedRuntimeAttribute type="image" keyPath="image" value="isLife"/>
-                                                    <userDefinedRuntimeAttribute type="image" keyPath="liveImage" value="isLife"/>
-                                                    <userDefinedRuntimeAttribute type="image" keyPath="noLiveImage" value="noLife"/>
-                                                </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 / 10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qjC-ox-p0h" userLabel="CounterSong">
-                                                <rect key="frame" x="0.0" y="64" width="320" height="36"/>
+                                                <rect key="frame" x="0.0" y="54" width="320" height="36"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
                                                 <color key="textColor" red="0.76470588235294112" green="0.63137254901960782" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I wanna be the very ____\rLike no ___ ever was\rTo catch them is my ____ test\rTo train them __ my cause" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RaA-RR-5ln">
-                                                <rect key="frame" x="30" y="129.5" width="260" height="52.5"/>
+                                                <rect key="frame" x="30" y="109" width="260" height="52.5"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="308-ha-iOB" userLabel="ContainerOfTExtFields" customClass="UIAnswers" customModule="GuessTheSong" customModuleProvider="target">
-                                                <rect key="frame" x="50" y="228.5" width="220" height="250"/>
+                                                <rect key="frame" x="50" y="195" width="220" height="200"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="250" id="sQf-t5-mRq"/>
+                                                    <constraint firstAttribute="height" constant="200" id="sQf-t5-mRq"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="countTextField">
@@ -167,7 +98,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vpz-7k-vBA" customClass="UIGSButton" customModule="GuessTheSong" customModuleProvider="target">
-                                                <rect key="frame" x="275" y="228.5" width="40" height="40"/>
+                                                <rect key="frame" x="275" y="203.5" width="40" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="6oP-h1-GRN"/>
@@ -188,23 +119,21 @@
                                             </view>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="R2n-hd-498" firstAttribute="leading" secondItem="822-ed-ZSX" secondAttribute="trailing" constant="10" id="5xf-Q2-8Bm"/>
                                             <constraint firstItem="Vpz-7k-vBA" firstAttribute="top" secondItem="RaA-RR-5ln" secondAttribute="bottom" multiplier="1.2" constant="10" id="8NS-U9-Xyq"/>
+                                            <constraint firstItem="DaH-Wn-v6n" firstAttribute="leading" secondItem="B1J-ll-Ncs" secondAttribute="leading" constant="10" id="9bd-xF-43Y"/>
                                             <constraint firstItem="308-ha-iOB" firstAttribute="centerX" secondItem="B1J-ll-Ncs" secondAttribute="centerX" id="Ap5-AU-cVT"/>
                                             <constraint firstItem="qjC-ox-p0h" firstAttribute="centerX" secondItem="B1J-ll-Ncs" secondAttribute="centerX" id="Bby-hT-BDg"/>
+                                            <constraint firstItem="qjC-ox-p0h" firstAttribute="top" secondItem="DaH-Wn-v6n" secondAttribute="bottom" multiplier="1.2" id="EzT-JJ-zvG"/>
                                             <constraint firstItem="qjC-ox-p0h" firstAttribute="leading" secondItem="B1J-ll-Ncs" secondAttribute="leading" id="KOA-LA-Yl2"/>
-                                            <constraint firstItem="308-ha-iOB" firstAttribute="top" secondItem="RaA-RR-5ln" secondAttribute="bottom" multiplier="1.2" constant="10" id="SYs-Ir-C4I"/>
+                                            <constraint firstItem="308-ha-iOB" firstAttribute="top" secondItem="RaA-RR-5ln" secondAttribute="bottom" multiplier="1.2" constant="1" id="SYs-Ir-C4I"/>
                                             <constraint firstItem="RaA-RR-5ln" firstAttribute="leading" secondItem="B1J-ll-Ncs" secondAttribute="leading" constant="30" id="Syy-S0-yL7"/>
                                             <constraint firstItem="RaA-RR-5ln" firstAttribute="centerX" secondItem="B1J-ll-Ncs" secondAttribute="centerX" id="TYS-bA-IPw"/>
-                                            <constraint firstItem="822-ed-ZSX" firstAttribute="top" secondItem="B1J-ll-Ncs" secondAttribute="top" constant="5" id="Vae-QQ-B1W"/>
-                                            <constraint firstItem="822-ed-ZSX" firstAttribute="leading" secondItem="B1J-ll-Ncs" secondAttribute="leading" constant="10" id="jm6-Cw-fB7"/>
+                                            <constraint firstItem="DaH-Wn-v6n" firstAttribute="top" secondItem="B1J-ll-Ncs" secondAttribute="top" constant="5" id="Y1D-ma-4A5"/>
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="308-ha-iOB" secondAttribute="bottom" id="mX4-L2-WoU"/>
-                                            <constraint firstItem="RaA-RR-5ln" firstAttribute="top" secondItem="qjC-ox-p0h" secondAttribute="bottom" multiplier="1.2" constant="10" id="nEm-HN-TFD"/>
+                                            <constraint firstItem="RaA-RR-5ln" firstAttribute="top" secondItem="qjC-ox-p0h" secondAttribute="bottom" multiplier="1.2" constant="1" id="nEm-HN-TFD"/>
                                             <constraint firstItem="308-ha-iOB" firstAttribute="leading" secondItem="B1J-ll-Ncs" secondAttribute="leading" constant="50" id="noZ-lN-tFV"/>
-                                            <constraint firstAttribute="trailing" secondItem="R2n-hd-498" secondAttribute="trailing" constant="5" id="pfz-24-g9q"/>
+                                            <constraint firstAttribute="trailing" secondItem="DaH-Wn-v6n" secondAttribute="trailing" constant="10" id="taX-gM-fYh"/>
                                             <constraint firstAttribute="trailing" secondItem="Vpz-7k-vBA" secondAttribute="trailing" constant="5" id="vSB-2f-PN7"/>
-                                            <constraint firstItem="R2n-hd-498" firstAttribute="top" secondItem="B1J-ll-Ncs" secondAttribute="top" constant="5" id="yWT-Tx-hnX"/>
-                                            <constraint firstItem="qjC-ox-p0h" firstAttribute="top" secondItem="822-ed-ZSX" secondAttribute="bottom" multiplier="1.2" constant="10" id="zkG-6m-scV"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -234,15 +163,15 @@
                     </view>
                     <navigationItem key="navigationItem" id="sj3-5p-41s"/>
                     <connections>
+                        <outlet property="actionButton" destination="Vpz-7k-vBA" id="tmD-bi-ZpB"/>
                         <outlet property="constraintContentHeight" destination="2Yc-9e-csS" id="jlI-on-FET"/>
-                        <outlet property="containerView" destination="308-ha-iOB" id="KcA-rU-rEO"/>
                         <outlet property="livesOfGamer" destination="R2n-hd-498" id="yvW-fF-hv2"/>
                         <outlet property="scoreTitleLabelText" destination="qjC-ox-p0h" id="3IN-oV-CtB"/>
                         <outlet property="scrollView" destination="fYw-9a-BWj" id="1gt-1c-nZe"/>
                         <outlet property="textFieldOfAnswers" destination="308-ha-iOB" id="JNI-O3-ka0"/>
                         <outlet property="textLabelText" destination="RaA-RR-5ln" id="rKa-NL-o0u"/>
                         <outlet property="timerLabel" destination="822-ed-ZSX" id="DVU-xD-QYk"/>
-                        <segue destination="8Og-ia-hg3" kind="show" identifier="goToFinishGame" id="OeF-Q5-ntf"/>
+                        <segue destination="89f-9Z-A8v" kind="show" identifier="goToFinishGame" id="OeF-Q5-ntf"/>
                         <segue destination="gzv-CZ-LGO" kind="show" identifier="goToMain" id="lFb-e7-KbB"/>
                     </connections>
                 </viewController>
@@ -273,15 +202,18 @@
             </objects>
             <point key="canvasLocation" x="191.25" y="-323.23943661971833"/>
         </scene>
+        <!--FinishGameScreen-->
+        <scene sceneID="hi4-pu-XFm">
+            <objects>
+                <viewControllerPlaceholder storyboardName="FinishGameScreen" id="89f-9Z-A8v" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wqX-ku-Bgr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2190" y="-323.23943661971833"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="background_fon" width="519" height="295"/>
         <image name="fon" width="415" height="735"/>
         <image name="isLife" width="18" height="25"/>
         <image name="noLife" width="21" height="27"/>
-        <image name="win" width="308" height="308"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="lFb-e7-KbB"/>
-    </inferredMetricsTieBreakers>
 </document>

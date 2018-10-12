@@ -24,12 +24,37 @@ class SignUpViewModel: SignUpModelType {
         self.passwordRep = passwordRep
     }
     
+    func getPassword() -> String? {
+        return password
+    }
+    
+    func getLogin() -> String? {
+        return login
+    }
+    
     func signIn() -> SignInModelType {
         return SignInViewModel()
     }
     
     func buttonTextOk() -> String {
         return NSLocalizedString("Ok", comment: "")
+    }
+    
+    func checkEmail(email: String, completion: (()->())?, failure: ((String)->())?) {
+        if EmailValidator(text: email).isCorrect {
+            completion?()
+        } else {
+            failure?("Incorrect email")
+        }
+    }
+    
+    func checkPasswordOnStrong(password: String, handlerSuccess: (()->())?, handlerFailure: ((String)->())?) {
+        let passwordValidator = PasswordValidator.init(text: password).reliability
+        if !passwordValidator.contains(.atLeastEightCharacters) {
+            handlerFailure?(NSLocalizedString("The password is too short", comment: ""))
+        } else {
+            handlerSuccess?()
+        }
     }
     
     func signUp(completion: ((SignUpResponse)->())?, errorHandle: ((String)->())?) {

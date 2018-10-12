@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -135,7 +136,7 @@
                                 </constraints>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="X7M-cE-0av">
-                                <rect key="frame" x="10" y="84" width="300" height="464"/>
+                                <rect key="frame" x="10" y="94" width="300" height="454"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.50444135273972601" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="JVK-ZQ-snH">
                                     <size key="itemSize" width="72" height="72"/>
@@ -241,6 +242,18 @@
                                     <outlet property="delegate" destination="eTP-Oo-H3h" id="L3Q-I6-xr5"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ypE-qe-uoj" customClass="UIStatusLevel" customModule="GuessTheSong" customModuleProvider="target">
+                                <rect key="frame" x="155" y="69" width="160" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="jM5-kZ-4HX"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="999"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="14"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
@@ -248,21 +261,25 @@
                             <constraint firstAttribute="trailing" secondItem="4ek-BW-hnB" secondAttribute="trailing" id="69W-qf-4HV"/>
                             <constraint firstItem="4ek-BW-hnB" firstAttribute="leading" secondItem="uUC-ox-eKZ" secondAttribute="leading" id="7vn-Tf-equ"/>
                             <constraint firstItem="4ek-BW-hnB" firstAttribute="width" secondItem="4ek-BW-hnB" secondAttribute="height" multiplier="15:8" id="EPS-gN-lal"/>
+                            <constraint firstItem="ypE-qe-uoj" firstAttribute="top" secondItem="uhr-gD-VRt" secondAttribute="top" constant="5" id="RiZ-vu-TLm"/>
                             <constraint firstItem="uhr-gD-VRt" firstAttribute="bottom" secondItem="4ek-BW-hnB" secondAttribute="bottom" constant="20" id="aJz-nv-I40"/>
                             <constraint firstItem="uhr-gD-VRt" firstAttribute="bottom" secondItem="WqU-gu-q8d" secondAttribute="bottom" id="axg-mO-x5k"/>
                             <constraint firstItem="X7M-cE-0av" firstAttribute="bottom" secondItem="4ek-BW-hnB" secondAttribute="bottom" id="cf4-Pt-pom"/>
+                            <constraint firstItem="ypE-qe-uoj" firstAttribute="width" secondItem="uhr-gD-VRt" secondAttribute="width" multiplier="0.5" id="jHu-Z5-9cu"/>
                             <constraint firstItem="uhr-gD-VRt" firstAttribute="trailing" secondItem="WqU-gu-q8d" secondAttribute="trailing" id="qgr-5x-lge"/>
                             <constraint firstItem="WqU-gu-q8d" firstAttribute="top" secondItem="uhr-gD-VRt" secondAttribute="top" id="taN-sE-Ofv"/>
                             <constraint firstItem="X7M-cE-0av" firstAttribute="leading" secondItem="uhr-gD-VRt" secondAttribute="leading" constant="10" id="trE-bk-36W"/>
                             <constraint firstItem="X7M-cE-0av" firstAttribute="centerX" secondItem="uUC-ox-eKZ" secondAttribute="centerX" id="xWS-2S-X4Y"/>
+                            <constraint firstAttribute="trailing" secondItem="ypE-qe-uoj" secondAttribute="trailing" constant="5" id="yjC-cU-hlQ"/>
                             <constraint firstItem="4ek-BW-hnB" firstAttribute="centerX" secondItem="uUC-ox-eKZ" secondAttribute="centerX" id="z0O-oZ-KFt"/>
-                            <constraint firstItem="X7M-cE-0av" firstAttribute="top" secondItem="uhr-gD-VRt" secondAttribute="top" constant="20" id="zRj-Dx-jZh"/>
+                            <constraint firstItem="X7M-cE-0av" firstAttribute="top" secondItem="uhr-gD-VRt" secondAttribute="top" constant="30" id="zRj-Dx-jZh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uhr-gD-VRt"/>
                     </view>
                     <navigationItem key="navigationItem" id="IhA-I7-r1A"/>
                     <connections>
                         <outlet property="collectionLevelView" destination="X7M-cE-0av" id="UyQ-2u-GWK"/>
+                        <outlet property="levelStatus" destination="ypE-qe-uoj" id="p4e-QV-cx0"/>
                         <outlet property="viewModel" destination="IcI-hk-7Bq" id="dG3-jf-JMp"/>
                         <segue destination="Grq-mH-QJD" kind="show" identifier="goToPlayInTheGame" id="E99-J0-9Sl"/>
                     </connections>
@@ -291,52 +308,52 @@
                             <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fon" translatesAutoresizingMaskIntoConstraints="NO" id="U0y-Dr-BPo">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Download music... " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T1c-cy-dFE">
-                                <rect key="frame" x="78.5" y="94" width="163" height="60"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wmA-Y1-Cmd" customClass="UISpinner" customModule="GuessTheSong" customModuleProvider="target">
+                                <rect key="frame" x="53" y="177" width="214" height="214"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="214" id="GYZ-Px-etl"/>
+                                    <constraint firstAttribute="width" constant="214" id="uy3-Jb-E7G"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="foreground">
+                                        <color key="value" red="0.76470588240000004" green="0.63137254899999995" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="background">
+                                        <color key="value" red="0.098039215690000001" green="0.098039215690000001" blue="0.098039215690000001" alpha="0.40394905819999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Download music... " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T1c-cy-dFE">
+                                <rect key="frame" x="50" y="126" width="220" height="51"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sbq-g9-9gl">
-                                <rect key="frame" x="50" y="174" width="220" height="220"/>
-                                <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="gpJ-gz-T6b">
-                                        <rect key="frame" x="91.5" y="91.5" width="37" height="37"/>
-                                    </activityIndicatorView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="gpJ-gz-T6b" firstAttribute="centerY" secondItem="sbq-g9-9gl" secondAttribute="centerY" id="Nfj-zz-kbe"/>
-                                    <constraint firstItem="gpJ-gz-T6b" firstAttribute="centerX" secondItem="sbq-g9-9gl" secondAttribute="centerX" id="lBb-D2-r5L"/>
-                                    <constraint firstAttribute="width" secondItem="sbq-g9-9gl" secondAttribute="height" multiplier="1:1" id="sSs-Zy-Eyg"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
-                            <constraint firstItem="sbq-g9-9gl" firstAttribute="leading" secondItem="ney-jV-1WW" secondAttribute="leading" constant="50" id="9QY-A2-4zf"/>
-                            <constraint firstItem="sbq-g9-9gl" firstAttribute="top" secondItem="T1c-cy-dFE" secondAttribute="bottom" constant="20" id="Pey-fv-1Gz"/>
+                            <constraint firstItem="wmA-Y1-Cmd" firstAttribute="centerX" secondItem="CQr-Dd-DCA" secondAttribute="centerX" id="16t-aa-rff"/>
+                            <constraint firstItem="T1c-cy-dFE" firstAttribute="leading" secondItem="ney-jV-1WW" secondAttribute="leading" constant="50" id="69m-w7-cNR"/>
+                            <constraint firstItem="wmA-Y1-Cmd" firstAttribute="top" secondItem="T1c-cy-dFE" secondAttribute="bottom" id="CGJ-ny-aLW"/>
                             <constraint firstItem="ney-jV-1WW" firstAttribute="bottom" secondItem="U0y-Dr-BPo" secondAttribute="bottom" id="SgN-5Z-JBI"/>
                             <constraint firstItem="U0y-Dr-BPo" firstAttribute="top" secondItem="ney-jV-1WW" secondAttribute="top" id="Xnl-5D-zlo"/>
+                            <constraint firstItem="wmA-Y1-Cmd" firstAttribute="centerY" secondItem="CQr-Dd-DCA" secondAttribute="centerY" id="a84-vF-Ztf"/>
                             <constraint firstItem="U0y-Dr-BPo" firstAttribute="leading" secondItem="ney-jV-1WW" secondAttribute="leading" id="l83-Hg-cbJ"/>
-                            <constraint firstItem="sbq-g9-9gl" firstAttribute="centerY" secondItem="CQr-Dd-DCA" secondAttribute="centerY" id="mrb-bq-GvD"/>
                             <constraint firstItem="ney-jV-1WW" firstAttribute="trailing" secondItem="U0y-Dr-BPo" secondAttribute="trailing" id="tvn-Q3-Nqr"/>
-                            <constraint firstItem="T1c-cy-dFE" firstAttribute="top" secondItem="ney-jV-1WW" secondAttribute="top" constant="30" id="vbP-60-8ad"/>
+                            <constraint firstItem="T1c-cy-dFE" firstAttribute="top" secondItem="ney-jV-1WW" secondAttribute="top" multiplier="1.5" constant="30" id="vbP-60-8ad"/>
                             <constraint firstItem="T1c-cy-dFE" firstAttribute="centerX" secondItem="CQr-Dd-DCA" secondAttribute="centerX" id="xtv-NJ-h8Z"/>
-                            <constraint firstItem="sbq-g9-9gl" firstAttribute="centerX" secondItem="CQr-Dd-DCA" secondAttribute="centerX" id="zUd-C9-jND"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ney-jV-1WW"/>
                     </view>
                     <connections>
-                        <outlet property="circleView" destination="sbq-g9-9gl" id="2cj-oa-jEi"/>
-                        <outlet property="loadingIndicator" destination="gpJ-gz-T6b" id="lIk-hj-dc5"/>
+                        <outlet property="loaderView" destination="wmA-Y1-Cmd" id="Pxa-bW-cHC"/>
                         <outlet property="searchText" destination="T1c-cy-dFE" id="sMd-ER-wJ9"/>
                         <segue destination="ZRO-dg-rwa" kind="show" identifier="goToPlay" id="a5I-RK-c0J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ufw-SW-UiW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4472.8000000000002" y="-7.389162561576355"/>
+            <point key="canvasLocation" x="4471.875" y="-7.394366197183099"/>
         </scene>
         <!--GameScreen-->
         <scene sceneID="5yK-1y-1jM">

@@ -28,9 +28,14 @@ struct NetworkQueryGenerator {
             }
             return URLRequest(url: urlComponent.url!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
         
-        case .music:
-            print("music")
-            return URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
+        case .multi:
+            let urlComponent = NSURLComponents(string: url.absoluteString)!
+            guard let params = params else { return URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 90.0)}
+            
+            urlComponent.queryItems = params.map { (key, value) in
+                URLQueryItem(name: key, value: value)
+            }
+            return URLRequest(url: urlComponent.url!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 90.0)
         }
     }
 }

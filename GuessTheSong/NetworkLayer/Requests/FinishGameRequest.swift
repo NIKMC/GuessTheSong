@@ -34,7 +34,7 @@ struct FinishGameRequest: BackendAPIRequest {
     
     var parameters: [String : String]? {
         return [
-            "status": "success",
+            "status": "done",
             "time": time
         ]
     }

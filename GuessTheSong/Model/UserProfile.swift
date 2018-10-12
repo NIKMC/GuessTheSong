@@ -8,12 +8,21 @@
 
 import Foundation
 
-public class UserProfile: Codable {
-    var rating: Double
+public class Player {
+    private var id: Int
+    private var name: String
+    private var rating = 0
     
+    init(id: Int, name: String) {
+        self.id = id
+        self.name = name
+    }
     
-    init(rating: Double) {
-        self.rating = rating
-        
+    func updateRating(newValue: Int) {
+        self.rating += newValue
+    }
+    
+    func getRating() -> Int {
+        return self.rating
     }
 }

@@ -9,6 +9,7 @@
 import Foundation
 
 public class ProfileResponse: Codable {
+    var id: Int
     var username: String
     var first_name: String
     var last_name: String
@@ -16,7 +17,8 @@ public class ProfileResponse: Codable {
     var single_player_experience: String
     var multi_player_experience: String
     
-    init(username: String,first_name: String,last_name: String,email: String,single_player_experience: String, multi_player_experience: String) {
+    init(id: Int, username: String,first_name: String,last_name: String,email: String,single_player_experience: String, multi_player_experience: String) {
+        self.id = id
         self.username = username
         self.first_name = first_name
         self.last_name = last_name

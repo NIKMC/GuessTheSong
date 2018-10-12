@@ -16,41 +16,25 @@ class SinglePlayerLevelsViewController: UIViewController {
     private let identityGoToPlayInTheGame = "goToPlayInTheGame"
     private let leftAndRightPaddings : CGFloat = 20
     private let numberOfItemPerRow: CGFloat = 4
+    @IBOutlet weak var levelStatus: UIStatusLevel!
     
     //TODO: create request update collectionview by pullToRefresh
     @IBOutlet var viewModel: LevelsOfSinglePlayViewModel!
     
-    var shapeLayer: CAShapeLayer! {
-        didSet {
-            shapeLayer.lineWidth = 7
-            shapeLayer.lineCap = "round"
-            shapeLayer.fillColor = nil
-            shapeLayer.strokeEnd = 1
-            let color = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0).cgColor
-            shapeLayer.strokeColor = color
-        }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+//        view.updateConstraintsIfNeeded()
     }
-    
-    var overShapeLayer: CAShapeLayer! {
-        didSet {
-            overShapeLayer.lineWidth = 6
-            overShapeLayer.lineCap = "round"
-            overShapeLayer.fillColor = nil
-            overShapeLayer.strokeEnd = 0
-            let color = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1).cgColor
-            overShapeLayer.strokeColor = color
-            let borderColor = #colorLiteral(red: 0.09803921569, green: 0.09803921569, blue: 0.09803921569, alpha: 1).cgColor
-            overShapeLayer.borderColor = borderColor
-            overShapeLayer.borderWidth = 2
-        }
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.hidesBackButton = true
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back"), style: .plain, target: self, action: #selector(self.back(sender:)))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Refresh", style: .plain, target: self, action: #selector(self.refreshLevels(sender:)))
+        
+        let (score, progress) = viewModel.getStatusLevel()
+        levelStatus.setScore(score: score)
+        levelStatus.setProgress(currentProgress: progress)
         
         //Configure the collectionView
 //        let width = (collectionLevelView.frame.size.width - leftAndRightPaddings) / numberOfItemPerRow
@@ -59,29 +43,8 @@ class SinglePlayerLevelsViewController: UIViewController {
         layout.itemSize = CGSize(width: width, height: width)
         
         loadLevels()
-        shapeLayer = CAShapeLayer()
-        self.view.layer.addSublayer(shapeLayer)
-        
-        overShapeLayer = CAShapeLayer()
-        self.view.layer.addSublayer(overShapeLayer)
-        
 //        self.navigationItem.hidesBackButton = true
 //        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Menu", style: .plain, target: self, action: #selector(self.back(sender:)))
-    }
-    
-    
-    override func viewDidLayoutSubviews() {
-        configShapeLayerLevel(shapeLayer)
-        configShapeLayerLevel(overShapeLayer)
-        overShapeLayer.strokeEnd = 0.4
-    }
-    
-    func configShapeLayerLevel(_ shapeLayer: CAShapeLayer) {
-        shapeLayer.frame = view.bounds
-        let path = UIBezierPath()
-        path.move(to: CGPoint(x: self.view.frame.size.width / 10, y: self.view.frame.size.height/2))
-        path.addLine(to: CGPoint(x: self.view.frame.size.width - 50, y: self.view.frame.size.height/2))
-        shapeLayer.path = path.cgPath
     }
     
     @objc func back(sender: AnyObject) {
@@ -99,13 +62,15 @@ class SinglePlayerLevelsViewController: UIViewController {
     func loadLevels() {
         ProgressHUD.show()
         viewModel.fetchListOfLevels(completion: { [weak self] in
-            ProgressHUD.dismiss()
             OperationQueue.main.addOperation {
+                ProgressHUD.dismiss()
                 self?.collectionLevelView.reloadData()
             }
         }) { (errorMessage) in
             //            ProgressHUD.dismiss()
-            ProgressHUD.showError(errorMessage)
+            OperationQueue.main.addOperation {
+                ProgressHUD.showError(errorMessage)
+            }
         }
     }
     
@@ -146,7 +111,7 @@ extension SinglePlayerLevelsViewController: UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let notClosed = viewModel.itemIsNotClosed(forIndexPath: indexPath) else { return }
+        guard let notClosed = viewModel.itemIsRunning(forIndexPath: indexPath) else { return }
         if notClosed {
             performSegue(withIdentifier: identityGoToPlayInTheGame, sender: self)
         }
@@ -162,7 +127,7 @@ extension SinglePlayerLevelsViewController: UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
         
-        guard let notClosed = viewModel.itemIsNotClosed(forIndexPath: indexPath) else { return }
+        guard let notClosed = viewModel.itemIsRunning(forIndexPath: indexPath) else { return }
         if notClosed {
             UIView.animate(withDuration: 0.5) {
                 if let cell = collectionView.cellForItem(at: indexPath) as? LevelViewCell {
@@ -174,7 +139,7 @@ extension SinglePlayerLevelsViewController: UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-        guard let notClosed = viewModel.itemIsNotClosed(forIndexPath: indexPath) else { return }
+        guard let notClosed = viewModel.itemIsRunning(forIndexPath: indexPath) else { return }
         if notClosed {
             UIView.animate(withDuration: 0.5) {
                 if let cell = collectionView.cellForItem(at: indexPath) as? LevelViewCell {

@@ -47,29 +47,12 @@ class PrepareSinglePlayViewModel: PrepareGameModelType {
         
     }
     
-    func goToPlaySinglePlay() -> SinglePlayModelType {
+    func goToPlaySinglePlay() -> GamePlayModelType {
         let sortedSongs = musicsPath.sorted(by: {$0.key<$1.key})
         let songs = sortedSongs.map({$0.value})
-        return SinglePlayViewModel(action: .Single, path: songs, id: gameId, info: fullLevelInfo)
+        return SinglePlayViewModel(path: songs, id: gameId, info: fullLevelInfo)
     }
     
-//    func getDestinationUrl(completionUrl: @escaping ([URL?])->() )  {
-//        let tasks = [Task(idTask: 1, infoTask: "http://freetone.org/ring/stan/iPhone_5-Alarm.mp3"),
-//                     Task(idTask: 2, infoTask: "https://s3.amazonaws.com/kargopolov/kukushka.mp3"),
-//                     Task(idTask: 3, infoTask: "https://freetone.org/files/7/wawes_sound.mp3"),
-//                     Task(idTask: 4, infoTask: "https://freetone.org/ring/kids/bal.mp3"),]
-//
-//        downloadMusic(musicUrls: tasks, completion: { [weak self] (value) in
-//            print(value)
-//            guard let values = self?.musicsPath.map({$0.value}) else {
-//                print("there are not map")
-//                return
-//            }
-//            completionUrl(values)
-//        }) { (error) in
-//            print(error)
-//        }
-//    }
     
     func loadingLevel(completion: ((LevelResponse)->())?, errorHandle: ((String)->())?) {
         //FIXME: change on the Static class with variable token
@@ -86,7 +69,11 @@ class PrepareSinglePlayViewModel: PrepareGameModelType {
         
         levelNetworkManager?.failure = { (error) in
             print("error of loading indfo about level \(error)")
-            errorHandle?(error.localizedDescription)
+            ErrorValidator().chooseActionAfterResponse(errorResponse: error, success: { [weak self] () in
+                self?.loadingLevel(completion: completion, errorHandle: errorHandle)
+                }, failure: { (errorMessage) in
+                    errorHandle?(errorMessage.localizedDescription)
+            })
         }
     }
     

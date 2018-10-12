@@ -12,8 +12,8 @@ public class SignInOperation: ServiceOperation {
     
     private let request: SignInRequest
     
-    public var success: ((String) -> Void)?
-    public var failure: ((NSError) -> Void)?
+    public var success: (() -> ())?
+    public var failure: ((NSError) -> ())?
     
     public init(username: String, password: String, service: BackendService = NetworkBackendService(BackendConfiguration.shared)) {
         request = SignInRequest(login: username, password: password)
@@ -29,20 +29,13 @@ public class SignInOperation: ServiceOperation {
         do {
             let data = try JSONDecoder().decode(SignInResponse.self, from: response)
                         print("The response of SignIn is: \(String(describing: data.token))")
-            self.success?(data.token)
+            Session.shared.access_token = data.token
+            self.success?()
             self.finish()
         } catch let error {
             print("Error of parsing \(error)")
             handleFailure(error as NSError)
         }
-        
-//        do {
-////            let item = try SignInResponseMapper.process(response)
-////            self.success?(item)
-//
-//        } catch {
-////            handleFailure(NSError.cannotParseResponse())
-//        }
     }
     
     private func handleFailure(_ error: NSError) {

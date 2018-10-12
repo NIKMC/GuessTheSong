@@ -15,25 +15,22 @@ class GamePlayViewController: UIViewController, UITextFieldDelegate {
     //TODO: I need create a struct which will used to determine singleplay or multyPlay
     @IBOutlet weak var scoreTitleLabelText: UILabel!
     @IBOutlet weak var textLabelText: UILabel!
-    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var textFieldOfAnswers: UIAnswers!
+    @IBOutlet weak var actionButton: UIGSButton!
     
-//    @IBOutlet weak var constraintContentHeight: NSLayoutConstraint!
     @IBOutlet var scrollView: UIScrollView?
     @IBOutlet weak var constraintContentHeight: NSLayoutConstraint!
     
     private let finishGame = "goToFinishGame"
     private let MainMenu = "goToMain"
     private let MenuControllerID = "MenuControllerID"
-//    private let loseSinglePlayer = "loseSinglePlayer"
-//    private let winMultyPlayer = "winMultyPlayer"
-//    private let loseMultyPlayer = "loseMultyPlayer"
     
     private let MAX_COUNT_OF_LIVES = 3
-    var viewModel: SinglePlayModelType?
+    var viewModel: GamePlayModelType?
     
     private var timer = Timer()
-    private let MAX_SEC = 10
+    private let MAX_SEC = 90
+    
     private lazy var seconds = MAX_SEC
     private var isTimerRunning = false
     
@@ -64,9 +61,19 @@ class GamePlayViewController: UIViewController, UITextFieldDelegate {
         textFieldOfAnswers.handlerDone = { [unowned self] in
             self.view.endEditing(true)
         }
+        defaultInit()
         viewModel?.lives.value = viewModel?.currentLive()
         prepareRound()
         showKeyboard()
+    }
+    
+    func defaultInit() {
+        actionButton.style = .round
+        actionButton.text = viewModel?.getButtonTitle()
+        actionButton.handler = { [weak self] (button) in
+            print("go tapped")
+            self?.finishRound()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -91,59 +98,55 @@ class GamePlayViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func back(sender: AnyObject) {
-//        guard(navigationController?.popToRootViewController(animated: true)) != nil
-//            else {
-//                print("No view controllers to pop off")
-//                return
-//        }
+        resetTimer()
         self.viewModel?.stopGame()
         self.performSegue(withIdentifier: MainMenu, sender: self)
     }
     
-    @objc func updateTimer() {
-        if seconds < 1 {
-            timer.invalidate()
-            let values: [String] = textFieldOfAnswers.getCurrentTextFromTextFields()
-            guard let action = self.viewModel?.getBehaviour() else {
-                print("Didn't find behaviour")
-                return }
-            //TODO: - delete this code when Iskandar change response of finishGame Request
-            self.view.endEditing(true)
-//            self.viewModel?.setActionToFinishGame(action: .WinSingle)
-//            self.viewModel?.stopGame()
-//            self.performSegue(withIdentifier: self.finishGame, sender: self)
-            
-//            TODO: - add this code when Iskandar change response of finishGame Request
-            viewModel?.compareAnswersWithResults(answers: values, rightAnswersHandler: { [unowned self] in
-                self.prepareRound()
+    func finishRound() {
+        timer.invalidate()
+        let values: [String] = textFieldOfAnswers.getCurrentTextFromTextFields()
+        self.view.endEditing(true)
+        
+        viewModel?.compareAnswersWithResults(answers: values, rightAnswersHandler: { [unowned self] in
+            self.prepareRound()
             }, wrongAnswersHandler: { [unowned self] (live) in
-                self.viewModel?.lives.value = live
-                self.prepareRound()
+                OperationQueue.main.addOperation {
+                    self.viewModel?.lives.value = live
+                    self.prepareRound()
+                }
+                
             }, winHandler: { [unowned self] (live) in
-                self.viewModel?.lives.value = live
-                switch action {
-                case .Single:
+                OperationQueue.main.addOperation {
+                    self.viewModel?.lives.value = live
                     self.viewModel?.setActionToFinishGame(action: .WinSingle)
-                    self.performSegue(withIdentifier: self.finishGame, sender: self)
-                case .Multy:
-                    self.viewModel?.setActionToFinishGame(action: .WinMulty)
                     self.performSegue(withIdentifier: self.finishGame, sender: self)
                 }
             }, loseHandler: { [unowned self] (live) in
-                self.viewModel?.lives.value = live
-                switch action {
-                case .Single:
+                OperationQueue.main.addOperation {
+                    self.viewModel?.lives.value = live
                     self.viewModel?.setActionToFinishGame(action: .LoseSingle)
                     self.performSegue(withIdentifier: self.finishGame, sender: self)
-                case .Multy:
-                    self.viewModel?.setActionToFinishGame(action: .LoseMulty)
-                    self.performSegue(withIdentifier: self.finishGame, sender: self)
                 }
-
-            })
+        })
+    }
+    
+    @objc func updateTimer() {
+        if seconds < 1 {
+            finishRound()
         } else {
-            seconds -= 1
-            viewModel?.time.value = "Timer: \(seconds)"
+            OperationQueue.main.addOperation {
+                self.seconds -= 1
+                let supportedLanguageCodes = ["en","he"]
+                let languageCode = Locale.current.languageCode ?? "en"
+                let currentLanguageCode = supportedLanguageCodes.contains(languageCode) ? languageCode : "en"
+                if currentLanguageCode == "he" {
+                    self.viewModel?.time.value = "\(self.seconds) \(NSLocalizedString("Timer:", comment: ""))"
+                } else {
+                    self.viewModel?.time.value = "\(NSLocalizedString("Timer:", comment: "")) \(self.seconds)"
+                }
+                
+            }
         }
     }
     
@@ -160,26 +163,10 @@ class GamePlayViewController: UIViewController, UITextFieldDelegate {
             let root = appDelegate.switchRootViewController(nameStoryBoard: "MenuScreen", idViewController: MenuControllerID)
             guard let dvc = root.childViewControllers.first as? MenuViewController else { print("Not found destinationaViewController")
                 return }
-           
-//            let storyboard = UIStoryboard(name: "MenuScreen", bundle: nil)
-//            guard let navigationVC = storyboard.instantiateInitialViewController() as? UINavigationController else {
-//                print("not found UINavigationController of MenuViewController")
-//                return
-//
-//            }
-//            guard let dvc = navigationVC.topViewController as? MenuViewController else {
-//                print("not found menuview controller")
-//                return
-//            }
-            dvc.viewModel = viewModel.goToTheMenu()
+               dvc.viewModel = viewModel.goToTheMenu()
         default:
             return
         }
-    }
-    
-    func commonInit() {
-        containerView.backgroundColor = UIColor.clear
-
     }
     
     func prepareRound() {
@@ -230,10 +217,5 @@ extension GamePlayViewController: UITextViewDelegate {
             self.constraintContentHeight.constant -= finalRect.height
         }
     }
-    
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        self.view.endEditing(true)
-//        return false
-//    }
 }
 

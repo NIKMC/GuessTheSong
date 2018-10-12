@@ -11,7 +11,7 @@ import GoogleSignIn
 import FBSDKCoreKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
    
@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         print("The baseURL is \(api)")
         BackendConfiguration.shared = BackendConfiguration(baseURL: URL(string: api)!)
         GIDSignIn.sharedInstance().clientID = Bundle.main.object(forInfoDictionaryKey: "CLIENT_ID") as! String
-        GIDSignIn.sharedInstance().delegate = self
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
@@ -81,55 +80,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         return handled
     }
-
-    // [START signin_handler]
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
-              withError error: Error!) {
-//        if let error = error {
-//            print("\(error.localizedDescription)")
-//            // [START_EXCLUDE silent]
-//            NotificationCenter.default.post(
-//                name: .googleSignInNotification, object: nil, userInfo: nil)
-//            // [END_EXCLUDE]
-//        } else {
-//            // Perform any operations on signed in user here.
-//            let userId = user.userID                  // For client-side use only!
-//            let idToken = user.authentication.idToken // Safe to send to the server
-//            let accessToken = user.authentication.accessToken
-//            let fullName = user.profile.name
-//            let givenName = user.profile.givenName
-//            let familyName = user.profile.familyName
-//            let email = user.profile.email
-//            print("The result in appDelegate)")
-//            print("userID \(String(describing: userId))")
-//            print("idToken \(String(describing: idToken))")
-//            print("accessToken \(String(describing: accessToken))")
-//            print("fullName \(String(describing: fullName))")
-//            print("givenName \(String(describing: givenName))")
-//            print("familyName \(String(describing: familyName))")
-//            print("email \(String(describing: email))")
-//
-//            // [START_EXCLUDE]
-//            NotificationCenter.default.post(
-//                name: .googleSignInNotification,
-//                object: user,
-//                userInfo: ["userID": "userID \(String(describing: userId))"])
-//            // [END_EXCLUDE]
-//        }
-    }
-    // [END signin_handler]
-    // [START disconnect_handler]
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
-              withError error: Error!) {
-//        // Perform any operations when the user disconnects from app here.
-//        // [START_EXCLUDE]
-//        NotificationCenter.default.post(
-//            name: .googleSignInNotification,
-//            object: nil,
-//            userInfo: ["statusText": "User has disconnected."])
-        // [END_EXCLUDE]
-    }
-    // [END disconnect_handler]
     
 }
 

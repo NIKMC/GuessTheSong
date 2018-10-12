@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Og-ia-hg3">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Finish Game View Controller-->
+        <scene sceneID="CwJ-n7-li9">
+            <objects>
+                <viewController id="8Og-ia-hg3" customClass="FinishGameViewController" customModule="GuessTheSong" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pcL-Q3-itp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fon" translatesAutoresizingMaskIntoConstraints="NO" id="DOd-iO-FEl">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="win" translatesAutoresizingMaskIntoConstraints="NO" id="ofa-Nr-6ia">
+                                <rect key="frame" x="50" y="70" width="275" height="275"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ofa-Nr-6ia" secondAttribute="height" multiplier="1:1" id="BuB-wF-6VF"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_fon" translatesAutoresizingMaskIntoConstraints="NO" id="aST-XB-L1O">
+                                <rect key="frame" x="0.0" y="447" width="375" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="aST-XB-L1O" secondAttribute="height" multiplier="15:8" id="huA-8w-sB9"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GKb-Fl-Q9y" userLabel="GSButton FinishGame" customClass="UIGSButton" customModule="GuessTheSong" customModuleProvider="target">
+                                <rect key="frame" x="50" y="572" width="275" height="45"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="Xvn-c3-KYO"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="styleType">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="Next Level"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="aST-XB-L1O" secondAttribute="trailing" id="0DE-4T-seN"/>
+                            <constraint firstItem="oeC-Ej-hEn" firstAttribute="bottom" secondItem="GKb-Fl-Q9y" secondAttribute="bottom" constant="50" id="3ww-VV-18l"/>
+                            <constraint firstItem="GKb-Fl-Q9y" firstAttribute="leading" secondItem="oeC-Ej-hEn" secondAttribute="leading" constant="50" id="4Ap-kp-OGr"/>
+                            <constraint firstItem="aST-XB-L1O" firstAttribute="centerX" secondItem="pcL-Q3-itp" secondAttribute="centerX" id="78U-7n-JnB"/>
+                            <constraint firstItem="ofa-Nr-6ia" firstAttribute="top" secondItem="oeC-Ej-hEn" secondAttribute="top" constant="50" id="8dq-ge-5sJ"/>
+                            <constraint firstItem="DOd-iO-FEl" firstAttribute="leading" secondItem="oeC-Ej-hEn" secondAttribute="leading" id="DIs-Z6-2VC"/>
+                            <constraint firstItem="ofa-Nr-6ia" firstAttribute="centerX" secondItem="pcL-Q3-itp" secondAttribute="centerX" id="Haq-k7-FMo"/>
+                            <constraint firstItem="oeC-Ej-hEn" firstAttribute="bottom" secondItem="DOd-iO-FEl" secondAttribute="bottom" id="PH6-eu-PWZ"/>
+                            <constraint firstItem="GKb-Fl-Q9y" firstAttribute="centerX" secondItem="pcL-Q3-itp" secondAttribute="centerX" id="RkU-P2-H5l"/>
+                            <constraint firstItem="ofa-Nr-6ia" firstAttribute="leading" secondItem="oeC-Ej-hEn" secondAttribute="leading" constant="50" id="SJ6-Js-9pJ"/>
+                            <constraint firstItem="aST-XB-L1O" firstAttribute="leading" secondItem="pcL-Q3-itp" secondAttribute="leading" id="UzL-6j-BsE"/>
+                            <constraint firstItem="DOd-iO-FEl" firstAttribute="trailing" secondItem="oeC-Ej-hEn" secondAttribute="trailing" id="WUs-NW-nMs"/>
+                            <constraint firstItem="DOd-iO-FEl" firstAttribute="top" secondItem="pcL-Q3-itp" secondAttribute="top" id="iCq-YF-2K8"/>
+                            <constraint firstItem="oeC-Ej-hEn" firstAttribute="bottom" secondItem="aST-XB-L1O" secondAttribute="bottom" constant="20" id="nG2-7q-MpI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oeC-Ej-hEn"/>
+                    </view>
+                    <connections>
+                        <outlet property="GSButtonFinishGame" destination="GKb-Fl-Q9y" id="9Ee-W0-gFE"/>
+                        <outlet property="finishGameImage" destination="ofa-Nr-6ia" id="8HL-of-cg2"/>
+                        <segue destination="gzv-CZ-LGO" kind="show" identifier="goToMain" id="2D5-R8-861"/>
+                        <segue destination="tFM-QR-jVF" kind="show" identifier="goToMultyPlayer" id="tAu-EI-cMA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="inF-s7-BWB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2190" y="-323.23943661971833"/>
+        </scene>
+        <!--MenuScreen-->
+        <scene sceneID="3qe-aX-HBK">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MenuScreen" id="gzv-CZ-LGO" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QR4-MM-8YJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2190" y="-952"/>
+        </scene>
+        <!--MultiPlayerScreen-->
+        <scene sceneID="LtI-WK-p4r">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MultiPlayerScreen" id="tFM-QR-jVF" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gTQ-h5-bC0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2191" y="119"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="background_fon" width="519" height="295"/>
+        <image name="fon" width="415" height="735"/>
+        <image name="win" width="308" height="308"/>
+    </resources>
+</document>

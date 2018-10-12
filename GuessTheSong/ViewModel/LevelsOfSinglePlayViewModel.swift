@@ -29,16 +29,28 @@ class LevelsOfSinglePlayViewModel: NSObject, LevelsCollectionModelType {
         return levels?.count ?? 0
     }
     
+    func getStatusLevel() -> (Int, Double) {
+        guard let level = UserDefaults.standard.string(forKey: "single_player_experience") else {
+            return (0, 0)
+        }
+        let value = Int(level)!
+        let score = value / 10
+        let progress: Double = (Double(value % 10)/10)
+//        let score = Int(floor(value))
+//        let progress = Double(value.truncatingRemainder(dividingBy: 1)).rounded()
+        return (score, progress)
+    }
+    
     func itemViewModel(forIndexPath indexPath: IndexPath) -> CollectionViewCellModelType? {
         guard let levels = levels else { return nil }
         let currentLevel = levels[indexPath.item]
         return CollectionViewCellViewModel(level: currentLevel.getLevelURL(), status: currentLevel.status)
     }
     
-    func itemIsNotClosed(forIndexPath indexPath: IndexPath) -> Bool? {
+    func itemIsRunning(forIndexPath indexPath: IndexPath) -> Bool? {
         guard let levels = levels else { return nil }
         let currentLevel = levels[indexPath.item]
-        return currentLevel.status != StatusLevel.closed.rawValue ? true : false
+        return currentLevel.status == StatusLevel.running.rawValue ? true : false
     }
     
     func viewModelForSelectedItem(forIndexPath indexPath: IndexPath) -> PrepareGameModelType? {
@@ -82,7 +94,11 @@ class LevelsOfSinglePlayViewModel: NSObject, LevelsCollectionModelType {
         
         levelsNetworkManager?.failure = { (error) in
             print("error of loading indfo about level \(error)")
-            errorHandle?(error.localizedDescription)
+            ErrorValidator().chooseActionAfterResponse(errorResponse: error, success: { [weak self] () in
+                self?.loadingLevels(completion: completion, errorHandle: errorHandle)
+                }, failure: { (errorMessage) in
+                    errorHandle?(errorMessage.localizedDescription)
+            })
         }
     }
     

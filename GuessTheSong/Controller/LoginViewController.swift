@@ -58,22 +58,27 @@ class LoginViewController: UIViewController {
         
         GSButtonOk.handler = { [unowned self] (button) in
             //FIXME: Doesn't dismiss when error of request
-            ProgressHUD.show()
-            self.viewModel?.setLoginAndPassword(email: self.emailView.text!, password: self.passwordView.text!)
-            self.viewModel?.signIn(completion: { [unowned self] (user) in
-                print("sing IN ok")
-                ProgressHUD.dismiss()
-                OperationQueue.main.addOperation {
-                    self.performSegue(withIdentifier: self.goToMenu, sender: self)
-                }
-                
-                }, errorHandle: { (error) in
-                    print(error)
-                    //            ProgressHUD.dismiss()
-                    ProgressHUD.showError(error)
-            })
+            if (self.emailView.text! != "" && self.passwordView.text! != "" ) {
+                ProgressHUD.show()
+                self.viewModel?.setLoginAndPassword(email: self.emailView.text!, password: self.passwordView.text!)
+                self.viewModel?.signIn(completion: { [unowned self] (user) in
+                    print("sing IN ok")
+                    OperationQueue.main.addOperation {
+                        ProgressHUD.dismiss()
+                        self.performSegue(withIdentifier: self.goToMenu, sender: self)
+                    }
+                    }, errorHandle: { (error) in
+                        print(error)
+                        //            ProgressHUD.dismiss()
+                        OperationQueue.main.addOperation {
+                            ProgressHUD.showError("The login or password incorrect!")
+                        }
+                })
+                self.user = Profile(email: self.emailView.text!, password: self.passwordView.text!)
+            } else {
+                ProgressHUD.showError("All fieds should be not empty!")
+            }
             
-            self.user = Profile(email: self.emailView.text!, password: self.passwordView.text!)
         }
        
     }

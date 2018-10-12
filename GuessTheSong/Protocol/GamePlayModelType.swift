@@ -8,14 +8,12 @@
 
 import Foundation
 
-protocol SinglePlayModelType {
+protocol GamePlayModelType {
     
     var time: Box<String?> { get }
     var title: Box<String?> { get }
     var text: Box<String?> { get }
     var lives: Box<Int?> { get }
-    
-    func getBehaviour() -> TypeAction
     
     func setActionToFinishGame(action: TypeFinishGame)
     
@@ -26,6 +24,8 @@ protocol SinglePlayModelType {
     func decreaseLive(continuePlay: (()->())?, finishPlay: (()->())?)
     
     func currentLive() -> Int
+    
+    func getButtonTitle() -> String
     
     func currentIndex() -> Int
     

@@ -14,7 +14,7 @@ protocol LevelsCollectionModelType {
     
     func itemViewModel(forIndexPath indexPath: IndexPath) -> CollectionViewCellModelType?
     
-    func itemIsNotClosed(forIndexPath indexPath: IndexPath) -> Bool?
+    func itemIsRunning(forIndexPath indexPath: IndexPath) -> Bool?
     
     func viewModelForSelectedItem(forIndexPath indexPath: IndexPath) -> PrepareGameModelType?
     

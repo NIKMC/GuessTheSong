@@ -29,10 +29,10 @@ public class MultiPlayerGameResponse: Codable {
     var creator: Int
     var users: [ProfileResponse]
     var songs: [SongResponse]
-    var ready_players: [ProfileResponse]
+    var ready_players: [Int]
     var success_players: [ProfileResponse]
     
-    init(id: Int, status: String, created_at: String, number_of_players: Int, score_multiplier: Double, creator: Int, users: [ProfileResponse], songs: [SongResponse], ready_players: [ProfileResponse], success_players: [ProfileResponse]) {
+    init(id: Int, status: String, created_at: String, number_of_players: Int, score_multiplier: Double, creator: Int, users: [ProfileResponse], songs: [SongResponse], ready_players: [Int], success_players: [ProfileResponse]) {
         self.id = id
         self.status = status
         self.created_at = created_at
@@ -42,7 +42,7 @@ public class MultiPlayerGameResponse: Codable {
         self.users = users
         self.songs = songs
         self.ready_players = ready_players
-        self .success_players = success_players
+        self.success_players = success_players
     }
 }
 

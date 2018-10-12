@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import SocketIO
 import ProgressHUD
 
 
@@ -31,10 +30,6 @@ class RegistrationViewController: UIViewController {
     
     var viewModel: SignUpModelType?
     
-    override func awakeFromNib() {
-//        Socket_API.sharedInstance.changeTypeConnection(toConnection: .Guest)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         loginView.delegate = self
@@ -43,8 +38,6 @@ class RegistrationViewController: UIViewController {
         repasswordView.delegate = self
         self.navigationItem.hidesBackButton = true
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back"), style: .plain, target: self, action: #selector(self.back(sender:)))
-//        Socket_API.sharedInstance.delegate = self
-//        Socket_API.sharedInstance.registerResponseEvent()
         defaultInit()
         
         // Observe keyboard change
@@ -57,20 +50,46 @@ class RegistrationViewController: UIViewController {
         
         GSButtonOk.style = .normal
         GSButtonOk.text = viewModel?.buttonTextOk()
+        
+        
+        
         GSButtonOk.handler = { [unowned self] (button) in
             ProgressHUD.show()
-            self.viewModel?.setData(email: self.emailView.text!, login: self.loginView.text!, password: self.passwordView.text!, passwordRep: self.repasswordView.text!)
-            self.viewModel?.signUp(completion: { [weak self] (user) in
-                print("ok signUp")
-                ProgressHUD.dismiss()
-                OperationQueue.main.addOperation {
-                    self?.performSegue(withIdentifier: (self?.goToSignIn)!, sender: self)
-                }
-                }, errorHandle: { (error) in
-                    print(error)
-                    //            ProgressHUD.dismiss()
-                    ProgressHUD.showError(error)
-            })
+            if (self.emailView.text! != "" && self.loginView.text! != "" && self.passwordView.text! != "" && self.repasswordView.text! != "") {
+                self.viewModel?.checkEmail(email: self.emailView.text!, completion: {
+                    if self.passwordView.text! == self.repasswordView.text! {
+                        self.viewModel?.checkPasswordOnStrong(password: self.passwordView.text! , handlerSuccess: { [weak self] () in
+                            self?.viewModel?.setData(email: (self?.emailView.text!)!, login: (self?.loginView.text!)!, password: (self?.passwordView.text!)!, passwordRep: (self?.repasswordView.text!)!)
+                            self?.viewModel?.signUp(completion: { [weak self] (user) in
+                                print("ok signUp")
+                                OperationQueue.main.addOperation {
+                                    ProgressHUD.dismiss()
+                                    Session.shared.username = self?.viewModel?.getLogin()
+                                    Session.shared.password = self?.viewModel?.getPassword()
+                                    self?.performSegue(withIdentifier: (self?.goToSignIn)!, sender: self)
+                                }
+                                }, errorHandle: { (error) in
+                                    print(error)
+                                    //            ProgressHUD.dismiss()
+                                    OperationQueue.main.addOperation {
+                                        ProgressHUD.showError("Login or email already exist!")
+                                    }
+                            })
+                            }, handlerFailure: { (badMessage) in
+                                ProgressHUD.showError(badMessage)
+    
+                        })
+                    } else {
+                        ProgressHUD.showError("The password and repeat password should be same!")
+                    }
+                }, failure: { (message) in
+                    ProgressHUD.showError(message)
+                })
+            } else {
+                ProgressHUD.showError("All fieds should be not empty!")
+            }
+            
+           
         }
         
     }
@@ -85,7 +104,6 @@ class RegistrationViewController: UIViewController {
     }
 
     @objc func back(sender: AnyObject) {
-//        Socket_API.sharedInstance.resetResponseEvent(eventName: EventName.REGISTER)
         guard(navigationController?.popToRootViewController(animated: true)) != nil
             else {
                 print("No view controllers to pop off")
@@ -99,7 +117,6 @@ class RegistrationViewController: UIViewController {
     }
     
     @IBAction func goToLoginTapped(_ sender: UIButton) {
-//        Socket_API.sharedInstance.resetResponseEvent(eventName: EventName.REGISTER)
         self.performSegue(withIdentifier: self.goToSignIn, sender: self)
     }
     
@@ -177,34 +194,3 @@ extension RegistrationViewController {
         self.view.endEditing(true)
     }
 }
-
-
-
-//extension RegistrationViewController: ResponseRegisterDelegate {
-//    func informErrorMessage(error: String) {
-//        print("the error is \(error)")
-//        ProgressHUD.showError(error)
-//    }
-//    
-//    func informDisconnectedMessage() {
-//        print("the socket was disconnected")
-//        ProgressHUD.showError("Disconneted connection")
-//    }
-//    
-//    
-//    
-//    func registerSuccess() {
-//        print("register success in delegate")
-//        ProgressHUD.dismiss()
-//        Socket_API.sharedInstance.resetResponseEvent(eventName: EventName.REGISTER)
-//        self.performSegue(withIdentifier: "registrationSucceed", sender: self)
-//    }
-//    
-//    func printErrorMessage(error: String?) {
-//        print("register error in delegate")
-//        ProgressHUD.showError()
-//        if let errorMessage = error {
-//            print("Error message \(errorMessage)")
-//        }
-//    }
-//}

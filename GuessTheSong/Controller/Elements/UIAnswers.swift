@@ -107,9 +107,9 @@ final class UIAnswers: UIView {
             answerLabel.trailingAnchor.constraint(equalTo: container.leadingAnchor, constant: -5).isActive = true
 
             container.addSubview(answerTextField)
-            answerTextField.attributedPlaceholder = NSAttributedString(string: "Answer # \(index+1)", attributes: [
-                .foregroundColor: UIColor.weakrich
-                ])
+//            answerTextField.attributedPlaceholder = NSAttributedString(string: "Answer # \(index+1)", attributes: [
+//                .foregroundColor: UIColor.weakrich
+//                ])
             answerTextField.font = UIFont.boldSystemFont(ofSize: 15)
             answerTextField.textColor = .rich
             answerTextField.backgroundColor = UIColor.black
@@ -161,8 +161,9 @@ final class UIAnswers: UIView {
         textFields.removeAll()
         labels.removeAll()
         bottomLines.removeAll()
-        var views = self.subviews
-        views.removeAll()
+        for view in self.subviews{
+            view.removeFromSuperview()
+        }
         applyStyle(count: value)
     }
     

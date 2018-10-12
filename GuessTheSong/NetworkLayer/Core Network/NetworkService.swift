@@ -25,7 +25,7 @@ public enum HTTPMethod: String {
 /// - path: Add the parameters as query in the URL
 /// - music: Add the parameters and music bytes in a Json inside the HTTP body request
 public enum HTTPQuery {
-    case json, path, music
+    case json, path, multi
 }
 
 public typealias Parameters = [String: Any]

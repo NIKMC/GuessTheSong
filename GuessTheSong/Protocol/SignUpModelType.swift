@@ -17,4 +17,12 @@ protocol SignUpModelType {
     func signIn() -> SignInModelType
     
     func buttonTextOk() -> String
+    
+    func getPassword() -> String?
+    
+    func getLogin() -> String?
+    
+    func checkEmail(email: String, completion: (()->())?, failure: ((String)->())?)
+    
+    func checkPasswordOnStrong(password: String, handlerSuccess: (()->())?, handlerFailure: ((String)->())?)
 }

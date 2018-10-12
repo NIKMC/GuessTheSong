@@ -21,5 +21,5 @@ protocol PrepareGameModelType {
     
 //    func getDestinationUrl(completionUrl: @escaping ([URL?])->() )
     
-    func goToPlaySinglePlay() -> SinglePlayModelType
+    func goToPlaySinglePlay() -> GamePlayModelType
 }

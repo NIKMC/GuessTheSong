@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SinglePlayViewModel: SinglePlayModelType {
+class SinglePlayViewModel: GamePlayModelType {
     
     
     var age: Box<String?> = Box(nil)
@@ -19,8 +19,10 @@ class SinglePlayViewModel: SinglePlayModelType {
     
     var defaults = UserDefaults.standard
     
-    private var behaviour: TypeAction
+
     private var actionFinishGame: TypeFinishGame?
+//    private var webSocketManager: WebSocketManager?
+//    private var players: [Player]?
     
     private var levelOfLive: Int
     private var pathOfSongs: [URL]
@@ -32,8 +34,8 @@ class SinglePlayViewModel: SinglePlayModelType {
     private var finishGameNetworkManager: FinishGameOperation?
     private var audioPlayerViewModel: AudioPlayerLayer
     
-    func getBehaviour() -> TypeAction {
-        return behaviour
+    func getButtonTitle() -> String {
+        return NSLocalizedString("Go", comment: "")
     }
     
     func setActionToFinishGame(action: TypeFinishGame) {
@@ -101,6 +103,7 @@ class SinglePlayViewModel: SinglePlayModelType {
     
     func compareAnswersWithResults(answers: [String], rightAnswersHandler: (()->())?, wrongAnswersHandler: ((Int)->())?, winHandler: ((Int)->())?, loseHandler: ((Int)->())?) {
         guard let results = getCurrentCorrectAnswers() else { return }
+        let answers = answers.map{ $0.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)}
         if results == answers {
             goToTheNextSong(next: {
                 rightAnswersHandler?()
@@ -110,7 +113,8 @@ class SinglePlayViewModel: SinglePlayModelType {
                 self.sendWinRequest(gameId: self.gameId, time: timeOfGame, completion: { (finishGameResponse) in
                     winHandler?(self.currentLive())
                 }, errorHandle: { (error) in
-                    //TODO: - need to add something to controll response/
+                    //FIXME: - need to add something to controll response/
+                    
                 })
             }
         } else {
@@ -123,7 +127,7 @@ class SinglePlayViewModel: SinglePlayModelType {
                     self.sendWinRequest(gameId: self.gameId, time: timeOfGame, completion: { (finishGameResponse) in
                         winHandler?(self.currentLive())
                     }, errorHandle: { (error) in
-                        //TODO: - need to add something to controll response/
+                        //FIXME: - need to add something to controll response/
                     })
                 })
             }) {
@@ -140,11 +144,10 @@ class SinglePlayViewModel: SinglePlayModelType {
         finishGameNetworkManager = FinishGameOperation(token: token, gameId: id, time: timeOfGame)
         finishGameNetworkManager?.start()
         finishGameNetworkManager?.success = { (gameInfo) in
-            print("the result is ok \(gameInfo)")
+            print("the result is ok \(gameInfo.experience)")
             if var experience = self.defaults.value(forKey: "single_player_experience") as? Int {
                 experience += gameInfo.experience
                 self.defaults.set(experience, forKey: "single_player_experience")
-                
             } else {
                 self.defaults.set(gameInfo.experience, forKey: "single_player_experience")
             }
@@ -152,8 +155,12 @@ class SinglePlayViewModel: SinglePlayModelType {
         }
         
         finishGameNetworkManager?.failure = { (error) in
-            print("error of loading indfo about level \(error)")
-            errorHandle?(error.localizedDescription)
+            print("error of sending win request  \(error)")
+            ErrorValidator().chooseActionAfterResponse(errorResponse: error, success: { [weak self] () in
+                self?.sendWinRequest(gameId: id, time: timeOfGame, completion: completion, errorHandle: errorHandle)
+                }, failure: { (errorMessage) in
+                    errorHandle?(errorMessage.localizedDescription)
+            })
         }
     }
     
@@ -174,8 +181,7 @@ class SinglePlayViewModel: SinglePlayModelType {
     }
     
     
-    init(action: TypeAction, path: [URL], id gameId: Int, info: [SongResponse]) {
-        self.behaviour = action
+    init(path: [URL], id gameId: Int, info: [SongResponse]) {
         self.index = 0
         self.levelOfLive = 3
         self.pathOfSongs = path
@@ -183,13 +189,8 @@ class SinglePlayViewModel: SinglePlayModelType {
         self.dataOfLevel = info
         self.listOfAnswers = []
         audioPlayerViewModel = AudioPlayerLayer(urls: path)
-//        print(path)
-//        print(info.first?.getNameOfSong())
     }
-}
 
-enum TypeAction {
-    case Single, Multy
 }
 
 enum TypeFinishGame {
