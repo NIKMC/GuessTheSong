@@ -53,15 +53,33 @@ class MainViewController: UIViewController {
         GSButtonFB.handler = { (button) in
             //FIXME:  - uncommit this line when I decide that to do with token and email and I'l get results
             //        viewModel.signInFacebook()
-            FBSDKLoginManager().logIn(withReadPermissions: ["email", "public_profile"], from: self) { (result, error) in
+            FBSDKLoginManager().logIn(withReadPermissions: ["email", "public_profile"], from: self) { [unowned self] (result, error) in
+                
                 if error != nil {
-                    print("login facebook failed: \(error)")
+                    print("login facebook failed: \(String(describing: error?.localizedDescription))")
+                } else {
+                    guard let result = result else { return }
+                    if !result.isCancelled && error == nil {
+                        guard let token = result.token.tokenString else { return }
+                        print(token)
+                        UserDefaults.standard.set(token, forKey: "FB_token")
+                        self.fetchProfileFromFB(token)
+                    } else {
+                        print("To signIn into FB is canceled")
+                    }
                 }
-                let token = result?.token.tokenString
-                print(token)
-                UserDefaults.standard.set(token, forKey: "FB_token")
-                self.fetchProfileFromFB(token!)
             }
+            
+            
+//            FBSDKLoginManager().logIn(withReadPermissions: ["email", "public_profile"], from: self) { (result, error) in
+//                if error != nil {
+//                    print("login facebook failed: \(error)")
+//                }
+//                let token = result?.token.tokenString
+//                print(token)
+//                UserDefaults.standard.set(token, forKey: "FB_token")
+//                self.fetchProfileFromFB(token!)
+//            }
         }
         GSButtonGmail.handler = { (button) in
             //FIXME:  - uncommit this line when I decide that to do with token and email and I'l get results
@@ -99,22 +117,29 @@ class MainViewController: UIViewController {
     
     
     func fetchProfileFromFB(_ token: String) {
+        //TODO: -add function to log into server from facebook
+        print("The token of Facebook is \(token)")
         print("The token of Facebook is \(token)")
         let parametrs = ["fields": "email, first_name, last_name"]
-        FBSDKGraphRequest(graphPath: "me", parameters: parametrs).start { (connection, result, error) in
+        FBSDKGraphRequest(graphPath: "me", parameters: parametrs).start { [weak self] (connection, result, error) in
             if error != nil {
-                print(error)
+                print(String(describing: error?.localizedDescription))
+//                self?.logInWithFacebook()
                 return
             }
-            
-            print(result)
-            
-            if let result = result as? NSDictionary {
-                if let email = result["email"] as? String {
-                    print("The email result \(email)")
-                }
+            guard let result = result as? NSDictionary else {
+//                self?.logInWithFacebook()
+                print("error of parsing result as Dictionary")
+                return
             }
-            
+            guard let email = result["email"] as? String else {
+//                self?.logInWithFacebook()
+                print("error of parsing result.email as String")
+                return
+            }
+//            self?.viewModel.setEmail(emailFromSocial: email)
+//            self?.logInWithFacebook()
+            self?.viewModel.signInFacebook()
         }
     }
     

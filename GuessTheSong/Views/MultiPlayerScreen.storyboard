@@ -21,8 +21,20 @@
                             <imageView userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fon" translatesAutoresizingMaskIntoConstraints="NO" id="DQT-iM-15z">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OCD-TD-hj4" customClass="UIStatusLevel" customModule="GuessTheSong" customModuleProvider="target">
+                                <rect key="frame" x="155" y="5" width="160" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Nbb-yh-D49"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="999"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="14"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching for players..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oM0-zA-Sb7">
-                                <rect key="frame" x="20" y="30" width="280" height="147"/>
+                                <rect key="frame" x="20" y="37.5" width="280" height="139.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -50,16 +62,20 @@
                             <constraint firstItem="oM0-zA-Sb7" firstAttribute="centerX" secondItem="hY3-QV-Fy9" secondAttribute="centerX" id="ADP-Rf-2De"/>
                             <constraint firstItem="EBM-P0-qXn" firstAttribute="top" secondItem="oM0-zA-Sb7" secondAttribute="bottom" id="LJL-8i-cLJ"/>
                             <constraint firstItem="EBM-P0-qXn" firstAttribute="centerX" secondItem="hY3-QV-Fy9" secondAttribute="centerX" id="NYo-AK-Car"/>
+                            <constraint firstItem="Uts-F3-wlx" firstAttribute="trailing" secondItem="OCD-TD-hj4" secondAttribute="trailing" constant="5" id="QRn-Bj-cJk"/>
+                            <constraint firstItem="OCD-TD-hj4" firstAttribute="width" secondItem="Uts-F3-wlx" secondAttribute="width" multiplier="0.5" id="iGM-T4-QcT"/>
                             <constraint firstItem="oM0-zA-Sb7" firstAttribute="leading" secondItem="Uts-F3-wlx" secondAttribute="leading" constant="20" id="irJ-vr-uXd"/>
                             <constraint firstItem="DQT-iM-15z" firstAttribute="top" secondItem="hY3-QV-Fy9" secondAttribute="top" id="mLA-4r-iqv"/>
+                            <constraint firstItem="OCD-TD-hj4" firstAttribute="top" secondItem="hY3-QV-Fy9" secondAttribute="top" constant="5" id="odQ-Yp-A0A"/>
                             <constraint firstItem="DQT-iM-15z" firstAttribute="leading" secondItem="Uts-F3-wlx" secondAttribute="leading" id="pjr-t0-pkp"/>
                             <constraint firstItem="Uts-F3-wlx" firstAttribute="bottom" secondItem="DQT-iM-15z" secondAttribute="bottom" id="qyY-Kq-ci3"/>
-                            <constraint firstItem="oM0-zA-Sb7" firstAttribute="top" secondItem="hY3-QV-Fy9" secondAttribute="top" multiplier="1.5" constant="30" id="zDy-hE-DZV"/>
+                            <constraint firstItem="oM0-zA-Sb7" firstAttribute="top" secondItem="OCD-TD-hj4" secondAttribute="bottom" multiplier="1.5" id="zDy-hE-DZV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Uts-F3-wlx"/>
                     </view>
                     <navigationItem key="navigationItem" id="7af-BT-O2v"/>
                     <connections>
+                        <outlet property="levelStatus" destination="OCD-TD-hj4" id="Skj-7T-YeK"/>
                         <outlet property="loaderView" destination="EBM-P0-qXn" id="PS1-Ol-HqA"/>
                         <outlet property="searchText" destination="oM0-zA-Sb7" id="y8C-rh-50h"/>
                         <segue destination="Kz9-Cj-d9r" kind="show" identifier="goToPlay" id="tYM-8d-v1N"/>

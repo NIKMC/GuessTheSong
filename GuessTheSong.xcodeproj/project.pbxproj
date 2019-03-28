@@ -486,16 +486,16 @@
 			isa = PBXGroup;
 			children = (
 				02957CA420FF711500E3F231 /* SignInRequest.swift */,
-				02743AFC21021B0F0031322D /* SinglePlayerLevelsRequest.swift */,
-				02CBC547214AB65100B88188 /* MultiPlayerRequest.swift */,
-				02743AFE21021BB70031322D /* ProfileRequest.swift */,
-				02743B0021021C0F0031322D /* LevelOfUserRequest.swift */,
-				02743B0221021C7E0031322D /* UpdateLevelOfUserRequest.swift */,
-				02A02D132119A0D400EA1676 /* LevelInfoRequest.swift */,
-				02FF12CD2124D02B001A4264 /* ListOfLevelsRequest.swift */,
 				02743AFA210219230031322D /* SignUpRequest.swift */,
-				02A02D172119AE1D00EA1676 /* DownloadMusicRequest.swift */,
+				02743AFE21021BB70031322D /* ProfileRequest.swift */,
+				02A02D132119A0D400EA1676 /* LevelInfoRequest.swift */,
 				023D679D213E6A91005D13CE /* FinishGameRequest.swift */,
+				02FF12CD2124D02B001A4264 /* ListOfLevelsRequest.swift */,
+				02CBC547214AB65100B88188 /* MultiPlayerRequest.swift */,
+				02743B0221021C7E0031322D /* UpdateLevelOfUserRequest.swift */,
+				02743B0021021C0F0031322D /* LevelOfUserRequest.swift */,
+				02743AFC21021B0F0031322D /* SinglePlayerLevelsRequest.swift */,
+				02A02D172119AE1D00EA1676 /* DownloadMusicRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -575,14 +575,14 @@
 				027A4AD821235FA8007C0036 /* SignInResponse.swift */,
 				027A4ADA21236057007C0036 /* SignUpResponse.swift */,
 				02FF12C02124B17E001A4264 /* ProfileResponse.swift */,
+				02FF12C92124C881001A4264 /* LevelResponse.swift */,
 				02FF12C32124C81E001A4264 /* SongResponse.swift */,
+				023D679F213E6BFB005D13CE /* FinishGameResponse.swift */,
+				02FF12D1212A9881001A4264 /* GamesResponse.swift */,
+				02FF12CF212A97A0001A4264 /* GameResponse.swift */,
 				02CBC549214AB6A300B88188 /* MultiPlayerResponse.swift */,
 				02FF12C52124C84D001A4264 /* SongsListResponse.swift */,
 				02FF12C72124C86A001A4264 /* LevelsResponse.swift */,
-				02FF12C92124C881001A4264 /* LevelResponse.swift */,
-				02FF12CF212A97A0001A4264 /* GameResponse.swift */,
-				02FF12D1212A9881001A4264 /* GamesResponse.swift */,
-				023D679F213E6BFB005D13CE /* FinishGameResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -659,6 +659,7 @@
 				TargetAttributes = {
 					0246B7562062C0240043506F = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -668,6 +669,7 @@
 					};
 					02C8D18D214EBA9000573A3F = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 0246B7562062C0240043506F;
 					};
@@ -1025,7 +1027,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HOST_NAME = "http://89.223.93.117:8000";
+				HOST_NAME = "http://31.154.10.117:42000";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1081,7 +1083,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HOST_NAME = "http://89.223.93.117:8000";
+				HOST_NAME = "http://31.154.10.117:42000";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
@@ -1097,12 +1099,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C897U44A5R;
-				HOST_NAME = "http://89.223.93.117:80";
+				HOST_NAME = "http://terra.co.il:41000";
 				INFOPLIST_FILE = GuessTheSong/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nikmc-i.GuessTheSong";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nikmc-i.guessthesong";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1114,12 +1116,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C897U44A5R;
-				HOST_NAME = "http://89.223.93.117:80";
+				HOST_NAME = "http://terra.co.il:41000";
 				INFOPLIST_FILE = GuessTheSong/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nikmc-i.GuessTheSong";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nikmc-i.guessthesong";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1131,12 +1133,13 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C897U44A5R;
+				HOST_NAME = "http://31.154.10.117:41000";
 				INFOPLIST_FILE = GuessTheSongUnitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nikmc-i.GuessTheSongUnitTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GuessTheSong.app/GuessTheSong";
 			};
@@ -1149,12 +1152,13 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C897U44A5R;
+				HOST_NAME = "http://31.154.10.117:41000";
 				INFOPLIST_FILE = GuessTheSongUnitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nikmc-i.GuessTheSongUnitTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GuessTheSong.app/GuessTheSong";
 			};
@@ -1167,12 +1171,13 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C897U44A5R;
+				HOST_NAME = "http://31.154.10.117:41000";
 				INFOPLIST_FILE = GuessTheSongUnitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nikmc-i.GuessTheSongUnitTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GuessTheSong.app/GuessTheSong";
 			};
@@ -1185,12 +1190,13 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C897U44A5R;
+				HOST_NAME = "http://31.154.10.117:41000";
 				INFOPLIST_FILE = GuessTheSongUnitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nikmc-i.GuessTheSongUnitTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GuessTheSong.app/GuessTheSong";
 			};
@@ -1248,7 +1254,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HOST_NAME = "http://89.223.93.117:8000";
+				HOST_NAME = "http://31.154.10.117:42000";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1265,12 +1271,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C897U44A5R;
-				HOST_NAME = "http://89.223.93.117:80";
+				HOST_NAME = "http://terra.co.il:41000";
 				INFOPLIST_FILE = GuessTheSong/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nikmc-i.GuessTheSong";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nikmc-i.guessthesong";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = "Debug-Testing";
@@ -1321,7 +1327,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HOST_NAME = "http://89.223.93.117:8000";
+				HOST_NAME = "http://31.154.10.117:42000";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
@@ -1337,12 +1343,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C897U44A5R;
-				HOST_NAME = "http://89.223.93.117:80";
+				HOST_NAME = "http://terra.co.il:41000";
 				INFOPLIST_FILE = GuessTheSong/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nikmc-i.GuessTheSong";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nikmc-i.guessthesong";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = "Release-Testing";

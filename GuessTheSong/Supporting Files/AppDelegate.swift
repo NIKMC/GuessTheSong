@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
    
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let api = Bundle.main.object(forInfoDictionaryKey: "BASE_URL") as! String
         print("The baseURL is \(api)")
@@ -61,25 +61,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // [START openurl]
     func application(_ application: UIApplication,
                      open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        let handled = FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+        FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
         
         GIDSignIn.sharedInstance().handle(url,
                                           sourceApplication: sourceApplication,
                                           annotation: annotation)
-        return handled
+        return true
     }
     // [END openurl]
     
-    @available(iOS 9.0, *)
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
-        let handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
-        
-        GIDSignIn.sharedInstance().handle(url,
-                                          sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
-                                          annotation: options[UIApplicationOpenURLOptionsKey.annotation])
-        
-        return handled
-    }
+//    @available(iOS 9.0, *)
+//    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
+//        FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+//
+//        GIDSignIn.sharedInstance().handle(url,
+//                                          sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+//                                          annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+//
+//        return true
+//    }
     
 }
 

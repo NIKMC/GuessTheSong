@@ -85,8 +85,8 @@ class MultiPlayViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
 
         observer = NotificationCenter.default.addObserver(forName: .socket, object: nil, queue: .main, using: { [weak self] (notification) in
             let notifier = notification.object as! MultiPlayViewModel
@@ -177,7 +177,7 @@ class MultiPlayViewController: UIViewController {
         case MainMenu:
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let root = appDelegate.switchRootViewController(nameStoryBoard: "MenuScreen", idViewController: MenuControllerID)
-            guard let dvc = root.childViewControllers.first as? MenuViewController else { print("Not found destinationaViewController")
+            guard let dvc = root.children.first as? MenuViewController else { print("Not found destinationaViewController")
                 return }
             dvc.viewModel = viewModel.goToTheMenu()
         default:
@@ -200,8 +200,8 @@ class MultiPlayViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
         
         guard let observer = observer else { return }
         NotificationCenter.default.removeObserver(observer)
@@ -219,16 +219,16 @@ extension MultiPlayViewController: UITextViewDelegate {
     
     @objc func keyboardWillAppear(_ notification: NSNotification) {
         guard let userinfo = notification.userInfo,
-            let duration = userinfo[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval,
-            let finalRect = userinfo[UIKeyboardFrameEndUserInfoKey] as? CGRect else { return }
+            let duration = userinfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval,
+            let finalRect = userinfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
         UIView.animate(withDuration: duration) {
             self.constraintContentHeight.constant = finalRect.height
         }
     }
     @objc func keyboardWillHide(_ notification: NSNotification) {
         guard let userinfo = notification.userInfo,
-            let duration = userinfo[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval,
-            let finalRect = userinfo[UIKeyboardFrameEndUserInfoKey] as? CGRect else { return }
+            let duration = userinfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval,
+            let finalRect = userinfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
         UIView.animate(withDuration: duration) {
             self.constraintContentHeight.constant -= finalRect.height
         }

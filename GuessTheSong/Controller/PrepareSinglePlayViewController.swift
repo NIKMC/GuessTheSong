@@ -75,7 +75,7 @@ class PrepareSinglePlayViewController: UIViewController {
         if identifier == goToPlay {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let root = appDelegate.switchRootViewController(nameStoryBoard: "GameScreen", idViewController: GameControllerID)
-            guard let dvc = root.childViewControllers.first as? GamePlayViewController else { print("Not found destinationaViewController")
+            guard let dvc = root.children.first as? GamePlayViewController else { print("Not found destinationaViewController")
                 return }
 
              dvc.viewModel = viewModel?.goToPlaySinglePlay()

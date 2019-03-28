@@ -95,7 +95,7 @@ class SpinnerView : UIView {
         let animation = CAKeyframeAnimation(keyPath: keyPath)
         animation.keyTimes = times as [NSNumber]?
         animation.values = values
-        animation.calculationMode = "linear"
+        animation.calculationMode = convertToCAAnimationCalculationMode("linear")
         animation.duration = duration
         animation.repeatCount = Float.infinity
         layer.add(animation, forKey: animation.keyPath)
@@ -109,9 +109,14 @@ class SpinnerView : UIView {
             UIColor(hue: CGFloat($0) / CGFloat(count), saturation: 1, brightness: 1, alpha: 1).cgColor
         }
         animation.duration = duration
-        animation.calculationMode = "linear"
+        animation.calculationMode = convertToCAAnimationCalculationMode("linear")
         animation.repeatCount = Float.infinity
         layer.add(animation, forKey: animation.keyPath)
     }
     
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToCAAnimationCalculationMode(_ input: String) -> CAAnimationCalculationMode {
+	return CAAnimationCalculationMode(rawValue: input)
 }

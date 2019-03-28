@@ -86,9 +86,9 @@ class PrepareSinglePlayViewModel: PrepareGameModelType {
         
         let stringMusicUrl = taskInfo.getSongURL()
         guard let url = URL(string: stringMusicUrl) else { return }
+        let editUrl = URL(string: url.absoluteString.replacingOccurrences(of: "http://terra.co.il/", with: "http://terra.co.il:41000/"))!
         
-        
-        Alamofire.download(url, to: destination).response { [unowned self] response in
+        Alamofire.download(editUrl, to: destination).response { [unowned self] response in
             print(response)
             
             if response.error == nil, let responseMusicPath = response.destinationURL {
@@ -99,7 +99,7 @@ class PrepareSinglePlayViewModel: PrepareGameModelType {
                     print("task info \(url.lastPathComponent)")
                     print("destinationURL.absoluteString \(destinationURL.lastPathComponent)")
                     
-                    if url.lastPathComponent == destinationURL.lastPathComponent {
+                    if editUrl.lastPathComponent == destinationURL.lastPathComponent {
                         self.musicsPath[taskInfo.id] = destinationURL
                         self.group.leave()
                     }

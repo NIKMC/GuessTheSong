@@ -42,6 +42,18 @@ class PrepareMultiPlayerViewModel: SocketBehaviourDelegate {
         self.selfID = UserDefaults.standard.integer(forKey: "username_id")
     }
     
+    func getStatusLevel() -> (Int, Double) {
+        guard let level = UserDefaults.standard.string(forKey: "multi_player_experience") else {
+            return (0, 0)
+        }
+        let value = Int(level)!
+        let score = value / 10
+        let progress: Double = (Double(value % 10)/10)
+        //        let score = Int(floor(value))
+        //        let progress = Double(value.truncatingRemainder(dividingBy: 1)).rounded()
+        return (score, progress)
+    }
+    
     func prepareDataForStartGame(errorHandle: ((String) -> ())?) {
         print("prepareDataForStartGame")
         joinToMultiplayer(completion: { [weak self] (multiPlayerResponse) in
@@ -126,7 +138,8 @@ class PrepareMultiPlayerViewModel: SocketBehaviourDelegate {
         let api = Bundle.main.object(forInfoDictionaryKey: "BASE_URL") as! String
         let urlString = api + stringMusicUrl
         guard let url = URL(string: urlString) else { return }
-        Alamofire.download(url, to: destination).response { [unowned self] response in
+        let editUrl = URL(string: url.absoluteString.replacingOccurrences(of: "http://terra.co.il/", with: "http://terra.co.il:41000/"))!
+        Alamofire.download(editUrl, to: destination).response { [unowned self] response in
             print(response)
             
             if response.error == nil, let responseMusicPath = response.destinationURL {

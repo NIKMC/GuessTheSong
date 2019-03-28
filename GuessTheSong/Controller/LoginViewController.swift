@@ -44,8 +44,8 @@ class LoginViewController: UIViewController {
         loadingData()
         
         // Observe keyboard change
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
     }
 
@@ -118,7 +118,7 @@ class LoginViewController: UIViewController {
         if identifier == goToMenu {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let root = appDelegate.switchRootViewController(nameStoryBoard: "MenuScreen", idViewController: MenuControllerID)
-                    guard let dvc = root.childViewControllers.first as? MenuViewController else { print("Not found destinationaViewController")
+                    guard let dvc = root.children.first as? MenuViewController else { print("Not found destinationaViewController")
                         return }
 //            guard let navigationVC = segue.destination as? UINavigationController else {
 //                print("not found UINavigationController of MenuViewController")
@@ -146,8 +146,8 @@ class LoginViewController: UIViewController {
 
     
     override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     
@@ -176,7 +176,7 @@ extension LoginViewController {
             return
         }
                     print("keyboardShow")
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             keyboardHeight = keyboardSize.height
             
             // so increase contentView's height by keyboard height

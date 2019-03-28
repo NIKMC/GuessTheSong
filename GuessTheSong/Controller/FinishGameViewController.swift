@@ -81,7 +81,7 @@ class FinishGameViewController: UIViewController {
             print("goToMain")
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let root = appDelegate.switchRootViewController(nameStoryBoard: "MenuScreen", idViewController: MenuControllerID)
-            guard let dvc = root.childViewControllers.first as? MenuViewController else { print("Not found destinationaViewController")
+            guard let dvc = root.children.first as? MenuViewController else { print("Not found destinationaViewController")
                 return }
             
 //            let storyboard = UIStoryboard(name: "MenuScreen", bundle: nil)

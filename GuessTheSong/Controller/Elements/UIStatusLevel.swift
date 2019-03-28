@@ -17,7 +17,7 @@ final class UIStatusLevel: UIView {
     private var shapeLayer: CAShapeLayer! {
         didSet{
             shapeLayer.lineWidth = 7
-            shapeLayer.lineCap = "round"
+            shapeLayer.lineCap = convertToCAShapeLayerLineCap("round")
             shapeLayer.fillColor = nil
             shapeLayer.strokeEnd = 1
             shapeLayer.strokeColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0).cgColor
@@ -26,7 +26,7 @@ final class UIStatusLevel: UIView {
     private var progressShapeLayer: CAShapeLayer! {
         didSet{
             progressShapeLayer.lineWidth = 7
-            progressShapeLayer.lineCap = "round"
+            progressShapeLayer.lineCap = convertToCAShapeLayerLineCap("round")
             progressShapeLayer.fillColor = nil
             progressShapeLayer.strokeEnd = 0
             progressShapeLayer.strokeColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1).cgColor
@@ -150,3 +150,8 @@ final class UIStatusLevel: UIView {
 
 
 
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToCAShapeLayerLineCap(_ input: String) -> CAShapeLayerLineCap {
+	return CAShapeLayerLineCap(rawValue: input)
+}

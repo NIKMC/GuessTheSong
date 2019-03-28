@@ -18,6 +18,7 @@ class PrepareMultiPlayViewController: UIViewController {
     @IBOutlet weak var searchText: UILabel!
     
     var viewModel: PrepareMultiPlayerViewModel?
+    @IBOutlet weak var levelStatus: UIStatusLevel!
     
     @IBOutlet weak var loaderView: UISpinner!
     var observer: NSObjectProtocol?
@@ -32,6 +33,11 @@ class PrepareMultiPlayViewController: UIViewController {
         
 //        ProgressHUD.show()
         processLoadingSongs()
+        
+        let (score, progress) = viewModel?.getStatusLevel() ?? (0, 0.0)
+        levelStatus.setScore(score: score)
+        levelStatus.setProgress(currentProgress: progress)
+        
         
         loaderView.background = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.4003103596)
         loaderView.starCount = 20
@@ -106,7 +112,7 @@ class PrepareMultiPlayViewController: UIViewController {
         if identifier == goToPlay {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let root = appDelegate.switchRootViewController(nameStoryBoard: "MultiPlayGameScreen", idViewController: GameControllerID)
-            guard let dvc = root.childViewControllers.first as? MultiPlayViewController else { print("Not found destinationaViewController")
+            guard let dvc = root.children.first as? MultiPlayViewController else { print("Not found destinationaViewController")
                 return }
             dvc.viewModel = viewModel?.goToPlayMyltiPlayer()
         }
