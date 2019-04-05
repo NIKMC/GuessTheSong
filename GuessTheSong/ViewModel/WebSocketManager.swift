@@ -14,9 +14,17 @@ class WebSocketManager: WebSocketDelegate {
     var socket: WebSocket!
     weak var observer: SocketBehaviourDelegate?
     private var ready = false
-    init(url: String, token: String, delegate: SocketBehaviourDelegate) {
+    init(url urlString: String, token: String, delegate: SocketBehaviourDelegate) {
         observer = delegate
-        let webSocketURL = "\(url)?token=\(token)"
+        let url = URL(string: urlString)!
+        var webSocketURL: String
+        if urlString.contains("ws://terra.co.il/") {
+           let webSocketURLString = url.absoluteString.replacingOccurrences(of: "ws://terra.co.il/", with: "ws://terra.co.il:41000/")
+            webSocketURL = "\(webSocketURLString)?token=\(token)"
+        } else {
+            webSocketURL = "\(urlString)?token=\(token)"
+        }
+        print("The websocket URLString is \(webSocketURL)")
         var request = URLRequest(url: URL(string: webSocketURL)!)
         request.timeoutInterval = 5
         socket = WebSocket(request: request)
