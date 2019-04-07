@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wsb-KC-F1q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wsb-KC-F1q">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -73,31 +73,20 @@
                                                     <constraint firstItem="Pea-wG-FHT" firstAttribute="leading" secondItem="lFU-Ee-cOn" secondAttribute="trailing" constant="10" id="ndJ-9C-YUk"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9o7-Vg-34y" userLabel="Gamers" customClass="UIGamers" customModule="GuessTheSong" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="64" width="355" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="MvA-y9-VZk"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="countTextField">
-                                                        <integer key="value" value="10"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 / 10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fEv-2G-LrY" userLabel="CounterSong">
-                                                <rect key="frame" x="0.0" y="125" width="375" height="36"/>
+                                                <rect key="frame" x="0.0" y="124" width="375" height="36"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
                                                 <color key="textColor" red="0.76470588240000004" green="0.63137254899999995" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I wanna be the very ____\rLike no ___ ever was\rTo catch them is my ____ test\rTo train them __ my cause" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKz-YE-X5P">
-                                                <rect key="frame" x="30" y="194" width="315" height="52.5"/>
+                                                <rect key="frame" x="30" y="193" width="315" height="52.5"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="brB-Qe-7yc" userLabel="ContainerOfTExtFields" customClass="UIAnswers" customModule="GuessTheSong" customModuleProvider="target">
-                                                <rect key="frame" x="50" y="297" width="275" height="200"/>
+                                                <rect key="frame" x="50" y="295.5" width="275" height="200"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="200" id="7jJ-GV-QAo"/>
                                                 </constraints>
@@ -108,7 +97,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZCM-eZ-suN" customClass="UIGSButton" customModule="GuessTheSong" customModuleProvider="target">
-                                                <rect key="frame" x="330" y="306" width="40" height="40"/>
+                                                <rect key="frame" x="330" y="304.5" width="40" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="GYG-Xw-vkg"/>
@@ -127,26 +116,75 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0Ei-d7-t3H">
+                                                <rect key="frame" x="0.0" y="55" width="375" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="3Bf-xJ-iza"/>
+                                                </constraints>
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="plT-Ni-Zcz">
+                                                    <size key="itemSize" width="40" height="40"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellGamer" id="i0G-SJ-Spa" customClass="GamerCollectionViewCell" customModule="GuessTheSong" customModuleProvider="target">
+                                                        <rect key="frame" x="10" y="0.0" width="40" height="40"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cba-44-CKE" customClass="UIGamer" customModule="GuessTheSong" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="fontSizeHead">
+                                                                            <real key="value" value="14"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="fontSizeRound">
+                                                                            <real key="value" value="12"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </view>
+                                                            </subviews>
+                                                        </view>
+                                                        <constraints>
+                                                            <constraint firstItem="Cba-44-CKE" firstAttribute="top" secondItem="i0G-SJ-Spa" secondAttribute="top" id="0G6-CP-9fJ"/>
+                                                            <constraint firstItem="Cba-44-CKE" firstAttribute="leading" secondItem="i0G-SJ-Spa" secondAttribute="leading" id="Aib-ju-UQc"/>
+                                                            <constraint firstAttribute="bottom" secondItem="Cba-44-CKE" secondAttribute="bottom" id="NJm-MC-2ql"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Cba-44-CKE" secondAttribute="trailing" id="mHh-aI-cfU"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <outlet property="gamer" destination="Cba-44-CKE" id="nvu-hi-R1G"/>
+                                                        </connections>
+                                                    </collectionViewCell>
+                                                </cells>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="hhU-8G-BNE" id="J6R-Qg-sQY"/>
+                                                    <outlet property="delegate" destination="hhU-8G-BNE" id="mxe-uz-3OJ"/>
+                                                </connections>
+                                            </collectionView>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="0Ei-d7-t3H" firstAttribute="top" secondItem="3ee-Ib-iKg" secondAttribute="bottom" constant="10" id="0ed-kC-bJ2"/>
                                             <constraint firstItem="fEv-2G-LrY" firstAttribute="centerX" secondItem="WeS-iB-xZ3" secondAttribute="centerX" id="3j3-g2-9pF"/>
                                             <constraint firstItem="brB-Qe-7yc" firstAttribute="leading" secondItem="WeS-iB-xZ3" secondAttribute="leading" constant="50" id="3xS-Xv-ZZe"/>
-                                            <constraint firstAttribute="trailing" secondItem="9o7-Vg-34y" secondAttribute="trailing" constant="10" id="5Ng-HS-BQx"/>
                                             <constraint firstItem="3ee-Ib-iKg" firstAttribute="top" secondItem="WeS-iB-xZ3" secondAttribute="top" constant="5" id="AZp-NW-rLu"/>
                                             <constraint firstAttribute="trailing" secondItem="ZCM-eZ-suN" secondAttribute="trailing" constant="5" id="JW6-HY-3cx"/>
                                             <constraint firstItem="lKz-YE-X5P" firstAttribute="leading" secondItem="WeS-iB-xZ3" secondAttribute="leading" constant="30" id="NYy-Pv-mmA"/>
+                                            <constraint firstAttribute="trailing" secondItem="0Ei-d7-t3H" secondAttribute="trailing" id="Wsk-04-UQ7"/>
                                             <constraint firstItem="fEv-2G-LrY" firstAttribute="leading" secondItem="WeS-iB-xZ3" secondAttribute="leading" id="WtL-fK-RhP"/>
+                                            <constraint firstItem="fEv-2G-LrY" firstAttribute="top" secondItem="0Ei-d7-t3H" secondAttribute="bottom" multiplier="1.2" constant="10" id="awl-N5-aau"/>
                                             <constraint firstAttribute="trailing" secondItem="3ee-Ib-iKg" secondAttribute="trailing" constant="10" id="caR-i5-chG"/>
-                                            <constraint firstItem="fEv-2G-LrY" firstAttribute="top" secondItem="9o7-Vg-34y" secondAttribute="bottom" multiplier="1.2" id="gvS-qv-TOn"/>
-                                            <constraint firstItem="9o7-Vg-34y" firstAttribute="leading" secondItem="WeS-iB-xZ3" secondAttribute="leading" constant="10" id="hMe-eG-Exj"/>
                                             <constraint firstItem="3ee-Ib-iKg" firstAttribute="leading" secondItem="WeS-iB-xZ3" secondAttribute="leading" constant="10" id="kcq-2a-Xmh"/>
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="brB-Qe-7yc" secondAttribute="bottom" id="lcs-Mg-Ttk"/>
-                                            <constraint firstItem="9o7-Vg-34y" firstAttribute="top" secondItem="3ee-Ib-iKg" secondAttribute="bottom" multiplier="1.2" constant="10" id="nJ9-yU-c9J"/>
                                             <constraint firstItem="lKz-YE-X5P" firstAttribute="top" secondItem="fEv-2G-LrY" secondAttribute="bottom" multiplier="1.2" constant="1" id="o5b-bH-BPk"/>
                                             <constraint firstItem="brB-Qe-7yc" firstAttribute="centerX" secondItem="WeS-iB-xZ3" secondAttribute="centerX" id="oWp-ck-4VC"/>
                                             <constraint firstItem="lKz-YE-X5P" firstAttribute="centerX" secondItem="WeS-iB-xZ3" secondAttribute="centerX" id="rSp-98-K4j"/>
                                             <constraint firstItem="brB-Qe-7yc" firstAttribute="top" secondItem="lKz-YE-X5P" secondAttribute="bottom" multiplier="1.2" constant="1" id="tkB-c9-GvH"/>
                                             <constraint firstItem="ZCM-eZ-suN" firstAttribute="top" secondItem="lKz-YE-X5P" secondAttribute="bottom" multiplier="1.2" constant="10" id="yUT-BZ-Cnz"/>
+                                            <constraint firstItem="0Ei-d7-t3H" firstAttribute="leading" secondItem="WeS-iB-xZ3" secondAttribute="leading" id="z5F-m4-jbh"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -177,8 +215,8 @@
                     <navigationItem key="navigationItem" id="5pc-bT-V4F"/>
                     <connections>
                         <outlet property="actionButton" destination="ZCM-eZ-suN" id="U3P-j0-MaD"/>
+                        <outlet property="collectionViewGamers" destination="0Ei-d7-t3H" id="OwN-Hx-5iS"/>
                         <outlet property="constraintContentHeight" destination="yaj-GO-sLx" id="5MV-gZ-5Y1"/>
-                        <outlet property="gamersBoard" destination="9o7-Vg-34y" id="GcZ-1m-TJ5"/>
                         <outlet property="livesOfGamer" destination="Pea-wG-FHT" id="1GY-e4-iKo"/>
                         <outlet property="scoreTitleLabelText" destination="fEv-2G-LrY" id="W7z-1b-1BM"/>
                         <outlet property="scrollView" destination="KpY-y7-MGL" id="26Y-km-OcT"/>
@@ -226,8 +264,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="fon" width="415" height="735"/>
-        <image name="isLife" width="18" height="25"/>
-        <image name="noLife" width="21" height="27"/>
+        <image name="fon" width="415.5" height="735.5"/>
+        <image name="isLife" width="18.5" height="25"/>
+        <image name="noLife" width="21" height="27.5"/>
     </resources>
 </document>

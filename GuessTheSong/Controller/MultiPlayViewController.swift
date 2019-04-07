@@ -19,14 +19,15 @@ class MultiPlayViewController: UIViewController {
     @IBOutlet weak var textLabelText: UILabel!
     @IBOutlet weak var textFieldOfAnswers: UIAnswers!
     @IBOutlet weak var actionButton: UIGSButton!
-    @IBOutlet weak var gamersBoard: UIGamers!
-    
+    @IBOutlet weak var collectionViewGamers: UICollectionView!
     @IBOutlet var scrollView: UIScrollView?
     @IBOutlet weak var constraintContentHeight: NSLayoutConstraint!
     
+    private let identifierCell = "cellGamer"
     private let finishGame = "goToFinishGame"
     private let MainMenu = "goToMain"
     private let MenuControllerID = "MenuControllerID"
+    private let supportedLanguageCodes = ["en","he"]
     
     private let MAX_COUNT_OF_LIVES = 3
     var viewModel: MultiPlayViewModel?
@@ -80,7 +81,8 @@ class MultiPlayViewController: UIViewController {
             print("go tapped")
             self?.finishRound()
         }
-        gamersBoard.updateUIAnswers(players: (viewModel?.players)!)
+        collectionViewGamers.reloadData()
+//        gamersBoard.updateUIAnswers(players: (viewModel?.players)!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,20 +91,21 @@ class MultiPlayViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
 
         observer = NotificationCenter.default.addObserver(forName: .socket, object: nil, queue: .main, using: { [weak self] (notification) in
-            let notifier = notification.object as! MultiPlayViewModel
-            if notifier.successFinish {
+            if let strongSelf = self {
+            if let success = strongSelf.viewModel?.successFinish, success {
                 OperationQueue.main.addOperation {
-                    self?.viewModel?.finishGame()
-                    self?.viewModel?.lives.value = notifier.currentLive()
-                    self?.viewModel?.setActionToFinishGame(action: .WinMulty)
-                    self?.performSegue(withIdentifier: (self?.finishGame)!, sender: self)
+                    strongSelf.viewModel?.finishGame()
+                    strongSelf.viewModel?.lives.value = strongSelf.viewModel?.currentLive()
+                    strongSelf.viewModel?.setActionToFinishGame(action: .WinMulty)
+                    strongSelf.performSegue(withIdentifier: (self?.finishGame)!, sender: self)
                 }
             } else {
                 //TODO: - return score and id other gamers and show their score on the board of gamers
                 OperationQueue.main.addOperation {
-                    self?.gamersBoard.updateUIAnswers(players: notifier.players)
+                    self?.collectionViewGamers.reloadData()
                 }
             }
+        }
         })
     }
     
@@ -153,9 +156,8 @@ class MultiPlayViewController: UIViewController {
         } else {
             OperationQueue.main.addOperation {
                 self.seconds -= 1
-                let supportedLanguageCodes = ["en","he"]
                 let languageCode = Locale.current.languageCode ?? "en"
-                let currentLanguageCode = supportedLanguageCodes.contains(languageCode) ? languageCode : "en"
+                let currentLanguageCode = self.supportedLanguageCodes.contains(languageCode) ? languageCode : "en"
                 if currentLanguageCode == "he" {
                     self.viewModel?.time.value = "\(self.seconds) \(NSLocalizedString("Timer:", comment: ""))"
                 } else {
@@ -209,6 +211,28 @@ class MultiPlayViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
+}
+
+extension MultiPlayViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel?.countOfGamers() ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let collectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: identifierCell, for: indexPath) as? GamerCollectionViewCell
+        guard let cell = collectionViewCell, let viewModel = viewModel else { return UICollectionViewCell() }
+        cell.gamer.fontSizeHead = 14
+        cell.gamer.fontSizeRound = 12
+        let gamer = viewModel.itemOfPlayer(index: indexPath.row)
+        cell.gamer.setName(username: gamer.getName())
+        cell.gamer.setRoundSuccess(round: gamer.getRating())
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 40, height: 40)
+    }
 }
 
 extension MultiPlayViewController: UITextViewDelegate {

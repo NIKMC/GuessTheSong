@@ -85,7 +85,7 @@ SPEC CHECKSUMS:
   FBSDKLoginKit: 8bccb6064708ab2f4251a7fc4e3b6d8d00ad91ba
   GoogleSignIn: 591e46382014e591269f862ba6e7bc0fbd793532
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
-  GTMOAuth2: c77fe325e4acd453837e72d91e3b5f13116857b2
+  GTMOAuth2: e8b6512c896235149df975c41d9a36c868ab7fba
   GTMSessionFetcher: 0c4baf0a73acd0041bf9f71ea018deedab5ea84e
   ProgressHUD: 4e4efbaf4f5de8bd32e0c4c3b6644a90ea1a8c3e
   Realm: 3fdae59de78838064e9f77638d7cdb7b8cff9dc8

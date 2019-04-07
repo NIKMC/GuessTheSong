@@ -89,7 +89,7 @@ class LevelsOfSinglePlayViewModel: NSObject, LevelsCollectionModelType {
         levelsNetworkManager?.start()
         levelsNetworkManager?.success = { (levels) in
             print("the result is ok \(levels)")
-            completion?(levels)
+            completion?(levels.sorted(by: {$0.id < $1.id}))
         }
         
         levelsNetworkManager?.failure = { (error) in

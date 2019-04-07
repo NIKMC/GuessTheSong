@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OAf-in-oxV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OAf-in-oxV">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OCD-TD-hj4" customClass="UIStatusLevel" customModule="GuessTheSong" customModuleProvider="target">
-                                <rect key="frame" x="155" y="5" width="160" height="20"/>
+                                <rect key="frame" x="155" y="30" width="160" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Nbb-yh-D49"/>
                                 </constraints>
@@ -34,7 +34,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching for players..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oM0-zA-Sb7">
-                                <rect key="frame" x="20" y="37.5" width="280" height="139.5"/>
+                                <rect key="frame" x="20" y="75" width="280" height="102"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -66,9 +66,9 @@
                             <constraint firstItem="OCD-TD-hj4" firstAttribute="width" secondItem="Uts-F3-wlx" secondAttribute="width" multiplier="0.5" id="iGM-T4-QcT"/>
                             <constraint firstItem="oM0-zA-Sb7" firstAttribute="leading" secondItem="Uts-F3-wlx" secondAttribute="leading" constant="20" id="irJ-vr-uXd"/>
                             <constraint firstItem="DQT-iM-15z" firstAttribute="top" secondItem="hY3-QV-Fy9" secondAttribute="top" id="mLA-4r-iqv"/>
-                            <constraint firstItem="OCD-TD-hj4" firstAttribute="top" secondItem="hY3-QV-Fy9" secondAttribute="top" constant="5" id="odQ-Yp-A0A"/>
                             <constraint firstItem="DQT-iM-15z" firstAttribute="leading" secondItem="Uts-F3-wlx" secondAttribute="leading" id="pjr-t0-pkp"/>
                             <constraint firstItem="Uts-F3-wlx" firstAttribute="bottom" secondItem="DQT-iM-15z" secondAttribute="bottom" id="qyY-Kq-ci3"/>
+                            <constraint firstItem="OCD-TD-hj4" firstAttribute="top" secondItem="Uts-F3-wlx" secondAttribute="top" constant="10" id="zD4-ZY-9pb"/>
                             <constraint firstItem="oM0-zA-Sb7" firstAttribute="top" secondItem="OCD-TD-hj4" secondAttribute="bottom" multiplier="1.5" id="zDy-hE-DZV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Uts-F3-wlx"/>
@@ -83,7 +83,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XXz-En-w7l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="692" y="44.527736131934034"/>
+            <point key="canvasLocation" x="691.875" y="44.366197183098592"/>
         </scene>
         <!--MultiPlayGameScreen-->
         <scene sceneID="VkT-zn-HRt">
@@ -95,6 +95,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="fon" width="415" height="735"/>
+        <image name="fon" width="415.5" height="735.5"/>
     </resources>
 </document>

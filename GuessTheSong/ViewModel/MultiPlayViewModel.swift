@@ -32,7 +32,7 @@ class MultiPlayViewModel: MultiPlaySocketBehaviourDelegate {
     
     private var actionFinishGame: TypeFinishGame?
     private var webSocketManager: WebSocketManager?
-    var players: [Player]
+    private var players: [Player]
     
     private var levelOfLive: Int
     private var pathOfSongs: [URL]
@@ -45,6 +45,13 @@ class MultiPlayViewModel: MultiPlaySocketBehaviourDelegate {
     private var audioPlayerViewModel: AudioPlayerLayer
     var successFinish = false
     
+    func countOfGamers() -> Int {
+        return players.count
+    }
+    
+    func itemOfPlayer(index: Int) -> Player {
+        return players[index]
+    }
     
     func getButtonTitle() -> String {
         return NSLocalizedString("Go", comment: "")

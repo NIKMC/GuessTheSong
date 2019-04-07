@@ -14,14 +14,13 @@ final class UIGamer: UIView {
     private var head = UILabel()
     private var round = UILabel()
     private var container = UIView()
-//    var name: String
-//    var score: Int
     
     @IBInspectable var fontSizeHead: CGFloat = 14.0 {
         didSet {
             head.font = textFont
         }
     }
+    
     @IBInspectable var fontSizeRound: CGFloat = 12.0 {
         didSet {
             round.font = textFontRound
@@ -86,14 +85,9 @@ final class UIGamer: UIView {
         round.numberOfLines = 1
         round.backgroundColor = .clear
         round.textColor = #colorLiteral(red: 0.09803921569, green: 0.09803921569, blue: 0.09803921569, alpha: 1)
-        
-        
     }
     
-    
-    
     private func applyStyle() {
-        
         addSubview(container)
         container.translatesAutoresizingMaskIntoConstraints = false
         container.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
@@ -114,21 +108,17 @@ final class UIGamer: UIView {
         round.centerXAnchor.constraint(equalTo: container.centerXAnchor).isActive = true
         round.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 5).isActive = true
         round.topAnchor.constraint(equalTo: head.bottomAnchor, constant: 0).isActive = true
-        
     }
     
     func setName(username login: String) {
-//        self.name = login
         let symbol = login.prefix(1).localizedUppercase
         print("The first symbol of login: \(login) - \(symbol)")
         self.head.text = symbol
     }
     
     func setRoundSuccess(round value: Int) {
-//        self.score = value
         self.round.text = "+\(value)"
     }
-    
     
 }
 

@@ -110,6 +110,7 @@
 		02D0B87F20C97ED8007CE013 /* MultiPlayerScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02D0B87E20C97ED8007CE013 /* MultiPlayerScreen.storyboard */; };
 		02D553EC20CE73DE009F1FE6 /* GameRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D553EB20CE73DE009F1FE6 /* GameRequest.swift */; };
 		02E5BCE2207A3F5000272CFD /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E5BCE1207A3F5000272CFD /* Profile.swift */; };
+		02E93B6A2258ECF200FC8DA2 /* GamerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E93B692258ECF200FC8DA2 /* GamerCollectionViewCell.swift */; };
 		02F03E7120C012FC00A20C99 /* StorableContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F03E7020C012FC00A20C99 /* StorableContext.swift */; };
 		02F03E7320C014B100A20C99 /* Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F03E7220C014B100A20C99 /* Storable.swift */; };
 		02F03E7520C0169600A20C99 /* RealmStorageContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F03E7420C0169600A20C99 /* RealmStorageContext.swift */; };
@@ -124,7 +125,7 @@
 		02FF12CE2124D02B001A4264 /* ListOfLevelsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FF12CD2124D02B001A4264 /* ListOfLevelsRequest.swift */; };
 		02FF12D0212A97A0001A4264 /* GameResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FF12CF212A97A0001A4264 /* GameResponse.swift */; };
 		02FF12D2212A9881001A4264 /* GamesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FF12D1212A9881001A4264 /* GamesResponse.swift */; };
-		9CAC0F415F35AC5A8278B196 /* Pods_GuessTheSong.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A616FC7CB7CE4AD36ACA215 /* Pods_GuessTheSong.framework */; };
+		99891B424D0B330BF236AE54 /* Pods_GuessTheSong.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F2F242A095E56147F5E1A39 /* Pods_GuessTheSong.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -249,6 +250,7 @@
 		02D0B87E20C97ED8007CE013 /* MultiPlayerScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MultiPlayerScreen.storyboard; sourceTree = "<group>"; };
 		02D553EB20CE73DE009F1FE6 /* GameRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRequest.swift; sourceTree = "<group>"; };
 		02E5BCE1207A3F5000272CFD /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		02E93B692258ECF200FC8DA2 /* GamerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamerCollectionViewCell.swift; sourceTree = "<group>"; };
 		02F03E7020C012FC00A20C99 /* StorableContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorableContext.swift; sourceTree = "<group>"; };
 		02F03E7220C014B100A20C99 /* Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storable.swift; sourceTree = "<group>"; };
 		02F03E7420C0169600A20C99 /* RealmStorageContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmStorageContext.swift; sourceTree = "<group>"; };
@@ -263,11 +265,11 @@
 		02FF12CD2124D02B001A4264 /* ListOfLevelsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfLevelsRequest.swift; sourceTree = "<group>"; };
 		02FF12CF212A97A0001A4264 /* GameResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResponse.swift; sourceTree = "<group>"; };
 		02FF12D1212A9881001A4264 /* GamesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesResponse.swift; sourceTree = "<group>"; };
-		14ECBA08C0CC26A00D89E8C7 /* Pods-GuessTheSong.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuessTheSong.release.xcconfig"; path = "Pods/Target Support Files/Pods-GuessTheSong/Pods-GuessTheSong.release.xcconfig"; sourceTree = "<group>"; };
-		3A616FC7CB7CE4AD36ACA215 /* Pods_GuessTheSong.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GuessTheSong.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		45CEEF24E9C3E835DFCEECCB /* Pods-GuessTheSong.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuessTheSong.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GuessTheSong/Pods-GuessTheSong.debug.xcconfig"; sourceTree = "<group>"; };
-		5D91DEBF06947A4EB4538723 /* Pods-GuessTheSong.release-testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuessTheSong.release-testing.xcconfig"; path = "Pods/Target Support Files/Pods-GuessTheSong/Pods-GuessTheSong.release-testing.xcconfig"; sourceTree = "<group>"; };
-		84E1DBA85F211A319165100F /* Pods-GuessTheSong.debug-testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuessTheSong.debug-testing.xcconfig"; path = "Pods/Target Support Files/Pods-GuessTheSong/Pods-GuessTheSong.debug-testing.xcconfig"; sourceTree = "<group>"; };
+		0F2F242A095E56147F5E1A39 /* Pods_GuessTheSong.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GuessTheSong.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FBE7B44051E0F9D8E5A67D7 /* Pods-GuessTheSong.debug-testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuessTheSong.debug-testing.xcconfig"; path = "Pods/Target Support Files/Pods-GuessTheSong/Pods-GuessTheSong.debug-testing.xcconfig"; sourceTree = "<group>"; };
+		3206A5A1D48AE21B64C90CA8 /* Pods-GuessTheSong.release-testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuessTheSong.release-testing.xcconfig"; path = "Pods/Target Support Files/Pods-GuessTheSong/Pods-GuessTheSong.release-testing.xcconfig"; sourceTree = "<group>"; };
+		71B90B5B12486B665E03836B /* Pods-GuessTheSong.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuessTheSong.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GuessTheSong/Pods-GuessTheSong.debug.xcconfig"; sourceTree = "<group>"; };
+		A01147BAEC18ECE302A5A19D /* Pods-GuessTheSong.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuessTheSong.release.xcconfig"; path = "Pods/Target Support Files/Pods-GuessTheSong/Pods-GuessTheSong.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -275,7 +277,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CAC0F415F35AC5A8278B196 /* Pods_GuessTheSong.framework in Frameworks */,
+				99891B424D0B330BF236AE54 /* Pods_GuessTheSong.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,8 +297,8 @@
 				0246B7592062C0240043506F /* GuessTheSong */,
 				02C8D18F214EBA9100573A3F /* GuessTheSongUnitTests */,
 				0246B7582062C0240043506F /* Products */,
-				E9C7A48D3E3E20CD1657701E /* Pods */,
-				7F2F28F967C08A88C3353A0F /* Frameworks */,
+				C2E59E6453535D7539D86341 /* Pods */,
+				793CCA6B01CABB7B2BC03A1E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -401,6 +403,7 @@
 				02A02D19211ABEBB00EA1676 /* GamePlayViewController.swift */,
 				02C956D2215C17CA00D8A2B6 /* MultiPlayViewController.swift */,
 				0259E5C42144078D0098101E /* FinishGameViewController.swift */,
+				02E93B692258ECF200FC8DA2 /* GamerCollectionViewCell.swift */,
 				0259E5B7214186C20098101E /* Elements */,
 			);
 			path = Controller;
@@ -587,21 +590,21 @@
 			path = Response;
 			sourceTree = "<group>";
 		};
-		7F2F28F967C08A88C3353A0F /* Frameworks */ = {
+		793CCA6B01CABB7B2BC03A1E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3A616FC7CB7CE4AD36ACA215 /* Pods_GuessTheSong.framework */,
+				0F2F242A095E56147F5E1A39 /* Pods_GuessTheSong.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E9C7A48D3E3E20CD1657701E /* Pods */ = {
+		C2E59E6453535D7539D86341 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				45CEEF24E9C3E835DFCEECCB /* Pods-GuessTheSong.debug.xcconfig */,
-				84E1DBA85F211A319165100F /* Pods-GuessTheSong.debug-testing.xcconfig */,
-				14ECBA08C0CC26A00D89E8C7 /* Pods-GuessTheSong.release.xcconfig */,
-				5D91DEBF06947A4EB4538723 /* Pods-GuessTheSong.release-testing.xcconfig */,
+				71B90B5B12486B665E03836B /* Pods-GuessTheSong.debug.xcconfig */,
+				2FBE7B44051E0F9D8E5A67D7 /* Pods-GuessTheSong.debug-testing.xcconfig */,
+				A01147BAEC18ECE302A5A19D /* Pods-GuessTheSong.release.xcconfig */,
+				3206A5A1D48AE21B64C90CA8 /* Pods-GuessTheSong.release-testing.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -613,12 +616,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0246B7692062C0240043506F /* Build configuration list for PBXNativeTarget "GuessTheSong" */;
 			buildPhases = (
-				56E9AC260D455E7FDEEB4284 /* [CP] Check Pods Manifest.lock */,
+				427366F36A3A59D3C96C14C5 /* [CP] Check Pods Manifest.lock */,
 				0246B7532062C0240043506F /* Sources */,
 				0246B7542062C0240043506F /* Frameworks */,
 				0246B7552062C0240043506F /* Resources */,
-				3618F162AD0186113ACE47C2 /* [CP] Embed Pods Frameworks */,
-				64B583F25DE013F70230AEDF /* [CP] Copy Pods Resources */,
+				5FA8DCB0F994A8BD338A2033 /* [CP] Embed Pods Frameworks */,
+				E82B24E72E65F60AF59B7350 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -722,7 +725,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3618F162AD0186113ACE47C2 /* [CP] Embed Pods Frameworks */ = {
+		427366F36A3A59D3C96C14C5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GuessTheSong-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5FA8DCB0F994A8BD338A2033 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -764,25 +785,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GuessTheSong/Pods-GuessTheSong-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		56E9AC260D455E7FDEEB4284 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-GuessTheSong-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		64B583F25DE013F70230AEDF /* [CP] Copy Pods Resources */ = {
+		E82B24E72E65F60AF59B7350 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -842,6 +845,7 @@
 				02940C0D21186BDB005CE8B7 /* Player.swift in Sources */,
 				027A4ADB21236057007C0036 /* SignUpResponse.swift in Sources */,
 				02D001042100AE1B00A43EA8 /* SignInModelType.swift in Sources */,
+				02E93B6A2258ECF200FC8DA2 /* GamerCollectionViewCell.swift in Sources */,
 				02884CFA2114161900309B06 /* CollectionViewCellModelType.swift in Sources */,
 				02D001062100AE2C00A43EA8 /* SignInViewModel.swift in Sources */,
 				02E5BCE2207A3F5000272CFD /* Profile.swift in Sources */,
@@ -1094,7 +1098,7 @@
 		};
 		0246B76A2062C0240043506F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 45CEEF24E9C3E835DFCEECCB /* Pods-GuessTheSong.debug.xcconfig */;
+			baseConfigurationReference = 71B90B5B12486B665E03836B /* Pods-GuessTheSong.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1111,7 +1115,7 @@
 		};
 		0246B76B2062C0240043506F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 14ECBA08C0CC26A00D89E8C7 /* Pods-GuessTheSong.release.xcconfig */;
+			baseConfigurationReference = A01147BAEC18ECE302A5A19D /* Pods-GuessTheSong.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1266,7 +1270,7 @@
 		};
 		02E5BCDE207A17FC00272CFD /* Debug-Testing */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 84E1DBA85F211A319165100F /* Pods-GuessTheSong.debug-testing.xcconfig */;
+			baseConfigurationReference = 2FBE7B44051E0F9D8E5A67D7 /* Pods-GuessTheSong.debug-testing.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1338,7 +1342,7 @@
 		};
 		02E5BCE0207A180600272CFD /* Release-Testing */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5D91DEBF06947A4EB4538723 /* Pods-GuessTheSong.release-testing.xcconfig */;
+			baseConfigurationReference = 3206A5A1D48AE21B64C90CA8 /* Pods-GuessTheSong.release-testing.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
